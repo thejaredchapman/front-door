@@ -1,21 +1,28 @@
+import { useT } from '../i18n';
+import RATE_INFO from '../data/rate.json';
+
 export default function Footer() {
+  const t = useT();
   return (
-    <footer className="border-t-2 border-ink mt-16">
-      <div className="mx-auto px-4 sm:px-6 max-w-6xl pt-8">
-        <p className="px-4 py-3 border-l-4 border-gold bg-gold/10 text-sm font-medium">
-          Verify everything. Rates, home prices, taxes, insurance, salaries, and city data shown here are
-          estimates and may be outdated or inaccurate. Confirm all figures with a licensed lender,
-          official sources, and a qualified financial advisor before making any decision.
-        </p>
-      </div>
-      <div className="mx-auto px-4 sm:px-6 max-w-6xl py-8 grid gap-3 sm:grid-cols-2 text-xs text-muted leading-relaxed">
-        <p>
-          LoanLens is for educational and estimation purposes only. All calculations are approximate.
-          Consult a licensed financial advisor or lender for actual loan terms and rates.
-        </p>
-        <p>
-          Default rates reflect national averages as of October 2026 (Freddie Mac PMMS 30-yr: 7.28%).
-          Property tax, insurance, and city data are approximate and may vary.
+    <footer className="border-t-2 border-ink mt-8 bg-card">
+      <div className="mx-auto px-5 max-w-6xl py-8 grid gap-6 md:grid-cols-3 text-sm">
+        <div>
+          <p className="display text-xl font-bold">Front Door</p>
+          <p className="text-muted mt-1">{t('Free homebuyer help for working families. Built for the Habitat for Humanity of Orange County hackathon, using Habitat\'s color palette with respect. Not an official Habitat for Humanity website.')}</p>
+        </div>
+        <nav aria-label={t('Footer')} className="grid grid-cols-2 gap-1">
+          <a href="#/plan" className="hover:underline">{t('Find my plan')}</a>
+          <a href="#/learn" className="hover:underline">{t('Learn')}</a>
+          <a href="#/calculator" className="hover:underline">{t('Calculator')}</a>
+          <a href="#/give" className="hover:underline">{t('Give')}</a>
+          <a href="#/learn/sources" className="hover:underline">{t('Sources')}</a>
+          <a href="#/learn/about" className="hover:underline">{t('How this was built')}</a>
+          <a href="presentation/handout.html" target="_blank" rel="noreferrer" className="hover:underline">{t('Handout')} ↗</a>
+          <a href="presentation/slides.html" target="_blank" rel="noreferrer" className="hover:underline">{t('Slides')} ↗</a>
+          <a href="https://github.com/thejaredchapman/front-door" target="_blank" rel="noreferrer" className="hover:underline">GitHub ↗</a>
+        </nav>
+        <p className="note text-xs">
+          {t('Estimates for education only, not a loan offer or financial advice. Rates (Freddie Mac 30-yr: {rate}%, {date}), limits, and programs change. Confirm everything with a HUD-approved counselor and a licensed lender.', { rate: RATE_INFO.value, date: RATE_INFO.asOf })}
         </p>
       </div>
     </footer>

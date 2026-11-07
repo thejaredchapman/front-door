@@ -1,0 +1,434 @@
+{
+  "meta": {
+    "researched": "2026-11-07",
+    "benchmark": {
+      "source": "Freddie Mac PMMS",
+      "pmms30": 7.18,
+      "pmms15": 6.57,
+      "week": "2026-11-05",
+      "url": "https://www.freddiemac.com/pmms/docs/PMMS_history.csv"
+    },
+    "mnd_index": {
+      "as_of": "2026-11-06",
+      "rate30": 7.17,
+      "fha30": 6.82,
+      "rate15": 6.83,
+      "url": "https://www.mortgagenewsdaily.com/mortgage-rates"
+    },
+    "caveat": "Published rates assume strong borrowers (often 740-780 FICO, 60-75% LTV). Rates in percent; points in percent of loan (negative = lender credit). null = not shown on page."
+  },
+  "lenders": [
+    {
+      "lender": "SchoolsFirst Federal Credit Union",
+      "type": "credit_union",
+      "serves_oc": true,
+      "membership": "Current/retired employees of eligible California schools and their family members (official eligibility page not fetched; UNVERIFIED detail)",
+      "products": [
+        {
+          "name": "School Employee Special No PMI 30-yr conforming (3% down)",
+          "rate": 7.125,
+          "apr": 7.19,
+          "points": 0.0,
+          "fees": "No PMI; alt pricing 6.875/7.03/1pt and 7.375/7.44/-1pt",
+          "as_of": "2026-11-07",
+          "url": "https://schoolsfirstfcu.org/rates/mortgage-purchase"
+        },
+        {
+          "name": "HomeAccess First-Time Buyer 30-yr conforming (3% down, APR incl PMI)",
+          "rate": 7.0,
+          "apr": 7.37,
+          "points": 0.0,
+          "fees": "$995 processing fee waived on primary purchase (homeaccess page); alt 6.75/7.22/1pt",
+          "as_of": "2026-11-07",
+          "url": "https://schoolsfirstfcu.org/rates/mortgage-purchase"
+        },
+        {
+          "name": "FHA 30-yr fixed (3.5% down, 620 FICO, APR incl MI)",
+          "rate": 7.0,
+          "apr": 7.78,
+          "points": 0.0,
+          "fees": "FHA upfront + annual MIP; alt 6.75/7.63/1pt, 7.25/8.03/-1pt",
+          "as_of": "2026-11-07",
+          "url": "https://schoolsfirstfcu.org/rates/mortgage-purchase"
+        },
+        {
+          "name": "Conforming 30-yr fixed (740 FICO, 60% LTV)",
+          "rate": 7.0,
+          "apr": 7.07,
+          "points": 0.0,
+          "fees": null,
+          "as_of": "2026-11-07",
+          "url": "https://schoolsfirstfcu.org/rates/mortgage-purchase"
+        }
+      ],
+      "notes": "Largest OC mortgage CU. HMDA 2024 OC conv 30-yr purchase: n=354, median rate 6.5625, spread -0.03, total loan costs ~$5.7k. HomeAccess has no income cap. $7,500 school-employee grant mentioned in repo not re-verified.",
+      "verified": true
+    },
+    {
+      "lender": "Orange County's Credit Union",
+      "type": "credit_union",
+      "serves_oc": true,
+      "membership": "Live/work in Orange, LA, Riverside, or San Bernardino County, $5 fee (search snippet; UNVERIFIED). Membership is a condition of loan approval; CA properties only.",
+      "products": [
+        {
+          "name": "30-yr fixed (780 FICO, <=60% LTV, $500k)",
+          "rate": 6.875,
+          "apr": 7.063,
+          "points": 0.625,
+          "fees": null,
+          "as_of": "2026-11-06",
+          "url": "https://www.orangecountyscu.org/homeloans"
+        },
+        {
+          "name": "15-yr fixed",
+          "rate": 6.125,
+          "apr": 6.361,
+          "points": 1.0,
+          "fees": null,
+          "as_of": "2026-11-06",
+          "url": "https://www.orangecountyscu.org/homeloans"
+        },
+        {
+          "name": "5/1 ARM",
+          "rate": 5.75,
+          "apr": 6.889,
+          "points": 0.625,
+          "fees": null,
+          "as_of": "2026-11-06",
+          "url": "https://www.orangecountyscu.org/homeloans"
+        }
+      ],
+      "notes": "Advertises no-points/no-closing-cost options and a 0%-down ARM for primary homes (PMI treatment unstated). HMDA 2024 OC: n=16, median spread +0.21, total loan costs ~$6.6k.",
+      "verified": true
+    },
+    {
+      "lender": "Navy Federal Credit Union",
+      "type": "credit_union",
+      "serves_oc": true,
+      "membership": "Military, veterans, DoD civilians/contractors, and immediate family/household members (search snippet of navyfederal.org eligibility)",
+      "products": [
+        {
+          "name": "Homebuyers Choice 30-yr (0% down, 720 FICO)",
+          "rate": 7.375,
+          "apr": 7.713,
+          "points": 0.5,
+          "fees": "1% origination (waivable for +0.25% rate); 1.75% funding fee (waivable for +0.375% rate or 3% down)",
+          "as_of": "2026-11-07",
+          "url": "https://www.navyfederal.org/loans-cards/mortgage/mortgage-rates.html"
+        },
+        {
+          "name": "Conventional 30-yr fixed (780 FICO, 25% down)",
+          "rate": 6.5,
+          "apr": 6.646,
+          "points": 0.5,
+          "fees": "1% origination (waivable for +0.25% rate)",
+          "as_of": "2026-11-07",
+          "url": "https://www.navyfederal.org/loans-cards/mortgage/mortgage-rates.html"
+        },
+        {
+          "name": "VA 30-yr",
+          "rate": 6.0,
+          "apr": 6.48,
+          "points": 1.0,
+          "fees": "VA funding fee",
+          "as_of": "2026-11-07",
+          "url": "https://www.navyfederal.org/loans-cards/mortgage/mortgage-rates.html"
+        }
+      ],
+      "notes": "HMDA 2024 OC conv 30-yr: n=41, median spread -0.30, total loan costs ~$6.3k; VA n=15, spread -0.67. $250 No-Refi Rate Drop.",
+      "verified": true
+    },
+    {
+      "lender": "Firefighters First Federal Credit Union",
+      "type": "credit_union",
+      "serves_oc": true,
+      "membership": "Firefighters and their families (detailed criteria UNVERIFIED)",
+      "products": [
+        {
+          "name": "7/1 ARM First Time Homebuyer (no PMI, 3% down, 720 FICO)",
+          "rate": 6.125,
+          "apr": 6.508,
+          "points": null,
+          "fees": "RateDrop fee $1,000 (<=$806,500) / $1,500",
+          "as_of": "no date on page (fetched 2026-11-07)",
+          "url": "https://www.firefightersfirstcu.org/Rates"
+        },
+        {
+          "name": "30-yr fixed",
+          "rate": 7.25,
+          "apr": 7.338,
+          "points": null,
+          "fees": null,
+          "as_of": "no date on page (fetched 2026-11-07)",
+          "url": "https://www.firefightersfirstcu.org/Rates"
+        },
+        {
+          "name": "30-yr FHA",
+          "rate": 6.875,
+          "apr": 7.504,
+          "points": null,
+          "fees": null,
+          "as_of": "no date on page (fetched 2026-11-07)",
+          "url": "https://www.firefightersfirstcu.org/Rates"
+        }
+      ],
+      "notes": "FTHB ARM: DTI<=45%, 3 months reserves, loan limit $1,249,125, caps 2%/5%. Program details from https://www.firefightersfirstcu.org/Personal/Home-Loans/Mortgage. Rates undated, so treat as UNVERIFIED for currency.",
+      "verified": false
+    },
+    {
+      "lender": "Wescom Credit Union",
+      "type": "credit_union",
+      "serves_oc": true,
+      "membership": "Live/work/worship/attend school in Orange and other SoCal/Central CA counties; $1 deposit (search snippet of wescom.org FAQ)",
+      "products": [
+        {
+          "name": "30-yr fixed conforming (640 FICO, 60% LTV)",
+          "rate": 7.125,
+          "apr": 7.174,
+          "points": 0.0,
+          "fees": "Servicing: payoff demand $30, reconveyance $45",
+          "as_of": "2025-11-01 (stale per page)",
+          "url": "https://www.wescom.org/home-loans/mortgage"
+        }
+      ],
+      "notes": "Rate page date is a year old; UNVERIFIED for today. Advertises 0%/3% down and MI discounts. HMDA 2024 OC: n=17, median spread +0.20, total loan costs ~$8.2k.",
+      "verified": false
+    },
+    {
+      "lender": "Kinecta Federal Credit Union",
+      "type": "credit_union",
+      "serves_oc": true,
+      "membership": "UNVERIFIED (family/household of members, select employer groups; $10 fee per third-party sources)",
+      "products": [
+        {
+          "name": "Conforming 30-yr fixed (760 FICO, $450k LA County example)",
+          "rate": 6.75,
+          "apr": 6.895,
+          "points": 0.25,
+          "fees": null,
+          "as_of": "no date on page (fetched 2026-11-07)",
+          "url": "https://www.kinecta.org/mortgage/purchase"
+        }
+      ],
+      "notes": "Offers FHA 3.5% and Fannie 3% down; relationship pricing. HMDA 2024 OC jumbo-heavy (median loan $1.7M), so not representative.",
+      "verified": false
+    },
+    {
+      "lender": "Golden 1 Credit Union",
+      "type": "credit_union",
+      "serves_oc": true,
+      "membership": "Anyone who lives or works in California (help.golden1.com snippet)",
+      "products": [],
+      "notes": "Rate page https://www.golden1.com/loans/home-loans/purchase timed out on 3 attempts. CalHFA-approved. First-time buyer closing cost credit of $2,500 or $5,000 for LMI members (https://help.golden1.com/article/are-there-any-deals-for-first-time-home-3433, snippet only; UNVERIFIED). HomeReady 3% down. HMDA 2024 OC: n=8, spread -0.01, costs ~$7.4k.",
+      "verified": false
+    },
+    {
+      "lender": "California Credit Union",
+      "type": "credit_union",
+      "serves_oc": true,
+      "membership": "Serves LA & Orange County region; exact criteria UNVERIFIED",
+      "products": [
+        {
+          "name": "ARM example (760 FICO, $700k LA County)",
+          "rate": 5.5,
+          "apr": 6.149,
+          "points": null,
+          "fees": "Up to $10,000 of closing costs paid on 5/5, 7/6, 10/6 ARMs (prorated repayment if paid off <36 months)",
+          "as_of": "2026-04-22 (example on page; not current)",
+          "url": "https://www.ccu.com/borrow/personal/first-time-home-buyers/"
+        }
+      ],
+      "notes": "Also 80/10/10 no-PMI and up to $3,000 lender credit on select 30-yr fixed. HMDA 2024 OC: n=30, median spread -1.06, total loan costs $0.",
+      "verified": false
+    },
+    {
+      "lender": "Logix Federal Credit Union",
+      "type": "credit_union",
+      "serves_oc": true,
+      "membership": "UNVERIFIED",
+      "products": [],
+      "notes": "https://www.logixbanking.com/Rates/Mortgages shows no numbers in HTML (JS-rendered). 0.25% purchase discount on 30-yr fixed; lends in AZ, CA, DC, ME, MD, MA, NH, NV, VA. HMDA 2024 OC n=2.",
+      "verified": false
+    },
+    {
+      "lender": "San Diego County Credit Union",
+      "type": "credit_union",
+      "serves_oc": true,
+      "membership": "UNVERIFIED (search snippet says serves San Diego, Riverside, Orange counties)",
+      "products": [],
+      "notes": "Advertises a no-closing-cost mortgage (snippet). Rate page URL tried returned 404.",
+      "verified": false
+    },
+    {
+      "lender": "NeighborWorks Orange County",
+      "type": "nonprofit_cdfi",
+      "serves_oc": true,
+      "membership": "None; income/program eligibility applies",
+      "products": [],
+      "notes": "https://www.nwoc.org/ (2026-11-07): offers Conventional, FHA, FNMA, Grow/Daisy, CalHFA loans and DPA for qualified borrowers; 8-hr HUD class $30/person; free pre-purchase counseling. CDFI status per directories (UNVERIFIED). No published rates.",
+      "verified": true
+    },
+    {
+      "lender": "CalHFA (via approved lenders)",
+      "type": "state_hfa",
+      "serves_oc": true,
+      "membership": "Program eligibility (first-time buyer, CalHFA income limits, education)",
+      "products": [
+        {
+          "name": "MyHome Assistance (deferred junior loan)",
+          "rate": 1.0,
+          "apr": null,
+          "points": null,
+          "fees": null,
+          "as_of": "2026-06-08 (page header; stale)",
+          "url": "https://www.calhfa.ca.gov/apps/Rates/"
+        },
+        {
+          "name": "Dream For All Shared Appreciation",
+          "rate": 0.0,
+          "apr": null,
+          "points": null,
+          "fees": "Shared appreciation repaid on sale/refi",
+          "as_of": "2026-06-08 (page header; stale)",
+          "url": "https://www.calhfa.ca.gov/apps/Rates/"
+        }
+      ],
+      "notes": "All first-mortgage rates showed N/A. CalPLUS FHA/Conventional carry a 'slightly higher' rate than standard programs (calhfa.ca.gov program pages).",
+      "verified": false
+    }
+  ],
+  "hmda_oc_2024": {
+    "query": "https://ffiec.cfpb.gov/v2/data-browser-api/view/csv?counties=06059&years=2024&actions_taken=1&loan_purposes=1",
+    "filter": "first lien, owner-occupied, 360-month, originated purchase; medians by lender",
+    "conventional_30yr": [
+      {
+        "lender": "California Credit Union",
+        "n": 30,
+        "median_rate": 5.875,
+        "median_spread": -1.062,
+        "median_total_loan_costs": 0
+      },
+      {
+        "lender": "City National Bank",
+        "n": 84,
+        "median_rate": 6.0,
+        "median_spread": -0.742,
+        "median_total_loan_costs": 3244
+      },
+      {
+        "lender": "Navy Federal Credit Union",
+        "n": 41,
+        "median_rate": 6.25,
+        "median_spread": -0.303,
+        "median_total_loan_costs": 6260
+      },
+      {
+        "lender": "U.S. Bank",
+        "n": 759,
+        "median_rate": 6.5,
+        "median_spread": -0.152,
+        "median_total_loan_costs": 7857
+      },
+      {
+        "lender": "SchoolsFirst FCU",
+        "n": 354,
+        "median_rate": 6.5625,
+        "median_spread": -0.032,
+        "median_total_loan_costs": 5698
+      },
+      {
+        "lender": "JPMorgan Chase",
+        "n": 346,
+        "median_rate": 6.625,
+        "median_spread": 0.021,
+        "median_total_loan_costs": 7003
+      },
+      {
+        "lender": "Rocket Mortgage",
+        "n": 1170,
+        "median_rate": 6.75,
+        "median_spread": 0.132,
+        "median_total_loan_costs": 8246
+      },
+      {
+        "lender": "United Wholesale Mortgage (United Shore)",
+        "n": 1450,
+        "median_rate": 6.75,
+        "median_spread": 0.188,
+        "median_total_loan_costs": 11018
+      },
+      {
+        "lender": "Orange County's Credit Union",
+        "n": 16,
+        "median_rate": 6.625,
+        "median_spread": 0.208,
+        "median_total_loan_costs": 6621
+      },
+      {
+        "lender": "Wescom Central Credit Union",
+        "n": 17,
+        "median_rate": 6.75,
+        "median_spread": 0.202,
+        "median_total_loan_costs": 8214
+      }
+    ],
+    "fha_30yr": [
+      {
+        "lender": "United Wholesale Mortgage (United Shore)",
+        "n": 202,
+        "median_rate": 6.2145,
+        "median_spread": 0.228,
+        "median_total_loan_costs": 25409
+      },
+      {
+        "lender": "Rocket Mortgage",
+        "n": 86,
+        "median_rate": 6.25,
+        "median_spread": 0.306,
+        "median_total_loan_costs": 22460
+      }
+    ]
+  },
+  "data_sources": [
+    {
+      "name": "Freddie Mac PMMS",
+      "format": "CSV/XLSX",
+      "url": "https://www.freddiemac.com/pmms/docs/PMMS_history.csv",
+      "key_required": false,
+      "terms": "Use with attribution; no alteration",
+      "verified": true
+    },
+    {
+      "name": "FRED MORTGAGE30US",
+      "format": "CSV (no key) / JSON API (free key)",
+      "url": "https://fred.stlouisfed.org/graph/fredgraph.csv?id=MORTGAGE30US",
+      "key_required": "API only",
+      "terms": "Attribute Freddie Mac as source",
+      "verified": true
+    },
+    {
+      "name": "HMDA Data Browser API",
+      "format": "JSON aggregations / CSV",
+      "url": "https://ffiec.cfpb.gov/v2/data-browser-api/view/",
+      "key_required": false,
+      "terms": "Public data; <=2 data filters for aggregations; annual lag",
+      "verified": true
+    },
+    {
+      "name": "CFPB Explore Interest Rates",
+      "format": "HTML/JS",
+      "url": "https://www.consumerfinance.gov/owning-a-home/explore-rates/",
+      "key_required": null,
+      "terms": "Data from Curinos; page states data from April 1, 2025; no documented API (oah-api path returned HTML)",
+      "verified": true
+    },
+    {
+      "name": "Mortgage News Daily index",
+      "format": "HTML / embeddable widgets",
+      "url": "https://www.mortgagenewsdaily.com/mortgage-rates",
+      "key_required": false,
+      "terms": "Commercial; Terms of Use not reviewed (UNVERIFIED); robots allows",
+      "verified": false
+    }
+  ]
+}

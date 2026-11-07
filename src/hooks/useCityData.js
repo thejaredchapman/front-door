@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { CITIES } from '../data/cities';
+import { findOcCity } from '../data/ocCities';
 
 export function useCityData(cityId) {
   const [cityData, setCityData] = useState(null);
@@ -7,7 +7,7 @@ export function useCityData(cityId) {
   const [isEnriching, setIsEnriching] = useState(false);
 
   useEffect(() => {
-    const city = CITIES.find((c) => c.id === cityId);
+    const city = findOcCity(cityId);
     setCityData(city || null);
     setLiveWeather(null);
   }, [cityId]);

@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Front Door · One-page handout</title>
+<link rel="icon" href="../favicon.svg" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600..800&family=Nunito:wght@400..800&display=swap" rel="stylesheet" />
+<style>
+  :root { --blue:#0099cc; --blue2:#007399; --navy:#002f6c; --lime:#c4d600; --green:#3aa047; --orange:#e55d25; --yellow:#ffd100; --sky:#eef8fc; --line:#d6eaf4; --ink:#12284c; --muted:#55657d; }
+  * { box-sizing: border-box; }
+  body { margin: 0; font: 400 14px/1.45 Nunito, system-ui, sans-serif; color: var(--ink); background: #e6f3f9; }
+  .page { width: 8.5in; min-height: 11in; margin: 24px auto; padding: .45in .5in; background: #fff; border-radius: 28px; box-shadow: 0 20px 50px -30px rgb(0 47 108 / .45);
+    background-image: radial-gradient(circle, rgb(0 153 204 / .10) 1.6px, transparent 2px), radial-gradient(circle, rgb(196 214 0 / .18) 1.6px, transparent 2px);
+    background-size: 34px 34px; background-position: 0 0, 17px 17px; }
+  h1, h2, h3 { font-family: "Baloo 2", Nunito, sans-serif; color: var(--navy); margin: 0; line-height: 1.05; }
+  h1 { font-size: 46px; } h2 { font-size: 19px; margin-bottom: 6px; } h3 { font-size: 15px; }
+  .hero { display: grid; grid-template-columns: 1fr auto; gap: 18px; align-items: center; }
+  .tag { display: inline-block; font-weight: 800; font-size: 11px; letter-spacing: .08em; text-transform: uppercase; color: var(--blue2); background: #f1f7cc; padding: 4px 10px; border-radius: 999px; }
+  .lede { font-size: 16px; margin: 8px 0 0; }
+  .hl { background: linear-gradient(transparent 60%, #f1f7a8 60%); }
+  .grid { display: grid; gap: 12px; }
+  .g2 { grid-template-columns: 1fr 1fr; } .g3 { grid-template-columns: repeat(3, 1fr); } .g4 { grid-template-columns: repeat(4, 1fr); }
+  .card { background: #fff; border: 2px solid var(--line); border-radius: 20px; padding: 12px 14px; box-shadow: 0 3px 0 var(--line); }
+  .stat b { display: block; font-family: "Baloo 2", sans-serif; font-size: 26px; color: var(--blue2); line-height: 1; }
+  .stat span { font-size: 12px; color: var(--muted); }
+  ul { margin: 4px 0 0; padding-left: 18px; } li { margin: 2px 0; }
+  .pill { text-decoration: none; display: inline-block; margin: 2px 3px 2px 0; padding: 3px 9px; border-radius: 999px; background: var(--sky); border: 1.5px solid var(--line); font-size: 12px; font-weight: 700; color: var(--navy); }
+  .section { margin-top: 14px; }
+  .yellow { background: #fff8d6; border-color: #ffe680; box-shadow: 0 3px 0 #ffe680; }
+  .lime { background: #f6fae0; border-color: #e3ec9e; box-shadow: 0 3px 0 #e3ec9e; }
+  .foot { margin-top: 12px; font-size: 11px; color: var(--muted); display: flex; justify-content: space-between; gap: 10px; }
+  .num { font-variant-numeric: tabular-nums; }
+  .toolbar { text-align: center; margin: 16px; } .toolbar button { font: 800 15px "Baloo 2", sans-serif; background: var(--blue2); color: #fff; border: 0; border-radius: 999px; padding: 10px 20px; box-shadow: 0 4px 0 var(--navy); cursor: pointer; }
+  @media print { body { background: #fff; } .page { margin: 0; box-shadow: none; border-radius: 0; width: auto; min-height: auto; } .toolbar { display: none; } @page { size: letter; margin: .35in; } }
+</style>
+</head>
+<body>
+<div class="toolbar"><button onclick="window.print()">🖨️ Print or save as PDF</button></div>
+<main class="page">
+  <section class="hero">
+    <div>
+      <span class="tag">Habitat for Humanity OC Hackathon · Lane 3: Fund it</span>
+      <h1 style="margin-top:10px">Front Door <span style="color:var(--blue)">🏡</span></h1>
+      <p class="lede"><b>Free, plain-language help for working families buying a home in California, starting with Orange County.</b>
+        Answer a few questions and get <span class="hl">the loans and down payment help that fit your family</span>, in six languages, with no sign-up.</p>
+    </div>
+    <svg viewBox="0 0 160 160" width="130" height="130" aria-hidden="true">
+      <ellipse cx="80" cy="150" rx="44" ry="6" fill="#002f6c" opacity=".12"/>
+      <rect x="34" y="66" width="92" height="78" rx="22" fill="#fff" stroke="#002f6c" stroke-width="4"/>
+      <path d="M22 74 80 26l58 48Z" fill="#0099cc" stroke="#002f6c" stroke-width="4" stroke-linejoin="round"/>
+      <rect x="104" y="36" width="12" height="20" rx="3" fill="#0099cc" stroke="#002f6c" stroke-width="4"/>
+      <path d="M68 144v-26a12 12 0 0 1 24 0v26Z" fill="#c4d600" stroke="#002f6c" stroke-width="4"/>
+      <ellipse cx="64" cy="84" rx="5" ry="6" fill="#002f6c"/><ellipse cx="96" cy="84" rx="5" ry="6" fill="#002f6c"/>
+      <path d="M68 92q12 13 24 0Z" fill="#e55d25" stroke="#002f6c" stroke-width="4" stroke-linejoin="round"/>
+      <ellipse cx="52" cy="95" rx="7" ry="4.5" fill="#e55d25" opacity=".45"/><ellipse cx="108" cy="95" rx="7" ry="4.5" fill="#e55d25" opacity=".45"/>
+      <path d="M126 98q14 -10 14 -30M34 98q-14 -10 -14 -30" fill="none" stroke="#002f6c" stroke-width="5" stroke-linecap="round"/>
+      <path d="M18 34l3 7 7 3-7 3-3 7-3-7-7-3 7-3Z M144 22l2 5 5 2-5 2-2 5-2-5-5-2 5-2Z" fill="#ffd100" stroke="#002f6c" stroke-width="2"/>
+    </svg>
+  </section>
+
+  <section class="section">
+    <h2>😟 The problem</h2>
+    <div class="grid g4">
+      <div class="card stat"><b>10 : 1</b><span>OC home price to household income (≈4:1 is affordable)</span></div>
+      <div class="card stat"><b>$1.3M+</b><span>Typical Orange County home (Habitat OC 2025 Impact Report)</span></div>
+      <div class="card stat"><b class="num">$335K</b><span>Yearly income needed to afford it at 7.18%, plus $260K down</span></div>
+      <div class="card stat"><b>3 of 5</b><span>Example households can't afford it, including a teacher + nurse earning $210K</span></div>
+    </div>
+  </section>
+
+  <section class="section grid g2">
+    <div class="card">
+      <h2>✨ What Front Door does</h2>
+      <ul>
+        <li><b>A friendly check-in → a real plan:</b> income group (2026 limits, all 58 CA counties), credit history, job &amp; employer, groups, disability, ITIN/self-employed.</li>
+        <li><b>Matched programs</b> with honest status labels: grants, city loans, CalHFA, Habitat, VA/FHA, private and mission lenders.</li>
+        <li><b>Where to borrow:</b> lenders sorted by the help they accept and what OC buyers actually paid (<a href="https://ffiec.cfpb.gov/data-browser/" target="_blank" rel="noreferrer">HMDA 2024</a>).</li>
+        <li><b>Calendar + ready-to-send emails</b>, a personal report with a 12-month plan, and a printable <b>readiness packet</b>.</li>
+        <li><b>Learn</b> in plain words: rates, every kind of mortgage, new CA laws, an interest saver, and "Five buyers, one market."</li>
+      </ul>
+    </div>
+    <div class="card yellow">
+      <h2>🧱 Lane 3: Fund it</h2>
+      <ul>
+        <li><b>Fund-the-gap calculator:</b> derives the family's price from CA Health &amp; Safety Code §50052.5 and balances cost = family + subsidies + earned income + fundraising.</li>
+        <li><b>Community Down Payment Fund:</b> residents, companies, and employers pool tax-deductible gifts in a nonprofit (test-mode donate page).</li>
+        <li><b>Rate and delay sensitivity</b> show how quickly the gap grows.</li>
+      </ul>
+      <h2 style="margin-top:10px">🛡️ Trust</h2>
+      <ul>
+        <li>Every fact cited; programs labeled verified, unverified, or closed.</li>
+        <li><code>verify:docs</code> checks 2,784 income-limit numbers and every quoted figure against the source PDFs.</li>
+        <li>A daily Haiku check flags program and rate changes in a pull request for human review.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="section grid g2">
+    <div class="card lime">
+      <h2>🤖 How it was created</h2>
+      <ul>
+        <li>Built in one day (Nov 7, 2026) with <a href="https://www.anthropic.com/claude-code" target="_blank" rel="noreferrer"><b>Claude Code</b></a>, Anthropic's AI coding agent, directed by our team.</li>
+        <li><b>Parallel research agents</b> checked live official sources: programs, down payment subsidies, cheapest lenders, and new CA laws (5 agents, ~683K tokens, 319 tool calls).</li>
+        <li>Facts pulled from the hackathon PDFs with <code>pdftotext</code>; every page tested with lint, build, and headless-Chrome screenshots on phone and desktop.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h2>🧰 Technologies</h2>
+      <a class="pill" href="https://react.dev/" target="_blank" rel="noreferrer">React 19</a><a class="pill" href="https://vite.dev/" target="_blank" rel="noreferrer">Vite 7</a><a class="pill" href="https://tailwindcss.com/" target="_blank" rel="noreferrer">Tailwind CSS 4</a><a class="pill" href="https://zustand.docs.pmnd.rs/" target="_blank" rel="noreferrer">Zustand 5</a>
+      <a class="pill" href="https://github.com/thejaredchapman/front-door/blob/main/src/router.js" target="_blank" rel="noreferrer">Custom hash router</a><a class="pill" href="https://github.com/thejaredchapman/front-door/blob/main/src/i18n/index.js" target="_blank" rel="noreferrer">i18n: 6 languages + RTL</a><a class="pill" href="https://www.anthropic.com/claude-code" target="_blank" rel="noreferrer">Claude Code</a>
+      <a class="pill" href="https://docs.anthropic.com/" target="_blank" rel="noreferrer">Claude Haiku (daily check, translation)</a><a class="pill" href="https://docs.anthropic.com/" target="_blank" rel="noreferrer">Anthropic Messages API</a><a class="pill" href="https://github.com/features/actions" target="_blank" rel="noreferrer">GitHub Actions</a>
+      <a class="pill" href="https://nodejs.org/" target="_blank" rel="noreferrer">Node.js scripts</a><a class="pill" href="https://poppler.freedesktop.org/" target="_blank" rel="noreferrer">poppler pdftotext</a><a class="pill" href="https://chromedevtools.github.io/devtools-protocol/" target="_blank" rel="noreferrer">Headless Chrome (DevTools protocol)</a>
+      <a class="pill" href="https://open-meteo.com/" target="_blank" rel="noreferrer">Open-Meteo</a><a class="pill" href="https://www.freddiemac.com/pmms" target="_blank" rel="noreferrer">Freddie Mac PMMS</a><a class="pill" href="https://www.hcd.ca.gov/grants-and-funding/income-limits" target="_blank" rel="noreferrer">CA HCD income limits</a><a class="pill" href="https://ffiec.cfpb.gov/data-browser/" target="_blank" rel="noreferrer">HMDA data</a><a class="pill" href="https://eslint.org/" target="_blank" rel="noreferrer">ESLint</a>
+    </div>
+  </section>
+
+  <section class="section grid g3">
+    <div class="card"><h3>💸 Cost to run</h3><p style="margin:4px 0 0"><b>$0 per visitor.</b> Static site, no backend, no account; answers stay in the browser.</p></div>
+    <div class="card"><h3>🌎 Languages</h3><p style="margin:4px 0 0">English · Español · Tiếng Việt · 中文 · Français · العربية</p></div>
+    <div class="card"><h3>👥 Built for</h3><p style="margin:4px 0 0">Nurses, teachers, firefighters, public workers, ITIN and gig workers, veterans, and buyers with disabilities.</p></div>
+  </section>
+
+  <div class="foot">
+    <span>Front Door uses Habitat for Humanity's color palette with respect for a Habitat OC hackathon. It is not an official Habitat site and not financial advice.</span>
+    <a class="num" href="https://github.com/thejaredchapman/front-door">github.com/thejaredchapman/front-door</a>
+  </div>
+</main>
+</body>
+</html>

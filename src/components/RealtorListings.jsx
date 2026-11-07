@@ -12,7 +12,7 @@ export default function RealtorListings({ city, maxAffordablePrice }) {
   return (
     <section className="panel">
       <h3 className="kicker mb-1">Real estate listings</h3>
-      <p className="text-sm text-muted mb-5">Browse current listings on Realtor.com for {city.name}, {city.state}</p>
+      <p className="text-sm text-muted mb-5">Browse current listings on Realtor.com for {city.name}</p>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
         {links.map((link, i) => (
@@ -21,7 +21,7 @@ export default function RealtorListings({ city, maxAffordablePrice }) {
             href={link.url}
             target="_blank"
             rel="noopener noreferrer"
-            className="group flex items-center justify-between gap-3 px-4 py-3 border-[1.5px] border-ink bg-paper hover:bg-[var(--accent)] hover:text-paper transition-colors"
+            className="group flex items-center justify-between gap-3 px-4 py-3 border border-line rounded-2xl bg-paper hover:bg-[var(--accent)] hover:text-paper transition-colors"
           >
             <span className="min-w-0">
               <span className="block text-sm font-semibold truncate">{link.label}</span>

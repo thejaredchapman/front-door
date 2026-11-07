@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Front Door · Slides</title>
+<link rel="icon" href="../favicon.svg" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600..800&family=Nunito:wght@400..800&display=swap" rel="stylesheet" />
+<style>
+  :root { --blue:#0099cc; --blue2:#007399; --navy:#002f6c; --lime:#c4d600; --green:#3aa047; --orange:#e55d25; --yellow:#ffd100; --sky:#eef8fc; --line:#d6eaf4; --ink:#12284c; --muted:#55657d; }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; height: 100%; background: #dceff7; font: 400 22px/1.45 Nunito, system-ui, sans-serif; color: var(--ink); }
+  h1, h2, h3 { font-family: "Baloo 2", Nunito, sans-serif; color: var(--navy); margin: 0 0 .3em; line-height: 1.05; }
+  h1 { font-size: 3.4em; } h2 { font-size: 2.1em; } h3 { font-size: 1.15em; }
+  .deck { height: 100%; display: grid; place-items: center; padding: 2vh 2vw; }
+  .slide { display: none; width: min(96vw, 170vh); aspect-ratio: 16 / 9; background: #fff; border-radius: 36px; padding: 5% 6%; position: relative; overflow: hidden;
+    box-shadow: 0 8px 0 #c3e2ef, 0 30px 60px -30px rgb(0 47 108 / .5);
+    background-image: radial-gradient(circle, rgb(0 153 204 / .10) 2px, transparent 2.5px), radial-gradient(circle, rgb(196 214 0 / .2) 2px, transparent 2.5px);
+    background-size: 44px 44px; background-position: 0 0, 22px 22px; font-size: clamp(12px, 1.55vw, 24px); }
+  .slide.is-on { display: flex; flex-direction: column; justify-content: center; }
+  .tag { display: inline-block; font-weight: 800; font-size: .7em; letter-spacing: .08em; text-transform: uppercase; color: var(--blue2); background: #f1f7cc; padding: .3em .8em; border-radius: 999px; margin-bottom: .8em; align-self: flex-start; }
+  .hl { background: linear-gradient(transparent 60%, #f1f7a8 60%); }
+  .row { display: grid; gap: 1em; } .c2 { grid-template-columns: 1fr 1fr; } .c3 { grid-template-columns: repeat(3, 1fr); } .c4 { grid-template-columns: repeat(4, 1fr); } .c5 { grid-template-columns: repeat(5, 1fr); }
+  .card { background: #fff; border: 3px solid var(--line); border-radius: 26px; padding: .8em 1em; box-shadow: 0 5px 0 var(--line); }
+  .big { font-family: "Baloo 2", sans-serif; font-size: 2.2em; font-weight: 800; color: var(--blue2); line-height: 1; }
+  .muted { color: var(--muted); }
+  ul { margin: .3em 0 0; padding-left: 1.1em; } li { margin: .25em 0; }
+  .pill { text-decoration: none; display: inline-block; margin: .2em .25em .2em 0; padding: .25em .7em; border-radius: 999px; background: var(--sky); border: 2px solid var(--line); font-weight: 700; color: var(--navy); font-size: .85em; }
+  .mascot { position: absolute; right: 4%; bottom: 6%; width: 18%; }
+  .bar { height: 1.1em; border-radius: 999px; background: #e7f1f6; position: relative; overflow: hidden; }
+  .bar span { position: absolute; inset: 0 auto 0 0; border-radius: 999px; }
+  .line { position: absolute; top: -.3em; bottom: -.3em; width: 4px; background: var(--navy); border-radius: 2px; }
+  .nav { position: fixed; bottom: 14px; left: 50%; transform: translateX(-50%); display: flex; gap: 10px; align-items: center; font: 800 16px "Baloo 2", sans-serif; }
+  .nav button { font: inherit; background: var(--blue2); color: #fff; border: 0; border-radius: 999px; padding: 8px 18px; box-shadow: 0 4px 0 var(--navy); cursor: pointer; }
+  .nav span { background: #fff; padding: 6px 14px; border-radius: 999px; color: var(--navy); }
+  @media print {
+    html, body { background: #fff; height: auto; } .nav { display: none; } .deck { display: block; padding: 0; }
+    .slide { display: flex !important; flex-direction: column; justify-content: center; width: 100%; height: 100vh; aspect-ratio: auto; border-radius: 0; box-shadow: none; page-break-after: always; font-size: 15px; }
+    @page { size: landscape; margin: 0; }
+  }
+</style>
+</head>
+<body>
+<div class="deck" id="deck">
+
+  <section class="slide">
+    <span class="tag">Habitat for Humanity OC Hackathon · Lane 3: Fund it</span>
+    <h1>Front Door 🏡</h1>
+    <p style="font-size:1.4em;max-width:60%"><b>Hi! Let's find your way home.</b><br/>Free, plain-language help for working families buying a home in California, starting with Orange County.</p>
+    <svg class="mascot" viewBox="0 0 160 160" aria-label="Doorie the house mascot, waving" role="img"><use href="#doorie" /></svg>
+  </section>
+
+  <section class="slide">
+    <span class="tag">The problem</span>
+    <h2>It's not just you.</h2>
+    <div class="row c4" style="margin-top:.6em">
+      <div class="card"><div class="big">10 : 1</div><span class="muted">OC home price to income (≈4:1 is affordable)</span></div>
+      <div class="card"><div class="big">$1.3M+</div><span class="muted">Typical Orange County home</span></div>
+      <div class="card"><div class="big">$335K</div><span class="muted">Income needed at 7.18%, plus $260K down</span></div>
+      <div class="card"><div class="big">50%+</div><span class="muted">of renters are cost-burdened</span></div>
+    </div>
+    <p class="muted" style="margin-top:1em;font-size:.8em">Sources: Habitat OC 2025 Impact Report; Freddie Mac PMMS (Nov 5, 2026); Front Door affordability math at a 30% housing ratio.</p>
+  </section>
+
+  <section class="slide">
+    <span class="tag">Five buyers, one market</span>
+    <h2>What each household can afford vs. a $1.3M home</h2>
+    <div style="display:grid;gap:.55em;margin-top:.5em">
+      <div style="display:grid;grid-template-columns:13em 1fr 6em;gap:.8em;align-items:center"><b>Maria · $58K</b><div class="bar"><span style="width:11%;background:var(--yellow)"></span><i class="line" style="left:87%"></i></div><b>~$165K</b></div>
+      <div style="display:grid;grid-template-columns:13em 1fr 6em;gap:.8em;align-items:center"><b>The Nguyens · $125K</b><div class="bar"><span style="width:26%;background:var(--yellow)"></span><i class="line" style="left:87%"></i></div><b>~$390K</b></div>
+      <div style="display:grid;grid-template-columns:13em 1fr 6em;gap:.8em;align-items:center"><b>Teacher + nurse · $210K</b><div class="bar"><span style="width:47%;background:var(--yellow)"></span><i class="line" style="left:87%"></i></div><b>~$708K</b></div>
+      <div style="display:grid;grid-template-columns:13em 1fr 6em;gap:.8em;align-items:center"><b>The Harrises · $420K</b><div class="bar"><span style="width:100%;background:var(--green)"></span><i class="line" style="left:87%"></i></div><b>~$1.56M</b></div>
+      <div style="display:grid;grid-template-columns:13em 1fr 6em;gap:.8em;align-items:center"><b>Alex · $1.5M</b><div class="bar"><span style="width:100%;background:var(--green)"></span><i class="line" style="left:87%"></i></div><b>~$7M</b></div>
+    </div>
+    <p style="margin-top:.8em"><span class="hl"><b>3 of 5 can't afford the typical home.</b></span> Help exists, and using it is smart.</p>
+    <p class="muted" style="font-size:.75em">Illustrative households; computed live in the app at 7.18% with a 31% housing ratio (the app now lets you choose 30–35%).</p>
+  </section>
+
+  <section class="slide">
+    <span class="tag">What we built</span>
+    <h2>A friendly check-in → a real plan</h2>
+    <div class="row c3" style="margin-top:.4em">
+      <div class="card"><h3>🧭 Find my plan</h3><ul><li>Income group (2026 limits, 58 counties)</li><li>Credit history, job &amp; employer</li><li>ITIN, self-employed, disability, veterans</li></ul></div>
+      <div class="card"><h3>📋 Your results</h3><ul><li>Matched programs + status labels</li><li>Where to borrow (cheapest lenders)</li><li>Loan matrix, calendar, emails</li></ul></div>
+      <div class="card"><h3>📄 Take it with you</h3><ul><li>Personal report + 12-month plan</li><li>Readiness packet for counselors</li><li>6 languages · Simple-words mode</li></ul></div>
+    </div>
+  </section>
+
+  <section class="slide">
+    <span class="tag">Lane 3 · Fund it</span>
+    <h2>Make every home balance to $0</h2>
+    <div class="row c2" style="margin-top:.4em">
+      <div class="card"><h3>🧮 Fund-the-gap calculator</h3><p>Family price from CA H&amp;S Code §50052.5 + 2026 AMI + today's rate. <b>Cost = family + subsidies + earned income + fundraising.</b> Delay and rate sliders show how fast the gap grows.</p></div>
+      <div class="card" style="background:#fff8d6;border-color:#ffe680;box-shadow:0 5px 0 #ffe680"><h3>💛 Community Down Payment Fund</h3><p>Residents, companies, and employers pool tax-deductible gifts in a nonprofit; grants go to families by fair rules. Donate page ready in test mode.</p></div>
+    </div>
+  </section>
+
+  <section class="slide">
+    <span class="tag">Trust</span>
+    <h2>Accurate today, and tomorrow</h2>
+    <div class="row c3" style="margin-top:.4em">
+      <div class="card"><h3>📚 Cited</h3><p>Every program labeled verified, unverified, or closed, with official links.</p></div>
+      <div class="card"><h3>✅ Verified</h3><p><code>verify:docs</code> checks 2,784 income-limit numbers and every quoted figure against the hackathon PDFs.</p></div>
+      <div class="card"><h3>🔄 Daily check</h3><p>Claude Haiku reviews changed program pages; updates arrive as a pull request for a human to approve.</p></div>
+    </div>
+  </section>
+
+  <section class="slide">
+    <span class="tag">How it was created</span>
+    <h2>Built in one day with Claude Code</h2>
+    <div class="row c2" style="margin-top:.3em">
+      <div class="card"><ul>
+        <li>Our team directed <a href="https://www.anthropic.com/claude-code" target="_blank" rel="noreferrer"><b>Claude Code</b></a>, Anthropic's AI coding agent.</li>
+        <li><b>5 research agents</b> ran in parallel on live official sources (~683K tokens, 319 tool calls).</li>
+        <li>Hackathon PDFs read with <code>pdftotext</code>; every page checked by lint, build, and headless-Chrome screenshots.</li>
+        <li><b>$0 per visitor</b>: static site, answers never leave the browser.</li>
+      </ul></div>
+      <div class="card">
+        <a class="pill" href="https://react.dev/" target="_blank" rel="noreferrer">React 19</a><a class="pill" href="https://vite.dev/" target="_blank" rel="noreferrer">Vite 7</a><a class="pill" href="https://tailwindcss.com/" target="_blank" rel="noreferrer">Tailwind CSS 4</a><a class="pill" href="https://zustand.docs.pmnd.rs/" target="_blank" rel="noreferrer">Zustand 5</a><a class="pill" href="https://github.com/thejaredchapman/front-door/blob/main/src/i18n/index.js" target="_blank" rel="noreferrer">Custom router + i18n</a>
+        <a class="pill" href="https://www.anthropic.com/claude-code" target="_blank" rel="noreferrer">Claude Code</a><a class="pill" href="https://docs.anthropic.com/" target="_blank" rel="noreferrer">Claude Haiku</a><a class="pill" href="https://docs.anthropic.com/" target="_blank" rel="noreferrer">Anthropic API</a><a class="pill" href="https://github.com/features/actions" target="_blank" rel="noreferrer">GitHub Actions</a><a class="pill" href="https://nodejs.org/" target="_blank" rel="noreferrer">Node scripts</a>
+        <a class="pill" href="https://poppler.freedesktop.org/" target="_blank" rel="noreferrer">pdftotext</a><a class="pill" href="https://chromedevtools.github.io/devtools-protocol/" target="_blank" rel="noreferrer">Headless Chrome</a><a class="pill" href="https://open-meteo.com/" target="_blank" rel="noreferrer">Open-Meteo</a><a class="pill" href="https://www.freddiemac.com/pmms" target="_blank" rel="noreferrer">Freddie Mac PMMS</a><a class="pill" href="https://www.hcd.ca.gov/grants-and-funding/income-limits" target="_blank" rel="noreferrer">HCD limits</a><a class="pill" href="https://ffiec.cfpb.gov/data-browser/" target="_blank" rel="noreferrer">HMDA</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="slide">
+    <span class="tag">Next</span>
+    <h2>Help us open more front doors</h2>
+    <ul style="font-size:1.15em;max-width:70%">
+      <li>Partner with <a href="https://habitatoc.org/" target="_blank" rel="noreferrer"><b>Habitat OC</b></a>, <a href="https://www.nwoc.org/" target="_blank" rel="noreferrer">NeighborWorks OC</a>, school districts, and hospitals.</li>
+      <li>Turn on live donations with a nonprofit host.</li>
+      <li>Native-speaker review of Spanish and Vietnamese.</li>
+      <li>Grow from Orange County to all of California.</li>
+    </ul>
+    <p style="margin-top:.6em"><a href="https://github.com/thejaredchapman/front-door" target="_blank" rel="noreferrer"><b>github.com/thejaredchapman/front-door</b></a></p>
+    <svg class="mascot" viewBox="0 0 160 160" aria-label="Doorie cheering" role="img"><use href="#doorie-cheer" /></svg>
+  </section>
+</div>
+
+<div class="nav"><button id="prev" aria-label="Previous slide">←</button><span id="count">1 / 8</span><button id="next" aria-label="Next slide">→</button><button onclick="window.print()" aria-label="Print or save slides as PDF">🖨️</button></div>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <g id="doorie">
+      <ellipse cx="80" cy="150" rx="44" ry="6" fill="#002f6c" opacity=".12"/>
+      <rect x="34" y="66" width="92" height="78" rx="22" fill="#fff" stroke="#002f6c" stroke-width="4"/>
+      <path d="M22 74 80 26l58 48Z" fill="#0099cc" stroke="#002f6c" stroke-width="4" stroke-linejoin="round"/>
+      <rect x="104" y="36" width="12" height="20" rx="3" fill="#0099cc" stroke="#002f6c" stroke-width="4"/>
+      <path d="M68 144v-26a12 12 0 0 1 24 0v26Z" fill="#c4d600" stroke="#002f6c" stroke-width="4"/>
+      <ellipse cx="64" cy="84" rx="5" ry="6" fill="#002f6c"/><ellipse cx="96" cy="84" rx="5" ry="6" fill="#002f6c"/>
+      <path d="M70 93q10 8 20 0" fill="none" stroke="#002f6c" stroke-width="4" stroke-linecap="round"/>
+      <ellipse cx="52" cy="95" rx="7" ry="4.5" fill="#e55d25" opacity=".45"/><ellipse cx="108" cy="95" rx="7" ry="4.5" fill="#e55d25" opacity=".45"/>
+      <path d="M126 100q16 -6 18 -24" fill="none" stroke="#002f6c" stroke-width="5" stroke-linecap="round"/>
+      <path d="M18 34l3 7 7 3-7 3-3 7-3-7-7-3 7-3Z M144 22l2 5 5 2-5 2-2 5-2-5-5-2 5-2Z" fill="#ffd100" stroke="#002f6c" stroke-width="2"/>
+    </g>
+    <g id="doorie-cheer">
+      <ellipse cx="80" cy="150" rx="44" ry="6" fill="#002f6c" opacity=".12"/>
+      <rect x="34" y="66" width="92" height="78" rx="22" fill="#fff" stroke="#002f6c" stroke-width="4"/>
+      <path d="M22 74 80 26l58 48Z" fill="#0099cc" stroke="#002f6c" stroke-width="4" stroke-linejoin="round"/>
+      <rect x="104" y="36" width="12" height="20" rx="3" fill="#0099cc" stroke="#002f6c" stroke-width="4"/>
+      <path d="M68 144v-26a12 12 0 0 1 24 0v26Z" fill="#c4d600" stroke="#002f6c" stroke-width="4"/>
+      <ellipse cx="64" cy="84" rx="5" ry="6" fill="#002f6c"/><ellipse cx="96" cy="84" rx="5" ry="6" fill="#002f6c"/>
+      <path d="M68 92q12 13 24 0Z" fill="#e55d25" stroke="#002f6c" stroke-width="4" stroke-linejoin="round"/>
+      <ellipse cx="52" cy="95" rx="7" ry="4.5" fill="#e55d25" opacity=".45"/><ellipse cx="108" cy="95" rx="7" ry="4.5" fill="#e55d25" opacity=".45"/>
+      <path d="M126 98q14 -10 14 -30M34 98q-14 -10 -14 -30" fill="none" stroke="#002f6c" stroke-width="5" stroke-linecap="round"/>
+      <path d="M18 34l3 7 7 3-7 3-3 7-3-7-7-3 7-3Z M144 22l2 5 5 2-5 2-2 5-2-5-5-2 5-2Z M140 120l2.5 6 6 2.5-6 2.5-2.5 6-2.5-6-6-2.5 6-2.5Z" fill="#ffd100" stroke="#002f6c" stroke-width="2"/>
+    </g>
+  </defs>
+</svg>
+
+<script>
+  const slides = [...document.querySelectorAll('.slide')];
+  let i = Math.max(0, Math.min(slides.length - 1, (parseInt(location.hash.slice(1), 10) || 1) - 1));
+  const show = () => {
+    slides.forEach((s, k) => s.classList.toggle('is-on', k === i));
+    document.getElementById('count').textContent = `${i + 1} / ${slides.length}`;
+    history.replaceState(null, '', `#${i + 1}`);
+  };
+  const go = (d) => { i = Math.max(0, Math.min(slides.length - 1, i + d)); show(); };
+  document.getElementById('prev').onclick = () => go(-1);
+  document.getElementById('next').onclick = () => go(1);
+  document.addEventListener('keydown', (e) => {
+    if (['ArrowRight', 'PageDown', ' '].includes(e.key)) { e.preventDefault(); go(1); }
+    if (['ArrowLeft', 'PageUp'].includes(e.key)) { e.preventDefault(); go(-1); }
+  });
+  show();
+</script>
+</body>
+</html>

@@ -1,0 +1,40 @@
+name: Daily check (rates, programs, news)
+
+on:
+  schedule:
+    - cron: "0 15 * * *"   # every day at 15:00 UTC (8am Pacific in summer, 7am in winter)
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - name: Run daily check
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          CHECK_MODEL: ${{ vars.CHECK_MODEL || 'claude-haiku-5-5' }}
+          PRICE_INPUT_PER_MTOK: ${{ vars.PRICE_INPUT_PER_MTOK }}
+          PRICE_OUTPUT_PER_MTOK: ${{ vars.PRICE_OUTPUT_PER_MTOK }}
+        run: node scripts/daily-check.mjs
+      # A person reviews every change before it reaches families.
+      - name: Open a pull request with any changes
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          if git diff --quiet; then echo "No changes today."; exit 0; fi
+          BRANCH="daily-check/$(date -u +%F)"
+          git config user.name "loanlens-daily-check"
+          git config user.email "actions@users.noreply.github.com"
+          git checkout -b "$BRANCH"
+          git add public/updates src/data/rate.json docs/daily-check-log.jsonl
+          git commit -m "Daily check $(date -u +%F): rates, program status, news"
+          git push origin "$BRANCH"
+          gh pr create --title "Daily check $(date -u +%F)" --body "Automated daily check. Review the changed program summaries and any news marked 'Found by daily check' before merging. Model call costs are in docs/daily-check-log.jsonl." --base "${{ github.event.repository.default_branch }}" --head "$BRANCH"

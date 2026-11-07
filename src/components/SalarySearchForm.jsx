@@ -1,15 +1,16 @@
 import { useStore } from '../store/useStore';
-import { LOAN_PRODUCTS } from '../data/loanProducts';
+import { MORTGAGE } from '../data/loanProducts';
 import CitySelector from './CitySelector';
+import HousingRatioSlider from './HousingRatioSlider';
 
 export default function SalarySearchForm() {
   const {
-    loanProductId, annualSalary, dtiRatio,
-    setAnnualSalary, setDtiRatio, interestRate, loanTerm, downPaymentPercent,
+    annualSalary,
+    setAnnualSalary, interestRate, loanTerm, downPaymentPercent,
     setInterestRate, setLoanTerm, setDownPaymentPercent,
   } = useStore();
 
-  const product = LOAN_PRODUCTS.find((p) => p.id === loanProductId);
+  const product = MORTGAGE;
 
   return (
     <section className="panel relative z-20 rise" style={{ '--i': 2 }}>
@@ -21,10 +22,6 @@ export default function SalarySearchForm() {
             <span className="absolute left-3 top-1/2 -translate-y-1/2 text-muted num">$</span>
             <input id="salary" type="number" value={annualSalary} onChange={(e) => setAnnualSalary(Number(e.target.value))} className="field !pl-7" min={0} step={5000} />
           </div>
-        </div>
-        <div>
-          <label htmlFor="dti" className="field-label">Max DTI ratio (%)</label>
-          <input id="dti" type="number" value={dtiRatio} onChange={(e) => setDtiRatio(Number(e.target.value))} className="field" min={10} max={50} step={1} />
         </div>
         <div>
           <label htmlFor="srate" className="field-label">Interest rate (%)</label>
@@ -44,6 +41,7 @@ export default function SalarySearchForm() {
         </div>
         {product.id === 'home' && <CitySelector />}
       </div>
+      <div className="mt-6"><HousingRatioSlider income={annualSalary} id="ratio-salary" /></div>
     </section>
   );
 }

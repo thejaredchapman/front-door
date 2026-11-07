@@ -1,0 +1,152 @@
+{
+  "updatedAt": "2026-11-07",
+  "items": [
+    {
+      "id": "wish-2026",
+      "date": "2026-11-07",
+      "type": "programs",
+      "headline": "WISH grants: $4 for every $1 you save, up to $32,837",
+      "plain": "The Federal Home Loan Bank of San Francisco's 2026 WISH program matches first-time buyers' savings 4 to 1, up to $32,837, for households at or below 80% of area median income. About $13 million is available through participating lenders; its middle-income grant (up to $40,000) is already used up for 2026.",
+      "eli5": "Save a little, and a helper adds four times as much toward your home.",
+      "source": "FHLBank San Francisco",
+      "url": "https://fhlbsf.com/products/community-programs-grants/wish",
+      "verified": true
+    },
+    {
+      "id": "oc-map-area-2026",
+      "date": "2026-11-07",
+      "type": "programs",
+      "headline": "County down payment loan covers only some cities",
+      "plain": "The County of Orange Mortgage Assistance Program (up to $80,000) is only for homes in unincorporated Orange County and 14 smaller cities, including Brea, Cypress, Placentia, Stanton, and Yorba Linda. Santa Ana, Anaheim, Garden Grove, and Irvine buyers should use their city's own program instead.",
+      "eli5": "The county's helper only works in some towns. Big cities have their own helpers.",
+      "source": "County of Orange",
+      "url": "https://housing.oc.gov/housing-development",
+      "verified": true
+    },
+    {
+      "id": "rate-2026-11-05",
+      "date": "2026-11-05",
+      "type": "rates",
+      "headline": "Mortgage rates: 7.18% this week",
+      "plain": "The average 30-year fixed rate was 7.18% for the week of November 5, 2026, down from 7.24% the week before but up from 6.22% a year ago. On a $400,000 loan, that's roughly $250 more a month than a year ago.",
+      "eli5": "Borrowing money for a house got a tiny bit cheaper this week, but it still costs more than last year.",
+      "source": "Freddie Mac PMMS",
+      "url": "https://www.freddiemac.com/pmms",
+      "verified": true
+    },
+    {
+      "id": "prop1-2026",
+      "date": "2026-11-04",
+      "type": "laws",
+      "headline": "Prop 1 housing bond projected to pass",
+      "plain": "The AP projects Proposition 1 will pass with about 60.5% yes. It authorizes $10 billion for affordable housing plus $1.25 billion for veterans' home loans, including about $500 million for CalHFA down payment help and $600 million for CalHome and self-help programs like Habitat. Results are certified December 11, 2026; money will roll out over several years.",
+      "eli5": "Voters said yes to borrowing money to help people get homes. Some of it helps with down payments. It will take time to arrive.",
+      "source": "Legislative Analyst's Office / early returns",
+      "url": "https://lao.ca.gov/BallotAnalysis/Proposition?number=1&year=2026",
+      "verified": false,
+      "note": "Projected, not yet certified"
+    },
+    {
+      "id": "prop37-2026",
+      "date": "2026-11-04",
+      "type": "laws",
+      "headline": "Prop 37 (loans for new homes) projected to pass",
+      "plain": "The AP projects Prop 37 will pass with about 61.8% yes. It lets CalHFA offer loans of up to 17% of the price of newly built homes for buyers earning up to twice the area median. It is repaid monthly and isn't available yet: CalHFA must design the program, including price limits.",
+      "eli5": "A new helper for brand-new houses was approved, but it hasn't opened yet.",
+      "source": "Legislative Analyst's Office / early returns",
+      "url": "https://lao.ca.gov/BallotAnalysis/Proposition?number=37&year=2026",
+      "verified": false,
+      "note": "Projected, not yet certified"
+    },
+    {
+      "id": "prop45-2026",
+      "date": "2026-11-04",
+      "type": "laws",
+      "headline": "Prop 45 (environmental review deadlines) appears to have failed",
+      "plain": "Early returns show Proposition 45 failing (about 54% no). Results are certified December 11, 2026.",
+      "eli5": "A plan to speed up some building reviews looks like it lost.",
+      "source": "Legislative Analyst's Office / early returns",
+      "url": "https://lao.ca.gov/BallotAnalysis/Proposition?number=45&year=2026",
+      "verified": false,
+      "note": "Early returns, not certified"
+    },
+    {
+      "id": "anaheim-hotel-fund-2026",
+      "date": "2026-10-26",
+      "type": "programs",
+      "headline": "Anaheim plans a home-buying fund for hotel workers",
+      "plain": "Anaheim's hotel improvement district is setting up a fund that would offer hotel workers up to $100,000 toward buying a home (up to 120% of area median income) or up to $50,000 in down payment help (120–150%). It is not open yet.",
+      "eli5": "If you work at an Anaheim hotel, a new home helper is on the way.",
+      "source": "Orange County Business Journal",
+      "url": "https://www.ocbj.com/oc-homepage/anaheim-hotels-pioneer-nations-first-worker-housing-fund/",
+      "verified": false,
+      "note": "Reported, not yet open"
+    },
+    {
+      "id": "laws-insurance-2026",
+      "date": "2026-09-30",
+      "type": "laws",
+      "headline": "Wildfire victims get new insurance protections",
+      "plain": "AB 2038 bars insurers from dropping homeowners for two years after a wildfire, starting Jan 1, 2027. SB 876 phases in faster, fairer claim handling. Separately, new state rules let insurers price in wildfire risk models in exchange for writing more policies in fire-prone areas, so coverage may grow while premiums rise.",
+      "eli5": "After a fire, insurance companies can't kick you out right away.",
+      "source": "Office of the Governor / CA Department of Insurance",
+      "url": "https://www.gov.ca.gov/2026/09/30/governor-newsom-issues-legislative-update-9-30-2026/",
+      "verified": true
+    },
+    {
+      "id": "laws-starter-homes-2026",
+      "date": "2026-09-29",
+      "type": "laws",
+      "headline": "New laws for starter homes and townhomes start Jan 1, 2027",
+      "plain": "SB 1116 expands the Starter Home Revitalization Act so up to 10 small homes can be approved without a hearing. AB 1751, by Orange County's Asm. Quirk-Silva, fast-tracks for-sale townhome projects of up to 150 units, with 10% set aside for lower-income buyers in projects of 11+ units. AB 956 allows two detached backyard homes (ADUs) per lot, even in HOAs.",
+      "eli5": "New rules make it easier to build small, cheaper homes to buy.",
+      "source": "Office of the Governor",
+      "url": "https://www.gov.ca.gov/2026/09/29/governor-newsom-signs-housing-legislation-cementing-californias-record-progress-to-reduce-unsheltered-homelessness-and-build-more-homes/",
+      "verified": true
+    },
+    {
+      "id": "hcd-limits-2026",
+      "date": "2026-06-23",
+      "type": "limits",
+      "headline": "California updates 2026 income limits",
+      "plain": "HCD revised the 2026 State Income Limits on June 23, 2026, replacing the May 29 version. In Orange County, the area median income for a family of four is $138,600, and the \"low income\" limit is $148,850.",
+      "eli5": "The state updated the chart that decides who can get help. Check where your family fits.",
+      "source": "California HCD",
+      "url": "https://www.hcd.ca.gov/grants-and-funding/income-limits",
+      "verified": true
+    },
+    {
+      "id": "dfa-2026",
+      "date": "2026-05-20",
+      "type": "programs",
+      "headline": "Dream For All 2026 round is closed",
+      "plain": "CalHFA released 2026 Dream For All vouchers on May 20 after a lottery. No 2027 round has been announced. First-generation buyers should get pre-approved and sign up for CalHFA alerts to be ready.",
+      "eli5": "The biggest state helper picked its winners for this year. Get ready for next time.",
+      "source": "CalHFA",
+      "url": "https://www.calhfa.ca.gov/dream/",
+      "verified": true
+    },
+    {
+      "id": "schoolsfirst-grant-2026",
+      "date": "2026-05-12",
+      "type": "programs",
+      "headline": "SchoolsFirst launches a $7,500 grant for school employees",
+      "plain": "SchoolsFirst Federal Credit Union now offers a $7,500 grant toward down payment and closing costs for first-time-buyer school employees earning up to about $150,000, used with its School Employee Mortgage (3% down, no PMI).",
+      "eli5": "If you work at a school, a school bank will give you $7,500 toward your home.",
+      "source": "SchoolsFirst FCU",
+      "url": "https://www.schoolsfirstfcu.org/about-us/newsroom/2026/2026-05-12-press-release/",
+      "verified": true
+    },
+    {
+      "id": "energy-code-2026",
+      "date": "2026-01-01",
+      "type": "laws",
+      "headline": "New energy code makes new homes cheaper to run",
+      "plain": "California's 2025 Energy Code applies to new homes permitted on or after January 1, 2026: heat-pump heating, better windows, solar sized to the roof, and battery-ready wiring. That usually means lower utility bills.",
+      "eli5": "New houses are built to use less energy, so the electric bill is smaller.",
+      "source": "California Energy Commission",
+      "url": "https://www.energy.ca.gov/programs-and-topics/programs/building-energy-efficiency-standards/2025-building-energy-efficiency",
+      "verified": true
+    }
+  ]
+}

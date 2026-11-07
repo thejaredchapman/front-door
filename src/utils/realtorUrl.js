@@ -29,7 +29,7 @@ export function generateRealtorLinks(city, maxAffordablePrice) {
 
   return [
     {
-      label: `All listings in ${city.name}, ${city.state}`,
+      label: `All listings in ${city.name}`,
       url: buildRealtorUrl(city),
     },
     {

@@ -1,8 +1,10 @@
 import { useState, useMemo, useRef, useEffect } from 'react';
 import { useStore } from '../store/useStore';
-import { CITIES } from '../data/cities';
+import { OC_CITIES as CITIES } from '../data/ocCities';
+import { useT } from '../i18n';
 
 export default function CitySelector() {
+  const t = useT();
   const { selectedCityId, setSelectedCity } = useStore();
   const [search, setSearch] = useState('');
   const [isOpen, setIsOpen] = useState(false);
@@ -14,7 +16,7 @@ export default function CitySelector() {
     if (!search) return CITIES;
     const q = search.toLowerCase();
     return CITIES.filter(
-      (c) => c.name.toLowerCase().includes(q) || c.state.toLowerCase().includes(q)
+      (c) => c.name.toLowerCase().includes(q)
     );
   }, [search]);
 
@@ -30,25 +32,25 @@ export default function CitySelector() {
 
   return (
     <div className="relative" ref={wrapperRef}>
-      <label className="field-label">City</label>
+      <label className="field-label">{t('Orange County city')}</label>
       <button
         onClick={() => setIsOpen(!isOpen)}
         aria-haspopup="listbox"
         aria-expanded={isOpen}
         className="field text-left !font-sans flex justify-between items-center cursor-pointer"
       >
-        <span>{selectedCity ? `${selectedCity.name}, ${selectedCity.state}` : 'Select a city...'}</span>
+        <span>{selectedCity ? t(selectedCity.name) : t('Select a city...')}</span>
         <span className="text-muted text-xs">▾</span>
       </button>
 
       {isOpen && (
-        <div className="absolute z-50 mt-1 w-full bg-card border-[1.5px] border-ink shadow-[4px_4px_0_var(--color-ink)]">
+        <div className="absolute z-50 mt-1 w-full bg-card border border-line rounded-2xl shadow-soft">
           <div className="p-2 border-b border-rule">
             <input
               type="text"
               value={search}
               onChange={(e) => setSearch(e.target.value)}
-              placeholder="Search cities..."
+              placeholder={t('Search cities...')}
               aria-label="Search cities"
               className="field !font-sans !py-2 text-sm"
               autoFocus
@@ -67,12 +69,12 @@ export default function CitySelector() {
                   city.id === selectedCityId ? 'bg-[var(--accent-soft)] font-semibold' : ''
                 }`}
               >
-                <span>{city.name}, {city.state}</span>
-                <span className="num text-muted text-xs self-center">${city.demographics.medianHomePrice.toLocaleString()}</span>
+                <span>{t(city.name)}</span>
+                <span className="text-muted text-xs self-center">{city.programIds.length ? t('City help') : city.mapEligible ? t('County loan') : ''}</span>
               </button>
             ))}
             {filtered.length === 0 && (
-              <div className="px-3 py-4 text-center text-muted text-sm">No cities found</div>
+              <div className="px-3 py-4 text-center text-muted text-sm">{t('No cities found')}</div>
             )}
           </div>
         </div>

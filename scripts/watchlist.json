@@ -1,0 +1,121 @@
+[
+  {
+    "id": "hcd-income-limits",
+    "name": "HCD State Income Limits",
+    "url": "https://www.hcd.ca.gov/grants-and-funding/income-limits",
+    "newsType": "limits",
+    "claim": "The current California State Income Limits are the 2026 limits revised June 23, 2026. Orange County area median income for 4 people is $138,600; low income (80%) for 4 is $148,850."
+  },
+  {
+    "id": "calhfa-programs",
+    "name": "CalHFA homebuyer programs",
+    "url": "https://www.calhfa.ca.gov/homebuyer/programs/index.htm",
+    "newsType": "programs",
+    "claim": "CalHFA offers MyHome Assistance (deferred junior loan up to 3.5% with FHA or 3% conventional), CalPLUS with ZIP, and MyAccess. Forgivable Equity Builder and the Extra Credit Teacher Program are not currently listed."
+  },
+  {
+    "id": "calhfa-dream",
+    "name": "CalHFA Dream For All",
+    "url": "https://www.calhfa.ca.gov/dream/",
+    "newsType": "programs",
+    "claim": "Dream For All offers up to 20% of the price (max $150,000) as a shared-appreciation loan for first-generation buyers. The 2026 round is closed and no 2027 round has been announced."
+  },
+  {
+    "id": "oc-map",
+    "name": "County of Orange Mortgage Assistance Program",
+    "url": "https://housing.oc.gov/housing-development",
+    "newsType": "programs",
+    "claim": "The County of Orange Mortgage Assistance Program offers up to $80,000 as a deferred silent second at 3% simple interest for first-time buyers at or below 80% AMI. Whether it is open in 2026 is unclear."
+  },
+  {
+    "id": "oc-mcc",
+    "name": "Orange County Mortgage Credit Certificate",
+    "url": "https://ocgov.com/residents/mortgage-credit-certificate-program",
+    "newsType": "programs",
+    "claim": "The Orange County Mortgage Credit Certificate program is available and currently funded, administered by National Homebuyers Fund."
+  },
+  {
+    "id": "garden-grove",
+    "name": "Garden Grove First-Time Home Buyer Program",
+    "url": "https://ggcity.org/FTHB",
+    "newsType": "programs",
+    "claim": "Garden Grove offers up to $110,000 (low income) or $50,000 (moderate income) as a 0% deferred 30-year loan for first-time buyers; at least 3% down."
+  },
+  {
+    "id": "santa-ana",
+    "name": "Santa Ana My First Home",
+    "url": "https://santa-ana.org/my-first-home",
+    "newsType": "programs",
+    "claim": "Santa Ana's My First Home program offers up to $120,000 as a 0% deferred second loan for first-time buyers, with up to $40,000 forgivable for veterans and qualifying local graduates."
+  },
+  {
+    "id": "anaheim",
+    "name": "Anaheim homebuyer assistance",
+    "url": "https://housingportal.anaheim.net",
+    "newsType": "programs",
+    "claim": "Anaheim has a first-time homebuyer loan of about $50,000 (amount and status unclear)."
+  },
+  {
+    "id": "habitat-oc",
+    "name": "Habitat for Humanity OC qualifications",
+    "url": "https://habitatoc.org/review-qualifications",
+    "newsType": "programs",
+    "claim": "Habitat OC serves households from about $55,850 to $166,300 (4 people), requires 200\u2013500 sweat-equity hours, 1\u20135% down plus closing costs, and that applicants live or work in Orange County."
+  },
+  {
+    "id": "gsfa-platinum",
+    "name": "GSFA Platinum",
+    "url": "https://gsfahome.org/programs/dpa/platinum.shtml",
+    "newsType": "programs",
+    "claim": "GSFA Platinum offers down payment assistance up to about 5\u20135.5% of the first loan, with a Select option that adds a gift for law enforcement, firefighters, EMTs, health care workers, and education staff. First mortgage limit $832,750."
+  },
+  {
+    "id": "fhlb-wish",
+    "name": "FHLBank San Francisco WISH",
+    "url": "https://fhlbsf.com/products/community-programs-grants/wish",
+    "newsType": "programs",
+    "claim": "FHLBank San Francisco WISH provides matching down payment grants for first-time buyers at or below 80% AMI through member banks."
+  },
+  {
+    "id": "ocha-homeownership",
+    "name": "OC Housing Authority homeownership",
+    "url": "https://housingauthority.oc.gov/special-housing-programs/homeownership-program",
+    "newsType": "programs",
+    "claim": "The Orange County Housing Authority runs a Housing Choice Voucher homeownership option for current voucher holders who are first-time buyers."
+  },
+  {
+    "id": "lao-prop1",
+    "name": "LAO: Proposition 1 (2026)",
+    "url": "https://lao.ca.gov/BallotAnalysis/Proposition?number=1&year=2026",
+    "newsType": "laws",
+    "claim": "Proposition 1 (Nov 3, 2026) authorizes $10 billion for affordable housing plus $1.25 billion for veterans' home loans; early returns show it passing."
+  },
+  {
+    "id": "lao-prop37",
+    "name": "LAO: Proposition 37 (2026)",
+    "url": "https://lao.ca.gov/BallotAnalysis/Proposition?number=37&year=2026",
+    "newsType": "laws",
+    "claim": "Proposition 37 lets CalHFA offer loans up to 17% of the price of newly built homes for buyers up to 2x area median income; not yet available."
+  },
+  {
+    "id": "rates-schoolsfirst",
+    "name": "SchoolsFirst FCU mortgage rates",
+    "url": "https://schoolsfirstfcu.org/rates/mortgage-purchase",
+    "newsType": "rates",
+    "claim": "SchoolsFirst's School Employee Special (no PMI, 3% down) is 7.125% rate / 7.19% APR at 0 points, HomeAccess first-time buyer 7.000% / 7.37% APR, and FHA (620 score) 7.000% / 7.78% APR, as of 2026-11-07."
+  },
+  {
+    "id": "rates-occu",
+    "name": "Orange County's Credit Union home loan rates",
+    "url": "https://www.orangecountyscu.org/homeloans",
+    "newsType": "rates",
+    "claim": "Orange County's Credit Union 30-year fixed is 6.875% rate / 7.063% APR with 0.625 points (780 score, 60% loan-to-value), as of 2026-11-06."
+  },
+  {
+    "id": "rates-navy",
+    "name": "Navy Federal mortgage rates",
+    "url": "https://www.navyfederal.org/loans-cards/mortgage/mortgage-rates.html",
+    "newsType": "rates",
+    "claim": "Navy Federal Homebuyers Choice (0% down, 720 score) is 7.375% / 7.713% APR with 0.5 points; VA 30-year is 6.000% / 6.48% APR with 1 point, as of 2026-11-07."
+  }
+]
