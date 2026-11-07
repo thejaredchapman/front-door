@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Front Door video scenes</title>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600..800&family=Nunito:wght@500..800&display=swap" rel="stylesheet" />
+<style>
+  /* 1920×1080 scene frames for the 30-second video. Open with ?scene=1..6 */
+  :root { --blue:#0099cc; --blue2:#007399; --navy:#002f6c; --lime:#c4d600; --orange:#e55d25; --yellow:#ffd100; --line:#d6eaf4; }
+  html, body { margin: 0; width: 1920px; height: 1080px; overflow: hidden; }
+  body { font-family: Nunito, sans-serif; color: var(--navy); background: #eef8fc;
+    background-image: radial-gradient(circle, rgb(0 153 204 / .14) 3px, transparent 3.5px), radial-gradient(circle, rgb(196 214 0 / .25) 3px, transparent 3.5px),
+      radial-gradient(circle at 8% 0%, #fff4c2 0, transparent 40%), radial-gradient(circle at 100% 100%, #d4eef9 0, transparent 45%);
+    background-size: 70px 70px, 70px 70px, auto, auto; background-position: 0 0, 35px 35px, 0 0, 0 0; }
+  h1, h2 { font-family: "Baloo 2", sans-serif; margin: 0; line-height: 1.02; letter-spacing: -.01em; }
+  .scene { display: none; position: absolute; inset: 0; padding: 80px 96px; box-sizing: border-box; }
+  .scene.on { display: grid; }
+  .split { grid-template-columns: 640px 1fr; gap: 64px; align-items: center; }
+  .kicker { display: inline-block; font-weight: 800; font-size: 26px; letter-spacing: .06em; text-transform: uppercase; color: var(--blue2); background: #f1f7cc; padding: 8px 22px; border-radius: 999px; margin-bottom: 26px; }
+  h2 { font-size: 86px; color: var(--navy); }
+  h2 em { font-style: normal; color: var(--blue); background: linear-gradient(transparent 62%, #f1f7a8 62%); }
+  p.sub { font-size: 36px; line-height: 1.35; color: #3d4f6b; margin: 26px 0 0; font-weight: 600; }
+  .frame { background: #fff; border-radius: 40px; border: 5px solid var(--line); box-shadow: 0 12px 0 #c3e2ef, 0 40px 80px -40px rgb(0 47 108 / .55); overflow: hidden; }
+  .frame .bar { height: 44px; background: #f6fcff; border-bottom: 3px solid var(--line); display: flex; align-items: center; gap: 12px; padding: 0 22px; }
+  .frame .bar i { width: 16px; height: 16px; border-radius: 99px; background: #d6eaf4; display: block; }
+  .frame img { display: block; width: 100%; }
+  .center { place-items: center; text-align: center; align-content: center; }
+  .title { font-size: 150px; color: var(--navy); }
+  .url { font-family: "Baloo 2", sans-serif; font-size: 44px; color: #fff; background: var(--blue2); border-radius: 999px; padding: 14px 40px; box-shadow: 0 8px 0 var(--navy); display: inline-block; margin-top: 34px; }
+  .chips { display: flex; gap: 18px; justify-content: center; margin-top: 30px; flex-wrap: wrap; }
+  .chips span { font-weight: 800; font-size: 30px; padding: 10px 26px; border-radius: 999px; background: #fff; border: 4px solid var(--line); box-shadow: 0 5px 0 var(--line); }
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+  <g id="doorie">
+    <ellipse cx="80" cy="150" rx="44" ry="6" fill="#002f6c" opacity=".12"/>
+    <rect x="34" y="66" width="92" height="78" rx="22" fill="#fff" stroke="#002f6c" stroke-width="4"/>
+    <path d="M22 74 80 26l58 48Z" fill="#0099cc" stroke="#002f6c" stroke-width="4" stroke-linejoin="round"/>
+    <rect x="104" y="36" width="12" height="20" rx="3" fill="#0099cc" stroke="#002f6c" stroke-width="4"/>
+    <path d="M68 144v-26a12 12 0 0 1 24 0v26Z" fill="#c4d600" stroke="#002f6c" stroke-width="4"/>
+    <ellipse cx="64" cy="84" rx="5" ry="6" fill="#002f6c"/><ellipse cx="96" cy="84" rx="5" ry="6" fill="#002f6c"/>
+    <path d="M68 92q12 13 24 0Z" fill="#e55d25" stroke="#002f6c" stroke-width="4" stroke-linejoin="round"/>
+    <ellipse cx="52" cy="95" rx="7" ry="4.5" fill="#e55d25" opacity=".45"/><ellipse cx="108" cy="95" rx="7" ry="4.5" fill="#e55d25" opacity=".45"/>
+    <path d="M126 98q14 -10 14 -30M34 98q-14 -10 -14 -30" fill="none" stroke="#002f6c" stroke-width="5" stroke-linecap="round"/>
+    <path d="M18 34l3 7 7 3-7 3-3 7-3-7-7-3 7-3Z M144 22l2 5 5 2-5 2-2 5-2-5-5-2 5-2Z M140 120l2.5 6 6 2.5-6 2.5-2.5 6-2.5-6-6-2.5 6-2.5Z" fill="#ffd100" stroke="#002f6c" stroke-width="2"/>
+  </g>
+</defs></svg>
+
+<section class="scene center" data-n="1">
+  <svg viewBox="0 0 160 160" width="330" height="330"><use href="#doorie"/></svg>
+  <h1 class="title">Front Door</h1>
+  <p class="sub" style="font-size:52px;margin-top:10px">Hi! Let's find <b style="color:#0099cc">your way home.</b></p>
+</section>
+
+<section class="scene split" data-n="2">
+  <div><span class="kicker">Orange County</span><h2>A typical home costs <em>$1.3M+</em></h2><p class="sub">Even a teacher and a nurse can't afford it. It's not just you.</p></div>
+  <div class="frame"><div class="bar"><i></i><i></i><i></i></div><img src="shots/b.png" alt="" /></div>
+</section>
+
+<section class="scene split" data-n="3">
+  <div><span class="kicker">Step 1</span><h2>A friendly <em>check-in</em></h2><p class="sub">A few easy questions show where you are today.</p></div>
+  <div class="frame"><div class="bar"><i></i><i></i><i></i></div><img src="shots/c.png" alt="" /></div>
+</section>
+
+<section class="scene split" data-n="4">
+  <div><span class="kicker">Your plan</span><h2>Help that <em>fits your family</em></h2><p class="sub">Down payment programs, the cheapest lenders, and a step-by-step plan.</p></div>
+  <div class="frame"><div class="bar"><i></i><i></i><i></i></div><img src="shots/d.png" alt="" /></div>
+</section>
+
+<section class="scene split" data-n="5">
+  <div><span class="kicker">Questions?</span><h2>Just ask <em>Doorie</em></h2><p class="sub">Answers about Orange County home loans, in plain words.</p></div>
+  <div class="frame"><div class="bar"><i></i><i></i><i></i></div><img src="shots/e.png" alt="" /></div>
+</section>
+
+<section class="scene center" data-n="6">
+  <svg viewBox="0 0 160 160" width="260" height="260"><use href="#doorie"/></svg>
+  <h2 style="font-size:96px">Free. Friendly. For everyone.</h2>
+  <div class="chips"><span>English</span><span>Español</span><span>Tiếng Việt</span><span>中文</span><span>Français</span><span>العربية</span></div>
+  <p class="sub" style="margin-top:30px">Built for the Habitat for Humanity of Orange County hackathon</p>
+  <span class="url">github.com/thejaredchapman/front-door</span>
+</section>
+
+<script>
+  const n = new URLSearchParams(location.search).get('scene') || '1';
+  document.querySelector(`.scene[data-n="${n}"]`).classList.add('on');
+</script>
+</body>
+</html>

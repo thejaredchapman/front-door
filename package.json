@@ -11,7 +11,10 @@
     "translate": "node scripts/translate.mjs",
     "translate:dry": "node scripts/translate.mjs --dry-run",
     "daily-check": "node scripts/daily-check.mjs",
-    "verify:docs": "node scripts/verify-docs.mjs"
+    "verify:docs": "node scripts/verify-docs.mjs",
+    "video:shots": "node scripts/video-shots.mjs",
+    "video:voice": "node scripts/voiceover.mjs",
+    "video:build": "node scripts/make-video.mjs"
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.1.18",

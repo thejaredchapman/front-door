@@ -24,3 +24,9 @@ dist-ssr
 *.sw?
 .vercel
 .env*
+
+# Generated video assets (re-create with npm run video:shots / video:voice / video:build)
+video/shots/
+video/frames/
+video/*.mp3
+video/*.mp4
