@@ -4,6 +4,7 @@ import Explain from '../funding/Explain';
 import { useUpdates } from '../../hooks/useUpdates';
 import { NewsItem } from './NewsPage';
 import Mascot from '../Mascot';
+import GiveTeaser from '../fund/GiveTeaser';
 
 const DOORS = [
   { href: '#/plan', icon: '🧭', title: 'Find my plan', body: 'A quick, friendly check-in shows what you can afford today, plus the help that makes a home more affordable for your family.', cta: 'See what I can afford', primary: true },
@@ -70,7 +71,11 @@ export default function HomePage() {
 
       <section className="good-news rise" aria-labelledby="good-title">
         <h2 id="good-title" className="display good-title"><span aria-hidden="true">☀️</span> {t('Good news first')}</h2>
-        <p className="lede mb-5">{t('Buying in Orange County is hard, but there is more help than most people think.')}</p>
+        <p className="lede mb-3">{t('Buying in Orange County is hard, but there is more help than most people think.')}</p>
+        <a href="#/learn/programs" className="we-got-you mb-5">
+          <span aria-hidden="true">🤝</span>
+          <span><strong>{t('Worried about the down payment? We\'ve got you.')}</strong> <span className="text-sm">{t('Grants, 0% loans, and payment-free helpers can cover most or all of it.')} <span className="underline underline-offset-2">{t('See down payment help')} →</span></span></span>
+        </a>
         <div className="good-grid">
           {GOOD_NEWS.map((g) => (
             <a key={g.v} href={g.href} className="good-card">
@@ -126,6 +131,8 @@ export default function HomePage() {
           ))}
         </ol>
       </section>
+
+      <GiveTeaser />
 
       {latest.length > 0 && (
         <section className="home-news" aria-labelledby="news-title">

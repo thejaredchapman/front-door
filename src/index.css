@@ -710,3 +710,18 @@
   .cost-bar { height: 8px; border-radius: 4px; background: #eef5f9; margin: 3px 0 2px; overflow: hidden; }
   .cost-bar > span { display: block; height: 100%; background: #007399; border-radius: 0 4px 4px 0; }
 }
+@layer components {
+  .home-give { margin-top: 3.5rem; padding: 1.6rem; border-radius: var(--radius); background: linear-gradient(135deg, #fff1e8, #fff8d6); border: 1px solid #f6d6c2; box-shadow: var(--shadow-soft); }
+  .give-stat { display: grid; gap: .25rem; padding: 1rem 1.2rem; border-radius: var(--radius); background: #fff; border: 1px solid var(--color-line); border-inline-start: 6px solid #e55d25; }
+  .give-stat-v { font-size: 1.9rem; font-weight: 800; color: #b8441a; line-height: 1.1; }
+  .give-math > div { display: flex; justify-content: space-between; gap: 1rem; padding: .35rem 0; border-bottom: 1px solid var(--color-line); }
+  .give-math dt { font-size: .95rem; }
+  .give-math dd { font-weight: 700; }
+  .give-math .is-total { border-bottom: 0; font-size: 1.1rem; }
+  .give-math .is-total dd { color: var(--accent); font-weight: 800; }
+}
+@layer components {
+  .we-got-you { display: flex; gap: .7rem; align-items: center; padding: .8rem 1.1rem; border-radius: 18px; background: #fff; border: 2px solid #c4d600; box-shadow: 0 4px 0 #a9b800; font-size: 1.1rem; width: fit-content; max-width: 100%; }
+  .we-got-you > span:first-child { font-size: 1.6rem; }
+  @media (max-width: 639px) { .we-got-you { border-radius: 18px; } }
+}
