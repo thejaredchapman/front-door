@@ -3,7 +3,8 @@
  * Each step links to a page; the default route works for everyone.
  */
 export const START_DEFAULT = [
-  { title: 'Take the check-in: see where you are', why: 'A few friendly questions show your income group and the plans that fit you.', href: '#/plan' },
+  { title: 'Take the check-in: see what you can afford', why: 'A few friendly questions show your price range and the help that makes a home more affordable.', href: '#/plan' },
+  { title: 'Open the affordability toolkit', why: 'Every way to lower the price, the cash you need, and the monthly payment.', href: '#/learn/afford' },
   { title: 'Read your top plans', why: 'See the good things, the watch-outs, and the first step for each.', href: '#/results/plans' },
   { title: 'Pick where to borrow', why: 'Lenders that cost the least and work with your down payment help.', href: '#/results/lenders' },
   { title: 'Book a free homebuyer class', why: 'Almost every program requires it, and it\'s free.', href: '#/learn/steps' },

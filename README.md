@@ -1,6 +1,6 @@
 # Front Door
 
-*Formerly LoanLens.* Free, plain-language help for working families buying a home in California, with Orange County first. Built for the Habitat for Humanity of Orange County hackathon (Lane 3 · Fund it). Uses Habitat's color palette with respect; not an official Habitat for Humanity site.
+*Formerly LoanLens.* **Making homeownership affordable for working families**: see what you can afford and every way to make a home more affordable, in plain language, with Orange County first. Built for the Habitat for Humanity of Orange County hackathon (Lane 3 · Fund it). Uses Habitat's color palette with respect; not an official Habitat for Humanity site.
 
 **Present it:** [one-page handout](public/presentation/handout.html) · [slides](public/presentation/slides.html) (also served at `/presentation/` on the site)
 

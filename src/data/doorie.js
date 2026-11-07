@@ -11,6 +11,7 @@ import { GLOSSARY } from './glossary';
 import { LOAN_TYPES } from './loanTypes';
 import { LENDERS } from './lenders';
 import LAWS from './caLaws.json';
+import { PRIVATE_OPTIONS } from './privateLending';
 import RATE_INFO from './rate.json';
 import { OC_INCOME_LIMITS_2026 } from './incomeLimits';
 import { OC_CITIES } from './ocCities';
@@ -23,6 +24,9 @@ const FAQ = [
   { id: 'afford', title: 'How much home can I afford?', keywords: 'afford how much budget price max qualify income salary payment',
     plain: 'A safe house payment (loan, taxes, insurance) is about 30–35% of your income before taxes, and all debts together should stay under about 43%. Your friendly check-in does the math for your family and shows a price range.',
     eli5: 'Spend about $30–$35 of every $100 you earn on your home. The check-in figures out your number.', link: '#/plan', linkLabel: 'Take the check-in: see where you are' },
+  { id: 'affordable', title: 'How can I make a home more affordable?', keywords: 'affordable affordability cheaper lower cost cheap save money reduce make',
+    plain: 'Lower the price (below-market homes, Habitat, condos and townhomes), lower the cash you need (down payment help, ZIP, family gifts), lower the monthly payment (shop 3 lenders, better credit, no-PMI loans, MCC tax credit, renting out a unit), and lower the total cost (extra payments).',
+    eli5: 'Lots of little tricks make a home cost less: special prices, helpers for the first chunk, and cheaper loans.', link: '#/learn/afford', linkLabel: 'Affordability toolkit' },
   { id: 'down-help', title: 'Is there help with the down payment in Orange County?', keywords: 'down payment help assistance grant dpa money save saving',
     plain: 'Yes. Options include CalHFA MyHome (up to 3.5%), city loans (Garden Grove up to $110,000, Santa Ana up to $120,000, Anaheim $50,000), the County Mortgage Assistance Program (up to $80,000 in unincorporated OC and 14 smaller cities), FHLBank WISH grants (4-to-1 match up to $32,837), bank grants, and Habitat for Humanity OC.',
     eli5: 'Yes! Many helpers pay part of the first big chunk. Your check-in shows which ones fit you.', link: '#/learn/programs', linkLabel: 'See all programs' },
@@ -53,6 +57,9 @@ const FAQ = [
   { id: 'cheapest', title: 'Where can I get the cheapest mortgage?', keywords: 'cheapest lender lenders bank credit union where borrow lowest cost best',
     plain: 'In Orange County, credit unions like SchoolsFirst and Navy Federal had some of the lowest real costs in 2024 (HMDA data). Pick the lender that accepts your down payment help, then compare 3 Loan Estimates in the same week.',
     eli5: 'Small member banks often charge less. Ask three of them for their price.', link: '#/learn/lenders', linkLabel: 'Where to get the loan' },
+  { id: 'cosigner', title: 'Can family co-sign or give me money for a home?', keywords: 'cosigner co-sign co signer cosign gift gifts family parents relative help borrow',
+    plain: 'Yes. A family member can give you money for the down payment with a signed gift letter; FHA, conventional, and many programs accept it. A relative can also co-sign or be a co-borrower, but their income, debts, and credit count, and they are fully responsible if payments are missed. A written promissory note is needed if it\'s a loan, not a gift.',
+    eli5: 'Family can give you money for your house with a signed letter, or sign the loan with you. If they sign, they must pay if you can\'t.', link: '#/learn/private', linkLabel: 'Family gifts and loans' },
   { id: 'dti', title: 'What is DTI?', keywords: 'dti debt to income ratio 30 35 43',
     plain: 'Debt-to-income (DTI) is your monthly debts, including the new house payment, divided by your gross monthly income. Aim for a house payment of 30–35% of income; lenders usually want all debts under about 43%.',
     eli5: 'It\'s how much of your paycheck goes to bills. Less is better.', link: '#/calculator', linkLabel: 'Try the DTI slider' },
@@ -97,6 +104,7 @@ function entries() {
   for (const p of PROGRAMS) {
     kb.push({ id: `p-${p.id}`, title: p.name, keywords: `${p.name} ${p.org} ${p.type}`, plain: `${p.gives} Who: ${p.who} Watch out: ${p.catch}`, eli5: p.eli5, link: p.url, linkLabel: 'Official page', source: p.org, status: p.status });
   }
+  for (const o of PRIVATE_OPTIONS) kb.push({ id: `pv-${o.id}`, title: o.name, keywords: `${o.name} ${o.id.replace(/-/g, ' ')}`, plain: `${o.plain} Typical: ${o.typical}`, eli5: o.eli5, link: '#/learn/private', linkLabel: 'Private lending and red flags' });
   for (const g of GLOSSARY) kb.push({ id: `g-${g.term}`, title: g.term, keywords: g.term, plain: g.plain, eli5: g.eli5, link: '#/learn/words', linkLabel: 'Words lenders use' });
   for (const l of LOAN_TYPES) kb.push({ id: `lt-${l.id}`, title: l.name, keywords: `${l.name} ${l.id}`, plain: `${l.what} ${l.lowIncome}`, eli5: l.eli5, link: '#/learn/loan-types', linkLabel: 'Every kind of mortgage' });
   for (const l of LENDERS) kb.push({ id: `ln-${l.id}`, title: l.name, keywords: `${l.name} ${l.type}`, plain: `${l.who} ${l.perks}`, link: l.url, linkLabel: 'Their rates' });
@@ -117,7 +125,7 @@ function tokens(s) { return norm(s).split(/[\s-]+/).filter((w) => w && !STOP.has
 function stem(w) { return w.length > 4 ? w.replace(/(ings|ing|ers|er|es|s)$/, '') : w; }
 
 // Words that make a question "about home loans / buying a home".
-const TOPIC = new Set(['loan', 'mortgage', 'down', 'payment', 'home', 'house', 'condo', 'townhome', 'buy', 'buyer', 'purchase', 'own', 'owner', 'credit', 'score', 'rate', 'interest', 'apr', 'fha', 'va', 'usda', 'calhfa', 'myhome', 'zip', 'dream', 'habitat', 'grant', 'assistance', 'dpa', 'dti', 'income', 'ami', 'pmi', 'mip', 'escrow', 'closing', 'lender', 'bank', 'union', 'refinance', 'refi', 'heloc', 'equity', 'reverse', 'jumbo', 'chattel', 'mobile', 'manufactured', 'afford', 'qualify', 'approval', 'preapproval', 'pre', 'apply', 'first', 'section', 'voucher', 'itin', 'self', 'employed', 'veteran', 'calvet', 'disability', 'teacher', 'nurse', 'firefighter', 'police', 'property', 'tax', 'insurance', 'hoa', 'adu', 'law', 'prop', 'proposition', 'wish', 'mcc', 'gsfa', 'schoolsfirst', 'neighborworks', 'counselor', 'class', 'amortization', 'principal', 'term', 'points', 'quote', 'scam', 'foreclosure', 'bankruptcy', 'saving', 'save', 'deposit', 'cosigner', 'gift', 'family', 'seller', 'rent', 'lottery', 'bmr', 'inclusionary', 'land', 'trust', 'clt', 'map', 'subsidy', 'program', 'help'].map(stem));
+const TOPIC = new Set(['rto', 'rent-to-own', 'lease', 'option', 'seller', 'carry', 'cdfi', 'hard', 'nonqm', 'loan', 'mortgage', 'down', 'payment', 'home', 'house', 'condo', 'townhome', 'buy', 'buyer', 'purchase', 'own', 'owner', 'credit', 'score', 'rate', 'interest', 'apr', 'fha', 'va', 'usda', 'calhfa', 'myhome', 'zip', 'dream', 'habitat', 'grant', 'assistance', 'dpa', 'dti', 'income', 'ami', 'pmi', 'mip', 'escrow', 'closing', 'lender', 'bank', 'union', 'refinance', 'refi', 'heloc', 'equity', 'reverse', 'jumbo', 'chattel', 'mobile', 'manufactured', 'afford', 'qualify', 'approval', 'preapproval', 'pre', 'apply', 'first', 'section', 'voucher', 'itin', 'self', 'employed', 'veteran', 'calvet', 'disability', 'teacher', 'nurse', 'firefighter', 'police', 'property', 'tax', 'insurance', 'hoa', 'adu', 'law', 'prop', 'proposition', 'wish', 'mcc', 'gsfa', 'schoolsfirst', 'neighborworks', 'counselor', 'class', 'amortization', 'principal', 'term', 'points', 'quote', 'scam', 'foreclosure', 'bankruptcy', 'saving', 'save', 'deposit', 'cosigner', 'gift', 'family', 'seller', 'rent', 'lottery', 'bmr', 'inclusionary', 'land', 'trust', 'clt', 'map', 'subsidy', 'program', 'help'].map(stem));
 const OC_CITY_NAMES = OC_CITIES.filter((c) => c.id !== 'unincorporated').map((c) => ({ id: c.id, name: norm(c.name).trim(), toks: tokens(c.name) }));
 const GENERIC = new Set(['tell', 'info', 'information', 'live', 'living', 'move', 'moving', 'city', 'area', 'near', 'option', 'options'].map(stem));
 
@@ -142,14 +150,51 @@ function translateKeywords(question) {
 const OTHER_COUNTIES = Object.keys(CA_INCOME_LIMITS_2026).filter((c) => c !== 'Orange').map((c) => norm(c));
 const STATES = ['texas', 'florida', 'new york', 'arizona', 'nevada', 'oregon', 'washington state', 'colorado', 'illinois', 'georgia', 'utah', 'ohio', 'hawaii', 'idaho', 'tennessee', 'north carolina', 'new jersey', 'massachusetts', 'virginia', 'michigan', 'pennsylvania', 'canada', 'mexico'];
 
+// ── Ludicrous / fraud screens (run before anything else) ───────────
+// Impossible or absurd subjects: Doorie says it's ludicrous and gives no answer.
+const LUDICROUS = [
+  // the pet / infant is the borrower, owner, or co-signer ("can my dog get a mortgage")
+  /\b(can|could|will|does|should|is|let)\s+(my\s+|a\s+|the\s+|our\s+)?(dog|cat|puppy|kitten|hamster|goldfish|parrot|pet|horse|baby|toddler|newborn)\s+(get|have|apply|qualify|buy|own|co-?sign|take out|be on|borrow|sign)\b/,
+  /\b(mortgage|loan|house|home|credit card)\s+for\s+(my\s+|a\s+|our\s+)?(dog|cat|puppy|kitten|hamster|goldfish|parrot|horse|baby|toddler|newborn)\b/,
+  /\b(dog|cat|puppy|kitten|hamster|goldfish|parrot|horse|baby|toddler|newborn)\s+(as|be)\s+(a\s+|my\s+)?(co-?signer|co-?borrower|borrower)\b/,
+  /\b(moon|mars|jupiter|outer space|spaceship|space station|atlantis|narnia|hogwarts|north pole|the sun)\b/,
+  /\b(unicorn|dragon|dragons|wizard|zombie|zombies|vampire|alien|aliens|superhero|batman|spider ?man|santa claus|tooth fairy|leprechaun|time machine|time travel)\b/,
+  /\b(monopoly money|play money|chocolate coins|pokemon cards?|v-?bucks|robux|seashells|magic beans)\b/,
+  /\b(castle in the (sky|clouds)|gingerbread house|treehouse in the clouds|underwater castle|disneyland|the white house|buckingham palace)\b/,
+  /\b(free house|house for free|free mansion|zero dollars forever|never pay(ing)? (it )?back)\b/,
+];
+// Fraud: refuse plainly.
+const FRAUD = /\b(fake|forge|forged|faked|lie|lying|fudge|inflate|hide)\b.*\b(pay ?stubs?|income|w-?2s?|tax returns?|bank statements?|documents?|application|debts?|credit)\b|\b(steal|launder|money laundering|identity theft|use someone else'?s (ssn|social security|identity|credit))\b/;
+
+function looksLikeGibberish(raw) {
+  const letters = raw.toLowerCase().replace(/[^a-z\s]/g, ' ').split(/\s+/).filter((w) => w.length >= 3);
+  if (!letters.length) return false;
+  const odd = letters.filter((w) => !/[aeiouy]/.test(w) || /(.)\1\1\1/.test(w) || /[bcdfghjklmnpqrstvwxz]{5,}/.test(w) || /^(asdf|qwer|zxcv|hjkl|lol(ol)+|haha(ha)+)/.test(w));
+  return odd.length / letters.length >= 0.5;
+}
+
+// Dollar amounts that can't be a home price in Orange County (e.g. "a house for $5").
+function absurdPrice(raw) {
+  const m = raw.toLowerCase().match(/(house|home|condo|townhome|place)[^.?!]{0,30}?\$\s?([\d,.]+)\s*(k|thousand|m|million|b|billion|trillion)?|\$\s?([\d,.]+)\s*(k|thousand|m|million|b|billion|trillion)?[^.?!]{0,30}?(house|home|condo|townhome)/);
+  if (!m) return false;
+  const num = Number((m[2] || m[4] || '').replace(/,/g, ''));
+  const unit = m[3] || m[5] || '';
+  const mult = /^(k|thousand)$/.test(unit) ? 1e3 : /^(m|million)$/.test(unit) ? 1e6 : /^(b|billion)$/.test(unit) ? 1e9 : unit === 'trillion' ? 1e12 : 1;
+  const value = num * mult;
+  return Number.isFinite(value) && value > 0 && (value < 1000 || value >= 1e9);
+}
+
 let KB = null;
-export const SUGGESTIONS = ['How much home can I afford?', 'Is there help with the down payment in Orange County?', 'What credit score do I need?', 'How do I apply to Habitat for Humanity OC?', 'What are mortgage rates right now?', 'Where can I get the cheapest mortgage?'];
+export const SUGGESTIONS = ['How much home can I afford?', 'How can I make a home more affordable?', 'Is there help with the down payment in Orange County?', 'What credit score do I need?', 'How do I apply to Habitat for Humanity OC?', 'What are mortgage rates right now?', 'Where can I get the cheapest mortgage?'];
 
 /**
  * Answer a question. Returns { kind: 'answer' | 'offtopic' | 'outofarea', title?, plain?, eli5?, link?, linkLabel?, related?[] }.
  */
 export function askDoorie(question) {
   if (!KB) KB = entries();
+  const raw = (question || '').trim();
+  if (raw && FRAUD.test(raw.toLowerCase())) return { kind: 'fraud' };
+  if (raw && (looksLikeGibberish(raw) || LUDICROUS.some((re) => re.test(raw.toLowerCase())) || absurdPrice(raw))) return { kind: 'ludicrous' };
   const expanded = translateKeywords(question || '');
   const q = norm(expanded);
   const words = tokens(expanded);

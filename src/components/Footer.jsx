@@ -8,7 +8,7 @@ export default function Footer() {
       <div className="mx-auto px-5 max-w-6xl py-8 grid gap-6 md:grid-cols-3 text-sm">
         <div>
           <p className="display text-xl font-bold">Front Door</p>
-          <p className="text-muted mt-1">{t('Free homebuyer help for working families. Built for the Habitat for Humanity of Orange County hackathon, using Habitat\'s color palette with respect. Not an official Habitat for Humanity website.')}</p>
+          <p className="text-muted mt-1">{t('Free affordable-homeownership help for working families. Built for the Habitat for Humanity of Orange County hackathon, using Habitat\'s color palette with respect. Not an official Habitat for Humanity website.')}</p>
         </div>
         <nav aria-label={t('Footer')} className="grid grid-cols-2 gap-1">
           <a href="#/plan" className="hover:underline">{t('Find my plan')}</a>

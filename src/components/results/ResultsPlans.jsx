@@ -92,8 +92,8 @@ export default function ResultsPlans({ r }) {
     <div>
       <div className="stat-row">
         <div><p className="field-label">{t('Your income group')}</p><p className="display stat-v text-[var(--accent)]">{t(r.ctx.category.label)}</p></div>
-        <div><p className="field-label">{t('Safe monthly payment')}</p><p className="display stat-v">{formatCurrency(r.now.budget)}</p></div>
-        <div><p className="field-label">{t('Home price it supports')}</p><p className="display stat-v">{formatCurrency(r.now.price)}</p></div>
+        <div><p className="field-label">{t('Affordable monthly payment')}</p><p className="display stat-v">{formatCurrency(r.now.budget)}</p></div>
+        <div><p className="field-label">{t('Price you can afford')}</p><p className="display stat-v">{formatCurrency(r.now.price)}</p></div>
       </div>
       <div className="card mt-4"><HousingRatioSlider income={r.ctx.monthlyIncome * 12} id="ratio-results" compact /></div>
       <p className="lede my-6">

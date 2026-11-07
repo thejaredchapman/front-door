@@ -171,6 +171,13 @@ Built with Claude Code (model: Claude Opus 5.5) on 2026-11-07.
 - **Research agent for brand colors:** 22,153 tokens / 3 tool calls (official page had no values; colors taken from habitat.org CSS instead).
 - **GitHub:** new public repository `thejaredchapman/front-door`.
 
-## 17. Known gaps to verify before launch
+## 17. Update: affordability framing, ludicrous/fraud screens, Vercel, video
+
+- **Reframed around affordability:** headline "Hi! Let's find a home you can afford.", tagline "Your path to an affordable home", results show "Affordable monthly payment" and "Price you can afford", Start here and Doorie lead with affordability, page title/description, handout, slides, video, and README updated. New **Affordability toolkit** (`#/learn/afford`): levers grouped by what they lower (price, cash needed, monthly payment, total cost) plus keeping it affordable, with the 30–35% slider and live examples (0.5% lower rate ≈ $134/mo on $400K; FHA mortgage insurance ≈ $183/mo).
+- **Doorie screens:** ludicrous questions (pets or babies as borrowers, the moon, Monopoly money, a $5 house, keyboard mashing) get "That question is ludicrous… I won't answer it" with no answer; fraud (fake pay stubs, lying on an application, identity theft) gets a firm refusal and a link to a HUD counselor. Added answers for co-signers and family gifts, affordability, and private lending options (rent-to-own, seller financing, hard money). Doorie button is icon-only on phones so it never covers content.
+- **Vercel:** new project `front-door` (production: https://front-door-chi.vercel.app); `vercel.json` pins Vite / `dist`. The older `amortization` project is untouched.
+- **Video:** `npm run video:shots | video:voice | video:build` → 30 s 1080p MP4; ElevenLabs voiceover (75-word script ≈ 30 s, ≈ 430 credits) logged per run.
+
+## 18. Known gaps to verify before launch
 
 OC MAP open/closed · Anaheim amount/status · Santa Ana 2026 terms · OC MCC credit rate · CalHFA OC income limits ($274K / $219K from a secondary source) · any GNND listings in OC · next Dream For All round · Prop 1/37 certification and rollout · Habitat OC's current-project income band.

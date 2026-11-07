@@ -617,3 +617,14 @@
   .doorie-form { display: flex; gap: .5rem; padding: .7rem; background: #fff; border-top: 2px solid #d6eaf4; }
   @media (prefers-reduced-motion: reduce) { .doorie-panel { animation: none; } .doorie-fab:hover { transform: none; } }
 }
+
+@layer components {
+  /* Keep the floating Doorie button from covering content on phones */
+  #main { padding-bottom: 5.5rem; }
+  @media (max-width: 639px) {
+    .doorie-fab { padding: .2rem; inset-inline-end: .75rem; bottom: .75rem; }
+    .doorie-fab-label { display: none; }
+    .doorie-fab svg { width: 50px; height: 50px; }
+    .doorie-panel { bottom: 5rem; inset-inline-end: .75rem; width: calc(100vw - 1.5rem); }
+  }
+}

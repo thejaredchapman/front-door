@@ -6,16 +6,16 @@ import { NewsItem } from './NewsPage';
 import Mascot from '../Mascot';
 
 const DOORS = [
-  { href: '#/plan', icon: '🧭', title: 'Find my plan', body: 'A quick, friendly check-in to see where you are today, plus the loans and help that fit your family, a timeline, and your own report.', cta: 'See where I\'m at', primary: true },
-  { href: '#/learn', icon: '📚', title: 'Learn', body: 'Short pages in plain words.', cta: 'Browse' },
-  { href: '#/calculator', icon: '🧮', title: 'Calculator', body: 'Your monthly payment, step by step.', cta: 'Open' },
+  { href: '#/plan', icon: '🧭', title: 'Find my plan', body: 'A quick, friendly check-in shows what you can afford today, plus the help that makes a home more affordable for your family.', cta: 'See what I can afford', primary: true },
+  { href: '#/learn/afford', icon: '🧰', title: 'Affordability toolkit', body: 'Every way to make a home cost less.', cta: 'Explore' },
+  { href: '#/calculator', icon: '🧮', title: 'Calculator', body: 'What\'s affordable for you, month by month.', cta: 'Open' },
   { href: '#/news', icon: '📰', title: 'News', body: 'Rates, programs, and new laws.', cta: 'Read' },
   { href: '#/give', icon: '💛', title: 'Give', body: 'Help a neighbor buy a home.', cta: 'See how' },
 ];
 
 const STEPS = [
-  { title: 'Answer', body: 'Tell us about your family, money, credit, and job.' },
-  { title: 'See your options', body: 'Plans that fit, with good things and watch-outs.' },
+  { title: 'Check in', body: 'Tell us about your family, money, credit, and job.' },
+  { title: 'See what you can afford', body: 'Your price range, plus the help that makes a home more affordable.' },
   { title: 'Follow your plan', body: 'A calendar, emails to send, and a 12-month report.' },
 ];
 
@@ -35,19 +35,19 @@ export default function HomePage() {
     <div className="home">
       <section className="home-hero rise">
         <div>
-        <p className="kicker mb-4">{t('Free help for California homebuyers · Orange County first')}</p>
+        <p className="kicker mb-4">{t('Affordable homeownership help · Orange County first')}</p>
         <h1 className="display home-title">
           {t('Hi! Let\'s find')}<br />
-          <em>{t('your way home.')}</em>
+          <em>{t('a home you can afford.')}</em>
         </h1>
         <Explain
           className="lede mt-5 max-w-2xl"
-          plain="Free help for working families, including nurses, teachers, firefighters, public workers, and anyone who doesn't earn a lot. No sign-up. Your answers stay on your device."
-          eli5="We help families figure out how to buy a home, step by step, for free."
+          plain="See what you can truly afford, and every way to make a home more affordable: down payment help, lower-cost lenders, below-market homes, and more. Free for working families, including nurses, teachers, firefighters, and public workers. No sign-up; your answers stay on your device."
+          eli5="We help you find a home that fits your money, and helpers that make it cost less. It's free."
         />
         </div>
         <div className="hero-mascot flex flex-col items-center gap-2">
-          <p className="mascot-bubble">{t('Hi! I\'m Doorie. Let\'s find your front door!')} 🏡</p>
+          <p className="mascot-bubble">{t('Hi! I\'m Doorie. Let\'s find a home you can afford!')} 🏡</p>
           <Mascot mood="wave" size={190} label={t('Doorie, a smiling little house, waving hello')} />
         </div>
       </section>

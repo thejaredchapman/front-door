@@ -106,7 +106,7 @@ export default function Masthead({ path }) {
           <Logo />
           <span className="min-w-0">
             <span className="display block text-2xl font-bold leading-none">Front Door</span>
-            <span className="hidden sm:block text-xs text-muted mt-0.5">{t('Your path to a home')}</span>
+            <span className="hidden sm:block text-xs text-muted mt-0.5">{t('Your path to an affordable home')}</span>
           </span>
         </a>
 

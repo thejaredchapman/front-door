@@ -59,14 +59,14 @@ export default function DoorieChat() {
             <Mascot mood="wave" size={44} />
             <div className="min-w-0">
               <h2 id="doorie-title" className="display text-xl font-bold leading-none">{t('Ask Doorie')}</h2>
-              <p className="text-xs text-muted">{t('Home loans in Orange County only')}</p>
+              <p className="text-xs text-muted">{t('Affordable home loans in Orange County only')}</p>
             </div>
             <button type="button" className="drawer-close ms-auto" onClick={() => setOpen(false)} aria-label={t('Close Doorie chat')}>✕</button>
           </header>
 
           <div ref={listRef} className="doorie-list" aria-live="polite">
             <div className="doorie-msg is-doorie">
-              <p>{t('Hi! I\'m Doorie. Ask me anything about buying a home or getting a home loan in Orange County.')}</p>
+              <p>{t('Hi! I\'m Doorie. Ask me how to make a home affordable in Orange County: what you can afford, down payment help, loans, and more.')}</p>
               <p className="text-xs text-muted mt-1">{t('I share general information from Front Door\'s sources, not financial advice. Your questions stay on this device.')}</p>
             </div>
             {messages.map((m, i) => (
@@ -94,6 +94,22 @@ export default function DoorieChat() {
 }
 
 function DoorieAnswer({ a, simple, t, onAsk }) {
+  if (a.kind === 'ludicrous') {
+    return (
+      <div className="doorie-msg is-doorie">
+        <p>{t('That question is ludicrous 🙃 and it has nothing to do with buying an affordable home in Orange County, so I won\'t answer it.')}</p>
+        <p className="text-sm mt-1">{t('Try asking what you can afford, or how to get help with a down payment.')}</p>
+      </div>
+    );
+  }
+  if (a.kind === 'fraud') {
+    return (
+      <div className="doorie-msg is-doorie">
+        <p>{t('I can\'t help with that. Giving false information on a loan application is mortgage fraud, a serious crime.')}</p>
+        <p className="text-sm mt-1">{t('A free HUD-approved counselor can help you find honest ways to qualify.')} <a href="https://www.hud.gov/findacounselor" target="_blank" rel="noreferrer" className="btn-link">{t('Find a counselor')} ↗</a></p>
+      </div>
+    );
+  }
   if (a.kind === 'offtopic' || a.kind === 'outofarea') {
     return (
       <div className="doorie-msg is-doorie">

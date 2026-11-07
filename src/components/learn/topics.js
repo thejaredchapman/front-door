@@ -18,6 +18,7 @@ import LenderFinder from './LenderFinder';
 import FiveBuyers from './FiveBuyers';
 import LoanTypes from './LoanTypes';
 import LawsPage from './LawsPage';
+import AffordabilityToolkit from './AffordabilityToolkit';
 
 /**
  * Learn pages, in reading order. `ownHeader: false` means the component has no title of its own,
@@ -26,6 +27,9 @@ import LawsPage from './LawsPage';
 export const TOPIC_GROUPS = ['Understand', 'Find help', 'Go deeper'];
 
 export const TOPICS = [
+  { id: 'afford', group: 'Understand', title: 'Affordability toolkit', summary: 'Every way to make a home more affordable, in one place.', Component: AffordabilityToolkit, ownHeader: false,
+    plain: 'A home is affordable when the payment fits your life. Here is every lever that lowers the price, the cash you need, the monthly payment, and the total cost.',
+    eli5: 'Lots of little tricks make a home cost less. Here they all are.' },
   { id: 'why', group: 'Understand', title: 'Why homes cost so much here', summary: 'The gap between prices and pay, in numbers.', Component: RealityCheck },
   { id: 'five-buyers', group: 'Understand', title: 'Five buyers, one market', summary: 'Low to ultra-high income: it\'s not just you.', Component: FiveBuyers, ownHeader: false,
     plain: 'Why is it so expensive, and is it just me? Meet five Orange County households, from a home health aide to a startup executive, and see what each can afford.',
