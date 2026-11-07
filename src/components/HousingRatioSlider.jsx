@@ -48,7 +48,7 @@ export default function HousingRatioSlider({ income, id = 'housing-ratio', compa
       {!compact && (
         <Explain
           className="text-sm text-muted mt-2"
-          plain="Counselors suggest keeping your house payment (loan, taxes, insurance) at 30–35% of your income before taxes. 30% leaves more room for food, childcare, and emergencies; 35% is a stretch. Lenders also check that all your debts together, including the house, stay under about 43%."
+          plain="Counselors suggest keeping your house payment (loan, taxes, insurance) at 30–35% of your income before taxes. 30% leaves more room for food, childcare, and emergencies; 35% is a stretch. We also keep all your debts together, including the house, under 36% so your budget has breathing room. Lenders often allow up to about 43%, but that can feel tight."
           eli5="Out of every $100 you earn, try to spend $30 to $35 on your home. Less is safer."
         />
       )}

@@ -7,6 +7,8 @@ import PageHeader from '../shell/PageHeader';
 import ResultsPlans from './ResultsPlans';
 import ReadinessPacket from './ReadinessPacket';
 import LoanMatrix from '../plan/LoanMatrix';
+import QuoteComparer from '../plan/QuoteComparer';
+import LiveRates from '../plan/LiveRates';
 import TimelinePlanner from '../plan/TimelinePlanner';
 import PersonalReport from '../plan/PersonalReport';
 import { LenderList } from '../learn/LenderFinder';
@@ -70,15 +72,21 @@ export default function ResultsPages({ tab = 'plans' }) {
       </nav>
 
       <div className="rise">
-        {active === 'plans' && <ResultsPlans r={r} />}
+        {active === 'plans' && <ResultsPlans r={r} a={a} />}
         {active === 'lenders' && (
           <>
-            <p className="lede mb-6">{t('Lenders sorted for you: ones you can join first, then the ones that work with the down payment help in your plan.')}</p>
+            <LiveRates loanAmount={r.goal.base.price * (1 - a.downPct / 100)} />
+            <p className="lede mb-6 mt-12">{t('Lenders sorted for you: ones you can join first, then the ones that work with the down payment help in your plan.')}</p>
             <LenderList a={a} results={r.results} />
             <a href="#/learn/lenders" className="btn-link inline-block mt-6">{t('What OC buyers actually paid, and how to shop')} →</a>
           </>
         )}
-        {active === 'compare' && <LoanMatrix />}
+        {active === 'compare' && (
+          <>
+            <LoanMatrix />
+            <QuoteComparer defaultAmount={r.goal.base.price * (1 - a.downPct / 100)} />
+          </>
+        )}
         {active === 'timeline' && <TimelinePlanner answers={a} results={r.results} categoryLabel={r.ctx.category.label} />}
         {active === 'report' && (
           <>

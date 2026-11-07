@@ -1,5 +1,6 @@
 import { useT } from '../i18n';
 import RATE_INFO from '../data/rate.json';
+import { TEAM } from '../data/team';
 
 export default function Footer() {
   const t = useT();
@@ -9,6 +10,7 @@ export default function Footer() {
         <div>
           <p className="display text-xl font-bold">Front Door</p>
           <p className="text-muted mt-1">{t('Free affordable-homeownership help for working families. Built for the Habitat for Humanity of Orange County hackathon, using Habitat\'s color palette with respect. Not an official Habitat for Humanity website.')}</p>
+          <p className="mt-2"><span className="font-semibold">{t('Built by')}</span> {TEAM.join(', ')}</p>
         </div>
         <nav aria-label={t('Footer')} className="grid grid-cols-2 gap-1">
           <a href="#/plan" className="hover:underline">{t('Find my plan')}</a>
@@ -17,6 +19,8 @@ export default function Footer() {
           <a href="#/give" className="hover:underline">{t('Give')}</a>
           <a href="#/learn/sources" className="hover:underline">{t('Sources')}</a>
           <a href="#/learn/about" className="hover:underline">{t('How this was built')}</a>
+          <a href="#/learn/solved" className="hover:underline">{t('How we solved it')}</a>
+          <a href="#/learn/documents" className="hover:underline">{t('Official documents')}</a>
           <a href="presentation/handout.html" target="_blank" rel="noreferrer" className="hover:underline">{t('Handout')} ↗</a>
           <a href="presentation/slides.html" target="_blank" rel="noreferrer" className="hover:underline">{t('Slides')} ↗</a>
           <a href="https://github.com/thejaredchapman/front-door" target="_blank" rel="noreferrer" className="hover:underline">GitHub ↗</a>

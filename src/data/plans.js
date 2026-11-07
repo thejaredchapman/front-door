@@ -10,6 +10,7 @@
 import { getIncomeCategory, limitsTable } from './incomeLimits';
 import { regionOf } from './caIncomeLimits';
 import { OC_CITIES, findOcCity } from './ocCities';
+import RATE_INFO from './rate.json';
 
 export const CREDIT_BANDS = [
   { id: 'unknown', label: "I don't know", score: null },
@@ -55,13 +56,15 @@ export const GROUPS = [
 
 /** Quiz layout: which answer keys count as answering each numbered question, grouped by step. */
 export const QUIZ_STEPS = [
-  { title: 'Your family & money', questions: [['householdSize'], ['income'], ['monthlyDebts'], ['savings']] },
-  { title: 'Your credit', questions: [['credit'], ['latePayments', 'collections', 'q6'], ['bankruptcy'], ['foreclosure']] },
-  { title: 'You & your work', questions: [['ownedRecently', 'parentsOwned'], ['occupation', 'jobTitle', 'employer'], ['groups', 'q11'], ['disability']] },
-  { title: 'Where & how', questions: [['county', 'city'], ['payType', 'idType'], ['familyHelp', 'sellerOpen']] },
+  { id: 'money', title: 'Your family & money', questions: [['householdSize'], ['income'], ['monthlyDebts'], ['savings']] },
+  { id: 'goal', title: 'Your goal', questions: [['monthlySaving'], ['reserve'], ['targetMonths'], ['comfort'], ['downPct', 'propertyType']] },
+  { id: 'credit', title: 'Your credit', questions: [['credit'], ['latePayments', 'collections', 'q6'], ['bankruptcy'], ['foreclosure']] },
+  { id: 'work', title: 'You & your work', questions: [['ownedRecently', 'parentsOwned'], ['occupation', 'jobTitle', 'employer'], ['groups', 'q11', 'militaryRole', 'vaUse', 'vaExempt'], ['disability']] },
+  { id: 'where', title: 'Where & how', questions: [['county', 'city'], ['payType', 'idType'], ['familyHelp', 'sellerOpen']] },
 ];
 
 export const YES_NO = [{ id: true, label: 'Yes' }, { id: false, label: 'No' }];
+export const YES_NO_UNSURE_BOOL = [...YES_NO, { id: 'unsure', label: 'Not sure' }];
 
 export const PAY_TYPES = [
   { id: 'w2', label: 'Paycheck (W-2)' },
@@ -98,6 +101,20 @@ export const DEFAULT_ANSWERS = {
   jobTitle: '',
   employer: '',
   disability: false,
+  // Your goal (savings plan and home assumptions)
+  monthlySaving: 300,
+  reserve: 3000,
+  targetMonths: 12,
+  comfort: -1, // -1 = not answered; 0 is a real answer
+  downPct: 5,
+  propertyType: 'condo',
+  insurance: 200,
+  hoa: 0,
+  rate: RATE_INFO.value,
+  // Military follow-ups (only asked when "Military / veteran" is picked)
+  militaryRole: 'unsure',
+  vaUse: 'unsure',
+  vaExempt: 'unsure',
 };
 
 const RANK = { acutelyLow: 0, extremelyLow: 1, veryLow: 2, low: 3, moderate: 4, above: 5 };
@@ -143,6 +160,7 @@ function softCredit(a) {
 }
 
 function firstTime(a) {
+  if (a.ownedRecently === 'unsure') return maybe('Check whether you count as a first-time buyer: usually no home owned and lived in during the last 3 years.');
   return a.ownedRecently ? no('Requires no home owned in the last 3 years.') : ok('You count as a first-time buyer.');
 }
 
@@ -226,7 +244,7 @@ export const PLANS = [
     name: 'City or county 0% loan + below-market-price home',
     kind: 'Down payment help',
     simple: 'Your city lends a big chunk of the price with no monthly payment, or sells you a special lower-price home.',
-    pros: ['Big help: up to $110,000 (Garden Grove), $120,000 (Santa Ana), $80,000 (County MAP, smaller cities)', 'Usually 0–3%, no payment until you sell', 'Below-market homes cost far less than normal homes'],
+    pros: ['Big help: up to $110,000 (Garden Grove), $120,000 (Santa Ana), $120,000 (County MAP, smaller cities)', 'Usually 0–3%, no payment until you sell', 'Below-market homes cost far less than normal homes'],
     cons: ['The home must be in that city', 'Lotteries and waitlists', 'Resale price is often capped', 'Rules and funding change; call first'],
     url: 'https://ggcity.org/FTHB',
     check: (a, ctx) => {
@@ -242,9 +260,9 @@ export const PLANS = [
       else if (['huntington-beach', 'tustin', 'brea'].includes(a.city)) r.push(maybe('Your city has below-market-rate homes for income-qualified buyers. Join its interest list.'));
       if (ctx.isOC) {
         const city = findOcCity(a.city);
-        if (city?.mapEligible) r.push(ok(`The County Mortgage Assistance Program (up to $80,000) covers ${city.name}.`));
-        else if (city) r.push(maybe(`The county's $80,000 loan doesn't cover ${city.name}; it only covers unincorporated OC and 14 smaller cities.`));
-        else r.push(maybe('The County Mortgage Assistance Program (up to $80,000) only covers unincorporated OC and 14 smaller cities such as Brea, Cypress, Placentia, Stanton, and Yorba Linda. Otherwise, call your city\'s housing office.'));
+        if (city?.mapEligible) r.push(ok(`The County Mortgage Assistance Program (up to $120,000 low income or $80,000 moderate income) covers ${city.name}.`));
+        else if (city) r.push(maybe(`The county's down payment loan doesn't cover ${city.name}; it only covers unincorporated OC and 14 smaller cities.`));
+        else r.push(maybe('The County Mortgage Assistance Program (up to $120,000) only covers unincorporated OC and 14 smaller cities such as Brea, Cypress, Placentia, Stanton, and Yorba Linda. Otherwise, call your city\'s housing office.'));
       }
       if (ctx.savingsPct < 1) r.push(maybe('Most city programs need 1–3% of the price from your own savings.'));
       return r;

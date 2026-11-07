@@ -61,20 +61,50 @@ export const useStore = create(
       })),
       markPlanTouched: (key) => set((s) => ({ planTouched: s.planTouched.includes(key) ? s.planTouched : [...s.planTouched, key] })),
       setPlanSubmitted: (val) => set({ planSubmitted: val }),
-      resetPlanAnswers: () => set({ planAnswers: DEFAULT_ANSWERS, planTouched: [], planSubmitted: false }),
+      resetPlanAnswers: () => set({ planAnswers: DEFAULT_ANSWERS, planTouched: [], planSubmitted: false, taskDone: {}, taskDates: {}, planStartedAt: null }),
+
+      // Privacy: personal answers stay in memory unless the person turns this on.
+      saveOnDevice: false,
+      setSaveOnDevice: (val) => set({ saveOnDevice: val }),
+
+      // Plan calendar
+      planStartedAt: null,
+      taskDone: {},
+      taskDates: {},
+      setPlanStartedAt: (iso) => set({ planStartedAt: iso }),
+      toggleTask: (id) => set((s) => ({ taskDone: { ...s.taskDone, [id]: !s.taskDone[id] } })),
+      setTaskDate: (id, iso) => set((s) => {
+        const next = { ...s.taskDates };
+        if (iso) next[id] = iso; else delete next[id];
+        return { taskDates: next };
+      }),
+
+      // Loan Estimate comparer: the amount and term every quote must share, plus the quotes
+      quoteBasis: null, // { amount, years }
+      quotes: [],
+      setQuoteBasis: (basis) => set({ quoteBasis: basis }),
+      setQuotes: (quotes) => set({ quotes }),
     }),
     {
       name: 'amortization-prefs-v3',
-      version: 3,
+      version: 4,
+      // Only settings are saved by default. Answers, tasks, and quotes are saved only after "Save on this device".
+      partialize: (s) => {
+        if (s.saveOnDevice) return s;
+        const { planAnswers: _a, planTouched: _t, planSubmitted: _s, planStartedAt: _p, taskDone: _d, taskDates: _td, quoteBasis: _qb, quotes: _q, householdIncome: _hi, ...settings } = s;
+        return settings;
+      },
       // v1: Front Door became mortgage-only. Reset settings saved while on auto/personal/student loans.
       migrate: (state, version) => {
+        // v4: saving answers became opt-in. People who already had saved answers keep saving.
+        if (version >= 3) return { ...state, saveOnDevice: Boolean(state.planSubmitted || state.planTouched?.length) };
         // v3: the calculator switched from 50 US cities to Orange County cities.
         const ocCity = (id) => (OC_CITY_IDS.has(id) ? id : 'santa-ana');
-        if (version >= 2) return { ...state, selectedCityId: ocCity(state.selectedCityId) };
+        if (version >= 2) return { ...state, selectedCityId: ocCity(state.selectedCityId), saveOnDevice: true };
         if (version >= 1) {
           // v2: free-form DTI (often 28%) replaced by a 30–35% housing-payment slider
           const { dtiRatio: _dti, ...v1 } = state;
-          return { ...v1, housingRatio: 30, selectedCityId: ocCity(v1.selectedCityId) };
+          return { ...v1, housingRatio: 30, selectedCityId: ocCity(v1.selectedCityId), saveOnDevice: true };
         }
         const wasOtherLoan = state.loanProductId && state.loanProductId !== 'home';
         const { loanProductId: _old, dtiRatio: _dti, ...rest } = state;
@@ -85,6 +115,7 @@ export const useStore = create(
           downPaymentPercent: wasOtherLoan ? 3.5 : rest.downPaymentPercent,
           housingRatio: 30,
           selectedCityId: ocCity(rest.selectedCityId),
+          saveOnDevice: true,
         };
       },
     }

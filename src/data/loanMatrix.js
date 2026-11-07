@@ -288,7 +288,7 @@ export function loanFit(loan, a) {
   if (bkYears < r.bk) { worse('no'); notes.push(`Wait ${r.bk} yrs after bankruptcy.`); }
   if (fcYears < r.fc) { worse('no'); notes.push(`Wait ${r.fc} yrs after foreclosure.`); }
   if (a.latePayments || a.collections) { worse('maybe'); notes.push('Recent late payments or collections: lender will look closely.'); }
-  if (r.firstTime && a.ownedRecently) { worse('no'); notes.push('First-time buyers only.'); }
+  if (r.firstTime && a.ownedRecently === true) { worse('no'); notes.push('First-time buyers only.'); }
   if (r.incomeMax) {
     const cat = getIncomeCategory(a.income, a.householdSize, a.county);
     if (RANK[cat.id] > RANK[r.incomeMax]) { worse('no'); notes.push('Income is over the limit.'); }

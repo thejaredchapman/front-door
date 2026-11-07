@@ -57,3 +57,36 @@ export function Check({ checked, onChange, children }) {
     </label>
   );
 }
+
+/** Money box that may be left blank. Blank is stored as -1; 0 is a real answer. */
+export function OptionalMoney({ id, value, onChange, step = 50 }) {
+  return (
+    <div className="relative max-w-xs">
+      <span className="absolute start-3 top-1/2 -translate-y-1/2 text-muted num">$</span>
+      <input
+        id={id} type="number" inputMode="numeric" min={0} step={step}
+        value={value < 0 ? '' : value}
+        onChange={(e) => onChange(e.target.value === '' ? -1 : Math.max(0, Number(e.target.value)))}
+        className="field !ps-7"
+      />
+    </div>
+  );
+}
+
+/** A small labeled number field (percent, dollars) for the assumptions drawer. */
+export function SmallNumber({ id, label, value, onChange, min = 0, max = 10000000, step = 1, suffix }) {
+  const t = useT();
+  return (
+    <div>
+      <label htmlFor={id} className="field-label">{t(label)}</label>
+      <div className="relative">
+        <input
+          id={id} type="number" inputMode="decimal" min={min} max={max} step={step} value={value}
+          onChange={(e) => { const v = Number(e.target.value); if (e.target.value !== '' && Number.isFinite(v)) onChange(Math.min(max, Math.max(min, v))); }}
+          className="field"
+        />
+        {suffix && <span className="absolute end-3 top-1/2 -translate-y-1/2 text-muted num">{suffix}</span>}
+      </div>
+    </div>
+  );
+}

@@ -14,7 +14,10 @@
     "verify:docs": "node scripts/verify-docs.mjs",
     "video:shots": "node scripts/video-shots.mjs",
     "video:voice": "node scripts/voiceover.mjs",
-    "video:build": "node scripts/make-video.mjs"
+    "video:build": "node scripts/make-video.mjs",
+    "banner": "node scripts/banner.mjs",
+    "cost-report": "node scripts/cost-report.mjs",
+    "rag:build": "node scripts/build-rag.mjs"
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.1.18",

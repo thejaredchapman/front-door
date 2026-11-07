@@ -145,7 +145,7 @@ export function buildEmails(a, results, categoryLabel) {
   const fits = (id) => results.some((r) => r.id === id && r.fit !== 'notYet');
   const county = a.county || 'Orange';
   const isOC = county === 'Orange';
-  const who = `I'm a ${a.ownedRecently ? '' : 'first-time '}homebuyer with a household of ${a.householdSize} in ${county} County (income group: ${categoryLabel}).`;
+  const who = `I'm a ${a.ownedRecently === false ? 'first-time ' : ''}homebuyer with a household of ${a.householdSize} in ${county} County (income group: ${categoryLabel}).`;
   const sign = '\n\nThank you,\n[Your name]\n[Your phone]';
   const emails = [
     {
@@ -175,7 +175,7 @@ export function buildEmails(a, results, categoryLabel) {
       anaheim: { org: 'City of Anaheim Housing', link: 'https://housingportal.anaheim.net', phone: '' },
       irvine: { org: 'City of Irvine, Affordable Housing', link: 'https://cityofirvine.gov/affordable-housing', phone: '' },
     }[a.city] || (MAP_OK(a.city)
-      ? { org: 'Affordable Housing Clearinghouse (County Mortgage Assistance Program)', link: 'https://housing.oc.gov/housing-development', phone: '949-859-9255' }
+      ? { org: 'County of Orange Mortgage Assistance Program (administered by BKF Engineers)', link: 'https://housing.oc.gov/housing-development/homeowner-programs' }
       : { org: 'Your city\'s housing office', link: '', phone: '' }));
     emails.push({
       id: 'city', to: '', ...city,

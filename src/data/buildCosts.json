@@ -1,0 +1,203 @@
+{
+  "generatedAt": "2026-11-07T22:07:22.607Z",
+  "pricing": {
+    "source": "https://platform.claude.com/docs/en/about-claude/pricing",
+    "checked": "2026-11-07",
+    "prices": {
+      "claude-opus-5-5": {
+        "input": 4,
+        "cacheWrite5m": 5,
+        "cacheWrite1h": 8,
+        "cacheRead": 0.2,
+        "output": 20
+      },
+      "claude-haiku-5-5": {
+        "input": 0.1,
+        "cacheWrite5m": 0.125,
+        "cacheWrite1h": 0.2,
+        "cacheRead": 0.01,
+        "output": 0.5,
+        "over100k": {
+          "input": 0.5,
+          "cacheWrite5m": 0.625,
+          "cacheWrite1h": 1,
+          "cacheRead": 0.05,
+          "output": 2.5
+        }
+      }
+    }
+  },
+  "claudeCode": {
+    "model": "Claude Opus 5.5",
+    "note": "Pay-as-you-go API list price for the tokens actually used. On a Claude subscription, the amount billed is the plan fee instead.",
+    "totals": {
+      "calls": 579,
+      "input": 1268,
+      "output": 978890,
+      "cacheWrite": 3609731,
+      "cacheRead": 201901254,
+      "usd": 78.0118
+    },
+    "parts": [
+      {
+        "label": "Main build session (design, code, tests, data checks)",
+        "kind": "main",
+        "calls": 404,
+        "input": 918,
+        "output": 805567,
+        "cacheWrite": 2741918,
+        "cacheRead": 188108633,
+        "usd": 67.4463,
+        "first": "2026-11-07T19:00:27.925Z",
+        "last": "2026-11-07T22:07:11.264Z"
+      },
+      {
+        "label": "Read RentCast listings API docs",
+        "kind": "web-fetch",
+        "calls": 4,
+        "input": 8,
+        "output": 4041,
+        "cacheWrite": 52948,
+        "cacheRead": 74436,
+        "usd": 0.3605,
+        "first": "2026-11-07T21:37:24.386Z",
+        "last": "2026-11-07T21:38:07.868Z"
+      },
+      {
+        "label": "Verify OC program numbers",
+        "kind": "research",
+        "calls": 30,
+        "input": 60,
+        "output": 9964,
+        "cacheWrite": 60658,
+        "cacheRead": 1380030,
+        "usd": 0.7788,
+        "first": "2026-11-07T21:42:21.975Z",
+        "last": "2026-11-07T21:45:31.826Z"
+      },
+      {
+        "label": "Research low-income homebuyer programs",
+        "kind": "research",
+        "calls": 26,
+        "input": 52,
+        "output": 26558,
+        "cacheWrite": 151390,
+        "cacheRead": 2263608,
+        "usd": 1.741,
+        "first": "2026-11-07T19:01:09.781Z",
+        "last": "2026-11-07T19:08:06.709Z"
+      },
+      {
+        "label": "Fetch Anthropic API pricing",
+        "kind": "web-fetch",
+        "calls": 3,
+        "input": 6,
+        "output": 1627,
+        "cacheWrite": 18047,
+        "cacheRead": 9665,
+        "usd": 0.1247,
+        "first": "2026-11-07T21:55:30.996Z",
+        "last": "2026-11-07T21:55:48.911Z"
+      },
+      {
+        "label": "Research new California housing laws",
+        "kind": "research",
+        "calls": 33,
+        "input": 66,
+        "output": 46451,
+        "cacheWrite": 171831,
+        "cacheRead": 3218998,
+        "usd": 2.4322,
+        "first": "2026-11-07T20:31:23.822Z",
+        "last": "2026-11-07T20:42:18.884Z"
+      },
+      {
+        "label": "Read ElevenLabs voice design docs",
+        "kind": "web-fetch",
+        "calls": 6,
+        "input": 12,
+        "output": 5861,
+        "cacheWrite": 74908,
+        "cacheRead": 208621,
+        "usd": 0.5335,
+        "first": "2026-11-07T21:37:23.919Z",
+        "last": "2026-11-07T21:38:23.439Z"
+      },
+      {
+        "label": "Research down payment subsidies",
+        "kind": "research",
+        "calls": 45,
+        "input": 90,
+        "output": 45598,
+        "cacheWrite": 186045,
+        "cacheRead": 4668099,
+        "usd": 2.7762,
+        "first": "2026-11-07T20:07:06.271Z",
+        "last": "2026-11-07T20:18:11.153Z"
+      },
+      {
+        "label": "Research cheapest mortgage lenders",
+        "kind": "research",
+        "calls": 26,
+        "input": 52,
+        "output": 32105,
+        "cacheWrite": 130713,
+        "cacheRead": 1964726,
+        "usd": 1.6888,
+        "first": "2026-11-07T20:07:06.882Z",
+        "last": "2026-11-07T20:17:22.215Z"
+      },
+      {
+        "label": "Fetch Habitat brand colors",
+        "kind": "web-fetch",
+        "calls": 2,
+        "input": 4,
+        "output": 1118,
+        "cacheWrite": 21273,
+        "cacheRead": 4438,
+        "usd": 0.1296,
+        "first": "2026-11-07T21:04:01.536Z",
+        "last": "2026-11-07T21:04:14.654Z"
+      }
+    ]
+  },
+  "anthropicApi": [
+    {
+      "label": "Key check (one tiny test message)",
+      "file": "docs/api-check-log.jsonl",
+      "calls": 1,
+      "input": 23,
+      "output": 9,
+      "usd": 0.000007
+    },
+    {
+      "label": "Translation script (npm run translate)",
+      "file": "docs/translation-log.jsonl",
+      "calls": 0,
+      "input": 0,
+      "output": 0,
+      "usd": 0
+    },
+    {
+      "label": "Doorie \"Summarize with AI\" (local testing)",
+      "file": "docs/rag-ask-log.jsonl",
+      "calls": 4,
+      "input": 6066,
+      "output": 536,
+      "usd": 0.000875
+    },
+    {
+      "label": "Daily news check (npm run daily-check)",
+      "file": "docs/daily-check-log.jsonl",
+      "calls": 0,
+      "input": 0,
+      "output": 0,
+      "usd": 0
+    }
+  ],
+  "elevenlabs": {
+    "runs": 0,
+    "characters": 0,
+    "note": "Not used yet: no valid ElevenLabs key has been added, so no audio was made."
+  }
+}

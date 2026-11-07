@@ -43,10 +43,35 @@ Built with Claude Code (model: Claude Opus 5.5) on 2026-11-07.
 | Design + implementation of the guide, data files, gap calculator | Main session | included in session total |
 | Verification: lint, build, math checks, server-side render of both views | Main session | included in session total |
 
-**Dollar totals:** the assistant cannot read its own billing. For the exact session cost, run `/cost` in Claude Code (or check the Anthropic Console usage page) and paste the number here:
+**Actual cost per service** (from `npm run cost-report`, which writes `src/data/buildCosts.json`; also shown on *How this was built* in the app):
 
-- Session total (from `/cost`): _fill in_
-- Research subagent share: included in the session total above
+| Service | Actual usage | Cost |
+| --- | --- | --- |
+| Claude Code (Claude Opus 5.5) | 549 model calls, 931,832 output tokens, 192,628,703 cache-read tokens | **$74.78** (API list price) |
+| Anthropic API (Claude Haiku 5.5) | 1 key check (23 in / 9 out tokens); 0 translation calls; 0 daily-check calls | $0.000007 |
+| ElevenLabs | 0 runs (no valid ElevenLabs key yet) | $0 |
+| RentCast | not connected | $0 |
+| Google Maps Platform | not connected | $0 |
+| Vercel | 3 production deploys, `/api/rates` function | $0 extra (existing Pro team plan) |
+| GitHub | public repo, 0 Actions runs | $0 |
+| Public data (Freddie Mac, HCD, FHFA, CalHFA, lender pages, Open-Meteo, Google Fonts) | | $0 |
+
+Claude Code list prices for Opus 5.5 (https://platform.claude.com/docs/en/about-claude/pricing, checked 2026-11-07): $4 per million input tokens, $5 per million 5-minute cache writes, $0.20 per million cache reads, $20 per million output. This is the pay-as-you-go price. On a Claude subscription, the bill is the plan fee instead.
+
+Claude Code by part of the build:
+
+| Part | Model calls | Output tokens | Cache-read tokens | Cost |
+| --- | --- | --- | --- | --- |
+| Main build session (design, code, tests, data checks) | 374 | 758,509 | 178,836,082 | $64.21 |
+| Research down payment subsidies | 45 | 45,598 | 4,668,099 | $2.78 |
+| Research new California housing laws | 33 | 46,451 | 3,218,998 | $2.43 |
+| Research low-income homebuyer programs | 26 | 26,558 | 2,263,608 | $1.74 |
+| Research cheapest mortgage lenders | 26 | 32,105 | 1,964,726 | $1.69 |
+| Verify OC program numbers | 30 | 9,964 | 1,380,030 | $0.78 |
+| Read ElevenLabs voice design docs | 6 | 5,861 | 208,621 | $0.53 |
+| Read RentCast listings API docs | 4 | 4,041 | 74,436 | $0.36 |
+| Fetch Habitat brand colors | 2 | 1,118 | 4,438 | $0.13 |
+| Fetch Anthropic API pricing | 3 | 1,627 | 9,665 | $0.12 |
 
 ## 3. How it was built (steps)
 
@@ -181,3 +206,53 @@ Built with Claude Code (model: Claude Opus 5.5) on 2026-11-07.
 ## 18. Known gaps to verify before launch
 
 OC MAP open/closed · Anaheim amount/status · Santa Ana 2026 terms · OC MCC credit rate · CalHFA OC income limits ($274K / $219K from a secondary source) · any GNND listings in OC · next Dream For All round · Prop 1/37 certification and rollout · Habitat OC's current-project income band.
+
+## 19. Home goal, program what-ifs, quote comparer, plan calendar, live rates (2026-11-07)
+
+The ideas came from an outside spec ("Open Door OC"). Everything here is written in Front Door's own words and design.
+
+- **Check-in:** new step 2, *Your goal*. Added household size 9+, a "Not sure" answer for first-time buyer, and military follow-up questions (connection, prior VA use, funding-fee exemption).
+- **Math (`src/utils/homeGoal.js`, constants in `src/data/goalRules.js`):**
+  - Payment cap = min(30–35% of income, 36% minus other debts, your comfort number).
+  - Cash = down payment + 3% closing + reserve − assistance.
+  - The price is found by 64-step bisection and rounded down to $1,000.
+  - Savings timeline status codes: ready, no-goal, over-budget, no-saving, beyond-horizon, program-limit.
+  - VA and MyHome what-ifs run one at a time, never stacked.
+  - The report's total-debt check changed from 43% to 36% to match.
+- **Privacy:** saving answers is now opt-in (`saveOnDevice`). Store v4 uses `partialize` to drop answers, tasks, and quotes unless saving is on. Migration keeps saving on for people who already had answers stored.
+- **Plan calendar (`src/data/planTasks.js`, `PlanCalendar.jsx`):** 12 base tasks plus program tasks. Due-date priority: your own date, then a compressed schedule when the target is under 180 days away, then foundation tasks from today. The .ics export is all-day events for unfinished tasks only.
+- **Loan Estimate comparer (`QuoteComparer.jsx`):**
+  - Up to 12 quotes. Quotes made for a different amount or term are set aside.
+  - Upfront = points + fees − credits.
+  - 5-year cost = interest over 60 payments + upfront + mortgage insurance.
+  - APR is shown exactly as the lender gives it.
+- **Live rates (`api/rates.js`, `api/_lib/rates.js`):** a Vercel function plus a Vite dev middleware.
+  - Parsers were tested on saved pages: OCCU 2 rows, SchoolsFirst 24, Sammamish 9.
+  - Stale (more than 7 days old) and broken pages return status `stale` or `unavailable`, never old numbers.
+  - All three sites' robots.txt files allow these pages.
+- **Data correction:** the County MAP is now $120K (low income) / $80K (moderate income), administered by BKF Engineers. A subagent verified it on 2026-11-07 along with the CalHFA $274K limit, 2026 loan limits, VA fees, DFA closed, and Section 184 for CA.
+- **Home page:** "Good news first" cards, then a "How Front Door is different" table.
+- **README banner:** `docs/banner/` + `npm run banner`.
+- **Cost:** $0 per use, since everything runs in the browser. `/api/rates` makes 3 outbound requests at most every 5 minutes (CDN cached). The verification subagent was a one-time research run.
+
+## 20. Official document library (RAG), team credits, "How we solved it", stage colors (2026-11-07)
+
+- **Document library:** `scripts/build-rag.mjs` (`npm run rag:build`) reads the curated folder `~/Downloads/rag`: 60 official PDFs plus `INDEX.csv` with source URLs. It extracts each page with `pdftotext` and packs the text into passages of about 140 words (never more than 220). Output is `public/rag/library.json`: 688 passages, 475 KB, loaded only when needed.
+- **Search** (`src/utils/ragSearch.js`): BM25 in the browser.
+  - Document titles are weighted twice, and a document can contribute at most 2 passages.
+  - Doorie's multilingual keywords feed in, along with plain-language expansions (DPA, PMI, MCC, MAP, citizenship, and so on).
+  - Shown in Doorie under each answer and on the new `#/learn/documents` page, with page numbers and official links (`#page=N` for official PDFs).
+- **Summarize with AI** (`api/ask.js`): opt-in only. The browser sends just the question (300 characters max) and up to 5 passage numbers; the server looks up the passage text itself.
+  - Claude Haiku 5.5 answers from those passages only, with [n] citations, in the question's language. Off-topic questions get OFFTOPIC.
+  - Passages are treated as data, not instructions. Tested: an "ignore your rules" question was refused.
+  - Limits: 20 per hour per IP, an in-memory cache, and logs record usage only, never the question.
+  - Dev testing cost: 3 calls, about $0.0003 each (`docs/rag-ask-log.jsonl`).
+- **Team:** Jared Chapman, Leia Lu, Derek Thompson, Premang Jha, Nastasja Terry. Listed in the footer, How this was built, How we solved it, README, handout, and slides.
+- **How we solved this problem** (`#/learn/solved`): the problem, six steps of our approach, the result, and the team.
+- **Color-coded plan stages:**
+  - Foundation: blue (#0099cc)
+  - Loan: green (#3aa047)
+  - Home and offer: orange (#e55d25)
+  - Close: navy (#002f6c)
+
+  The colors appear on the stage cards, task bars, checkboxes, calendar chips, and a legend with per-stage progress.

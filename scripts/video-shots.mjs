@@ -53,7 +53,7 @@ try {
   // App screenshots (1600×1000)
   await viewport(1600, 1000);
   await go(`${APP}/#/`);
-  await setState({ lang: 'en', eli5: false, planSubmitted: true, planTouched: ['income', 'credit'] });
+  await setState({ lang: 'en', eli5: false, saveOnDevice: true, planSubmitted: true, planTouched: ['income', 'credit'] });
   await send('Page.reload'); await sleep(2500);
   await js('window.scrollTo(0,0)'); await sleep(300);
   await shot(join(SHOTS, 'a.png'));

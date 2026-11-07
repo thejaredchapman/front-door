@@ -36,6 +36,11 @@ if (!KEY) {
   console.error('Missing ELEVENLABS_API_KEY. Add a line ELEVENLABS_API_KEY=your-key to .env.local (git ignores it), then run again.');
   process.exit(1);
 }
+// Safety: never send another provider's key to ElevenLabs.
+if (/^sk-ant-/.test(KEY)) {
+  console.error('ELEVENLABS_API_KEY looks like an Anthropic key (starts with "sk-ant-"). Not sending it to ElevenLabs.\nCreate an ElevenLabs key at elevenlabs.io → Developers → API Keys (it starts with "sk_") and put it in .env.local.');
+  process.exit(1);
+}
 
 const res = await fetch(`https://api.elevenlabs.io/v1/text-to-speech/${VOICE}?output_format=mp3_44100_128`, {
   method: 'POST',

@@ -66,7 +66,7 @@ export default function PersonalReport({ embedded = false }) {
           ['Debt-to-income', `${Math.round(r.dti * 100)}%`],
           ['Savings', formatCurrency(a.savings)],
           ['Credit', r.band.label],
-          ['First-time buyer', a.ownedRecently ? 'No' : 'Yes'],
+          ['First-time buyer', a.ownedRecently === 'unsure' ? 'Not sure' : a.ownedRecently ? 'No' : 'Yes'],
           ['Job', job],
           ['Groups', groups.length ? groups.join(', ') : 'None yet'],
         ].map(([k, v]) => (

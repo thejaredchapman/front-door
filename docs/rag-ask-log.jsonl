@@ -1,0 +1,5 @@
+{"at":"2026-11-07T22:04:47.124Z","model":"claude-haiku-5-5","input_tokens":1581,"output_tokens":248,"cached":false,"costUsd":0.0002821}
+{"at":"2026-11-07T22:04:47.870Z","model":"claude-haiku-5-5","input_tokens":1064,"output_tokens":40,"cached":false,"costUsd":0.0001264}
+{"at":"2026-11-07T22:04:48.598Z","model":"claude-haiku-5-5","input_tokens":1241,"output_tokens":10,"cached":false,"costUsd":0.00012910000000000002}
+{"at":"2026-11-07T22:06:55.256Z","model":"claude-haiku-5-5","input_tokens":2180,"output_tokens":238,"cached":false,"costUsd":0.000337}
+{"at":"2026-11-07T22:15:02.268Z","model":"claude-haiku-5-5","input_tokens":676,"output_tokens":260,"cached":false,"costUsd":0.00019760000000000003}

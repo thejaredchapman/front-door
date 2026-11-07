@@ -4,6 +4,7 @@ import Explain from '../funding/Explain';
 import { START_FILTERS } from '../../data/plans';
 import { formatCurrency } from '../../utils/formatters';
 import HousingRatioSlider from '../HousingRatioSlider';
+import HomeGoal from './HomeGoal';
 
 const FIT = {
   good: { label: 'Good fit', className: 'badge-good' },
@@ -78,7 +79,7 @@ function PlanCard({ p }) {
   );
 }
 
-export default function ResultsPlans({ r }) {
+export default function ResultsPlans({ r, a }) {
   const t = useT();
   const [filter, setFilter] = useState('all');
   const [showAll, setShowAll] = useState(false);
@@ -93,9 +94,10 @@ export default function ResultsPlans({ r }) {
       <div className="stat-row">
         <div><p className="field-label">{t('Your income group')}</p><p className="display stat-v text-[var(--accent)]">{t(r.ctx.category.label)}</p></div>
         <div><p className="field-label">{t('Affordable monthly payment')}</p><p className="display stat-v">{formatCurrency(r.now.budget)}</p></div>
-        <div><p className="field-label">{t('Price you can afford')}</p><p className="display stat-v">{formatCurrency(r.now.price)}</p></div>
+        <div><p className="field-label">{t('Price your income supports')}</p><p className="display stat-v">{formatCurrency(r.now.price)}</p></div>
       </div>
       <div className="card mt-4"><HousingRatioSlider income={r.ctx.monthlyIncome * 12} id="ratio-results" compact /></div>
+      <HomeGoal a={a} />
       <p className="lede my-6">
         {goodCount > 0
           ? t('{n} plans fit you right now. Most people combine 2–3.', { n: goodCount })

@@ -5,10 +5,12 @@ import { navigate } from '../../router';
 import { OCCUPATIONS } from '../../data/programs';
 import {
   CREDIT_BANDS, BANKRUPTCY_OPTIONS, FORECLOSURE_OPTIONS, CITY_OPTIONS, GROUPS, PAY_TYPES, ID_TYPES,
-  DEFAULT_ANSWERS, QUIZ_STEPS, YES_NO,
+  DEFAULT_ANSWERS, QUIZ_STEPS, YES_NO, YES_NO_UNSURE_BOOL,
 } from '../../data/plans';
+import { TARGET_MONTHS, DOWN_OPTIONS, PROPERTY_TYPES, MILITARY_ROLES, VA_USE, YES_NO_UNSURE } from '../../data/goalRules';
+import SaveToggle from '../SaveToggle';
 import { matchJob } from '../../data/employers';
-import { Q, Choices, Money, Check } from './quizParts';
+import { Q, Choices, Money, Check, OptionalMoney, SmallNumber } from './quizParts';
 import CountySelect from '../CountySelect';
 import PageHeader from '../shell/PageHeader';
 
@@ -25,6 +27,7 @@ export default function Quiz({ step = 1 }) {
   const set = (k) => (v) => setPlanAnswer(k, v);
 
   const s = Math.min(Math.max(step, 1), QUIZ_STEPS.length);
+  const sid = QUIZ_STEPS[s - 1].id;
   const allQuestions = QUIZ_STEPS.flatMap((st) => st.questions);
   const answered = allQuestions.map((keys) => keys.some((k) => touched.includes(k)));
   const answeredCount = answered.filter(Boolean).length;
@@ -64,10 +67,10 @@ export default function Quiz({ step = 1 }) {
       </ol>
 
       <div className="space-y-5">
-        {s === 1 && (
+        {sid === 'money' && (
           <>
             <Q n={next()} title="How many people live in your home?">
-              <Choices name="size" value={a.householdSize} onChange={set('householdSize')} options={[1, 2, 3, 4, 5, 6, 7, 8].map((x) => ({ id: x, label: String(x) }))} />
+              <Choices name="size" value={a.householdSize} onChange={set('householdSize')} options={[1, 2, 3, 4, 5, 6, 7, 8, 9].map((x) => ({ id: x, label: x === 9 ? '9+' : String(x) }))} />
             </Q>
             <Q n={next()} title="What does your household earn in a year, before taxes?" help="Add up everyone's pay. Use your W-2s or pay stubs. 'Before taxes' is called gross income.">
               <Money id="q-income" value={a.income} onChange={set('income')} step={1000} />
@@ -81,7 +84,38 @@ export default function Quiz({ step = 1 }) {
           </>
         )}
 
-        {s === 2 && (
+        {sid === 'goal' && (
+          <>
+            <Q n={next()} title="How much can you put away each month for a home?" help="Even a small amount counts. We use it to show when you could be ready.">
+              <Money id="q-monthly" value={a.monthlySaving} onChange={set('monthlySaving')} step={25} />
+            </Q>
+            <Q n={next()} title="How much do you want to keep in the bank after you buy?" help="A safety cushion for surprises, like a car repair or a broken water heater. Many counselors suggest 2–3 months of house payments.">
+              <Money id="q-reserve" value={a.reserve} onChange={set('reserve')} step={500} />
+            </Q>
+            <Q n={next()} title="When would you like to buy?">
+              <Choices name="months" value={a.targetMonths} onChange={set('targetMonths')} options={TARGET_MONTHS.map((m) => ({ id: m, label: t('{n} months', { n: m }) }))} />
+            </Q>
+            <Q n={next()} title="What monthly home cost feels comfortable to you? (optional)" help="Leave it blank if you're not sure. If you type a number, we never plan above it. Zero means you don't want any housing cost right now.">
+              <OptionalMoney id="q-comfort" value={a.comfort} onChange={set('comfort')} />
+            </Q>
+            <Q n={next()} title="What kind of home, and how much down?" help="Many first-time buyers put 3–5% down. Programs can help with this part.">
+              <Choices name="ptype" value={a.propertyType} onChange={set('propertyType')} options={PROPERTY_TYPES} />
+              <p className="field-label mt-4">{t('Planned down payment')}</p>
+              <Choices name="down" value={a.downPct} onChange={set('downPct')} options={DOWN_OPTIONS.map((d) => ({ id: d, label: `${d}%` }))} />
+              <details className="mt-4">
+                <summary className="btn-link cursor-pointer">{t('Change the cost assumptions (insurance, HOA, interest rate)')}</summary>
+                <div className="grid sm:grid-cols-3 gap-4 mt-3">
+                  <SmallNumber id="q-ins" label="Home insurance per month" value={a.insurance} onChange={set('insurance')} step={10} suffix="$" />
+                  <SmallNumber id="q-hoa" label="HOA dues per month" value={a.hoa} onChange={set('hoa')} step={10} suffix="$" />
+                  <SmallNumber id="q-rate" label="Interest rate" value={a.rate} onChange={set('rate')} max={25} step={0.125} suffix="%" />
+                </div>
+                <p className="text-sm text-muted mt-2">{t('The rate starts at this week\'s national average. Use a real quote when you have one.')}</p>
+              </details>
+            </Q>
+          </>
+        )}
+
+        {sid === 'credit' && (
           <>
             <Q n={next()} title="What is your credit score?" help="Not sure? Get free reports at annualcreditreport.com. Many bank apps show your score free. Checking it yourself does NOT lower it.">
               <Choices name="credit" value={a.credit} onChange={set('credit')} options={CREDIT_BANDS} />
@@ -100,10 +134,10 @@ export default function Quiz({ step = 1 }) {
           </>
         )}
 
-        {s === 3 && (
+        {sid === 'work' && (
           <>
             <Q n={next()} title="Have you owned a home in the last 3 years?" help="If not, you count as a first-time buyer, even if you owned one long ago.">
-              <Choices name="owned" value={a.ownedRecently} onChange={set('ownedRecently')} options={YES_NO} />
+              <Choices name="owned" value={a.ownedRecently} onChange={set('ownedRecently')} options={YES_NO_UNSURE_BOOL} />
               <p className="mt-4 mb-2">{t('Did your parents own a home?')}</p>
               <Choices name="parents" value={a.parentsOwned} onChange={set('parentsOwned')} options={YES_NO} />
             </Q>
@@ -139,6 +173,15 @@ export default function Quiz({ step = 1 }) {
                 ))}
               </div>
               <button type="button" onClick={() => { set('groups')([]); markTouched('q11'); }} className={`chip mt-2 ${touched.includes('q11') && a.groups.length === 0 ? 'chip-on' : ''}`}>{t('None of these')}</button>
+              {a.groups.includes('veteran') && (
+                <div className="mt-5 p-4 rounded-2xl bg-paper border border-rule space-y-4">
+                  <p className="font-semibold">{t('A few military questions (for VA loans)')}</p>
+                  <div><p className="field-label">{t('Your connection to the military')}</p><Choices name="mrole" value={a.militaryRole} onChange={set('militaryRole')} options={MILITARY_ROLES} /></div>
+                  <div><p className="field-label">{t('Have you used a VA home loan before?')}</p><Choices name="vause" value={a.vaUse} onChange={set('vaUse')} options={VA_USE} /></div>
+                  <div><p className="field-label">{t('Has the VA said you don\'t pay the funding fee?')}</p><Choices name="vaex" value={a.vaExempt} onChange={set('vaExempt')} options={YES_NO_UNSURE} /></div>
+                  <p className="text-sm text-muted">{t('We never ask about medical details. Your VA Certificate of Eligibility shows the funding fee answer.')}</p>
+                </div>
+              )}
             </Q>
             <Q n={next()} title="Does anyone in your home have a disability?" help="Disability benefits can count as income, and there are programs for saving and for making a home accessible.">
               <Choices name="disability" value={a.disability} onChange={set('disability')} options={[...YES_NO]} />
@@ -146,7 +189,7 @@ export default function Quiz({ step = 1 }) {
           </>
         )}
 
-        {s === 4 && (
+        {sid === 'where' && (
           <>
             <Q n={next()} title="Where in California do you want to live?" help="Income limits and local programs depend on your county.">
               <div className="max-w-sm mb-3"><CountySelect id="q-county" value={a.county} onChange={set('county')} label={t('County')} /></div>
@@ -177,6 +220,8 @@ export default function Quiz({ step = 1 }) {
           </>
         )}
       </div>
+
+      <div className="mt-6"><SaveToggle /></div>
 
       {/* Progress + step navigation */}
       <div className="mt-8 q-card">

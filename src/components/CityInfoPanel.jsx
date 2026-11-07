@@ -42,7 +42,7 @@ export default function CityInfoPanel({ city, liveWeather, isEnriching }) {
                 : <span className="badge badge-no">{t('Not available here')}</span>}
               <p className="text-sm mt-1">
                 {city.mapEligible
-                  ? t(map?.gives || 'Up to $80,000 as a deferred second loan.')
+                  ? t(map?.gives || 'Up to $120,000 (low income) or $80,000 (moderate income) as a deferred second loan.')
                   : t('The county loan only covers unincorporated areas and 14 smaller cities. Use your city\'s own program or statewide help instead.')}
               </p>
             </li>

@@ -13,10 +13,10 @@ import HousingRatioSlider from '../HousingRatioSlider';
 const TAX = 1.1;
 const INS = 1800;
 
-/** Highest price a household can afford: `ratio`% of income for housing (30–35%), 43% for all debts, savings minus ~3% closing costs as the down payment. */
+/** Highest price a household can afford: `ratio`% of income for housing (30–35%), 36% for all debts, savings minus ~3% closing costs as the down payment. */
 function affordable(b, ratio) {
   const monthly = b.income / 12;
-  const budget = Math.max(0, Math.min(monthly * (ratio / 100), monthly * 0.43 - b.debts));
+  const budget = Math.max(0, Math.min(monthly * (ratio / 100), monthly * 0.36 - b.debts));
   let price = 300000;
   let downPct = 0;
   for (let i = 0; i < 40; i += 1) {

@@ -18,6 +18,8 @@ import LenderFinder from './LenderFinder';
 import FiveBuyers from './FiveBuyers';
 import LoanTypes from './LoanTypes';
 import LawsPage from './LawsPage';
+import HowWeSolved from './HowWeSolved';
+import DocumentLibrary from './DocumentLibrary';
 import AffordabilityToolkit from './AffordabilityToolkit';
 
 /**
@@ -62,6 +64,12 @@ export const TOPICS = [
   { id: 'laws', group: 'Go deeper', title: 'New California laws', summary: 'What helps or restricts buyers, 2024–2027.', Component: LawsPage, ownHeader: false,
     plain: 'California passes housing laws every year. Here are the ones that help people buy or keep a home, and the ones that add cost or limits, in plain words.',
     eli5: 'New rules can make buying a home easier or harder. Here they are, explained simply.' },
+  { id: 'documents', group: 'Find help', title: 'Search the official documents', summary: '60 official documents, with page-by-page answers.', Component: DocumentLibrary, ownHeader: false,
+    plain: 'Ask a question and see the exact passages from official program documents (CalHFA, County of Orange, cities, Habitat OC, HUD, VA, and more), with the page number and a link to the source. Searching happens on your device.',
+    eli5: 'Ask a question and we show you the right page from the official papers.' },
+  { id: 'solved', group: 'Go deeper', title: 'How we solved this problem', summary: 'The problem, our approach, and who built it.', Component: HowWeSolved, ownHeader: false,
+    plain: 'Orange County homes cost about 10 times what working families earn, and the help is scattered and confusing. Here is how Front Door tackles that, step by step.',
+    eli5: 'Why buying a home here is hard, and what we built to help.' },
   { id: 'sources', group: 'Go deeper', title: 'Sources', summary: 'Where every fact comes from.', Component: SourcesSection },
-  { id: 'about', group: 'Go deeper', title: 'How this was built', summary: 'Tools used and the cost of every call.', Component: BuildCostPanel },
+  { id: 'about', group: 'Go deeper', title: 'How this was built', summary: 'Tools used and what each service actually cost.', Component: BuildCostPanel },
 ];

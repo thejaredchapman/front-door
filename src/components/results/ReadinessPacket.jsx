@@ -80,7 +80,7 @@ export default function ReadinessPacket({ a, r }) {
         <div><dt>{t('Monthly debts')}</dt><dd>{formatCurrency(a.monthlyDebts)} ({Math.round(r.dti * 100)}%)</dd></div>
         <div><dt>{t('Savings')}</dt><dd>{formatCurrency(a.savings)}</dd></div>
         <div><dt>{t('Credit')}</dt><dd>{t(r.band.label)}</dd></div>
-        <div><dt>{t('First-time buyer')}</dt><dd>{a.ownedRecently ? t('No') : t('Yes')}</dd></div>
+        <div><dt>{t('First-time buyer')}</dt><dd>{a.ownedRecently === 'unsure' ? t('Not sure') : a.ownedRecently ? t('No') : t('Yes')}</dd></div>
       </dl>
 
       <h3 className="packet-h">{t('2. Programs I want to discuss')}</h3>

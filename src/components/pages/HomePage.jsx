@@ -19,6 +19,22 @@ const STEPS = [
   { title: 'Follow your plan', body: 'A calendar, emails to send, and a 12-month report.' },
 ];
 
+const GOOD_NEWS = [
+  { icon: '🎁', v: 'Up to $120,000', l: 'in down payment help from Orange County and Santa Ana programs for first-time buyers. You repay it later, not monthly.', href: '#/learn/programs' },
+  { icon: '🙌', v: '$0 down is possible', l: 'with a VA loan, or with CalHFA MyHome and ZIP covering the down payment and closing costs.', href: '#/learn/programs' },
+  { icon: '👨‍👩‍👧', v: 'Up to $148,850', l: 'is "low income" for a family of 4 in OC. That\'s good news: it unlocks most help.', href: '#/plan' },
+  { icon: '🤝', v: 'Free help', l: 'from HUD-approved counselors and homebuyer classes. Most programs require one, and it costs nothing.', href: '#/learn/steps' },
+];
+
+const DIFFERENT = [
+  { others: 'Show the most a bank will lend you', us: 'Starts from what your family can truly afford: 30–35% of income, plus taxes, insurance, and upkeep' },
+  { others: 'Want your phone number and send it to lenders', us: 'No sign-up, no Social Security number, and nothing sent to lenders. Answers stay on your device' },
+  { others: 'List programs without saying if they\'re open', us: 'Every OC program in one place, checked against official documents, with open, closed, and "call first" labels' },
+  { others: 'One answer for everyone', us: 'Help for your job and your situation: teachers, nurses, firefighters, veterans, ITIN, self-employed, and disability' },
+  { others: 'Stop at a number', us: 'A real plan: a "ready by" date, a checklist calendar, emails to send, a Loan Estimate comparer, and a report' },
+  { others: 'English only, full of jargon', us: 'Six languages, plus an "Explain it to me" button on every page' },
+];
+
 const FACTS = [
   { v: '10 : 1', l: 'OC home prices vs. income (4 : 1 is affordable)' },
   { v: '$148,850', l: '"Low income" limit for a family of 4 in OC, 2026' },
@@ -52,6 +68,20 @@ export default function HomePage() {
         </div>
       </section>
 
+      <section className="good-news rise" aria-labelledby="good-title">
+        <h2 id="good-title" className="display good-title"><span aria-hidden="true">☀️</span> {t('Good news first')}</h2>
+        <p className="lede mb-5">{t('Buying in Orange County is hard, but there is more help than most people think.')}</p>
+        <div className="good-grid">
+          {GOOD_NEWS.map((g) => (
+            <a key={g.v} href={g.href} className="good-card">
+              <span className="good-icon" aria-hidden="true">{g.icon}</span>
+              <span className="display good-v">{t(g.v)}</span>
+              <span className="good-l">{t(g.l)}</span>
+            </a>
+          ))}
+        </div>
+      </section>
+
       <section aria-label={t('Where to go')} className="doors">
         {DOORS.map((d, i) => (
           <a key={d.href} href={d.primary && submitted ? '#/results/plans' : d.href} className={`door ${d.primary ? 'door-primary' : ''} rise`} style={{ '--i': i + 1 }}>
@@ -66,6 +96,23 @@ export default function HomePage() {
       <p className="mt-5 text-center">
         <a href="#/start" className="btn-ghost">{t('Not sure where to begin? Start here')} →</a>
       </p>
+
+      <section className="home-different" aria-labelledby="diff-title">
+        <h2 id="diff-title" className="display text-3xl font-bold mb-1">{t('How Front Door is different')}</h2>
+        <p className="text-muted mb-5">{t('Built with Habitat for Humanity of Orange County values: affordable, honest, and for every family.')}</p>
+        <div className="diff-table" role="table" aria-label={t('How Front Door is different')}>
+          <div className="diff-row diff-head" role="row">
+            <span role="columnheader">{t('Most homebuying sites')}</span>
+            <span role="columnheader">{t('Front Door')}</span>
+          </div>
+          {DIFFERENT.map((d) => (
+            <div key={d.us} className="diff-row" role="row">
+              <span role="cell" className="diff-others"><span aria-hidden="true">✗ </span>{t(d.others)}</span>
+              <span role="cell" className="diff-us"><span aria-hidden="true">✓ </span>{t(d.us)}</span>
+            </div>
+          ))}
+        </div>
+      </section>
 
       <section className="home-how" aria-labelledby="how-title">
         <h2 id="how-title" className="kicker mb-5">{t('How it works')}</h2>

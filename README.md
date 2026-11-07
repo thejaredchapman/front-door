@@ -1,6 +1,10 @@
+<p align="center"><img src="docs/banner/front-door-banner.png" alt="Front Door: Hi! Let's find a home you can afford. Doorie the house mascot, with Free · No sign-up, Down payment help, Home goal and ready-by date, Live lender rates, 6 languages." width="100%"></p>
+
 # Front Door
 
 *Formerly LoanLens.* **Making homeownership affordable for working families**: see what you can afford and every way to make a home more affordable, in plain language, with Orange County first. Built for the Habitat for Humanity of Orange County hackathon (Lane 3 · Fund it). Uses Habitat's color palette with respect; not an official Habitat for Humanity site.
+
+**Built by:** Jared Chapman, Leia Lu, Derek Thompson, Premang Jha, and Nastasja Terry.
 
 **Present it:** [one-page handout](public/presentation/handout.html) · [slides](public/presentation/slides.html) (also served at `/presentation/` on the site)
 
@@ -10,7 +14,28 @@ Meet **Doorie** 🏡, the house mascot and chatbot: tap Doorie on any page to as
 
 Front Door is a client-side loan and affordability calculator. Pick a loan type, enter a price or your salary, and it shows the full monthly payment, how that payment splits between principal, interest, taxes and insurance, and a payment-by-payment amortization schedule. For homes, it also shows the city you'd be buying in, the jobs that pay enough to qualify, and a link to matching listings.
 
-There is no backend and no account. Your inputs are saved in your browser's local storage.
+There is no account. Everything is calculated in your browser. Check-in answers stay in memory unless you tick **Save my answers on this device**, which keeps them in local storage. The only server code is `/api/rates` (see below), which takes no input from you.
+
+## New in November 2026
+
+- **Good news first:** the home page opens with good news (up to $120,000 in down payment help, $0-down options, who counts as "low income", free counseling). A side-by-side table follows, showing how Front Door is different from typical homebuying sites.
+- **Your home goal and "ready by" date:** the check-in has a new *Your goal* step: monthly savings, the cushion to keep, when you want to buy, an optional comfortable payment, down payment, home type, and cost assumptions.
+  - Results show the price that fits both your budget and your cash by the target date. The monthly cost includes property tax, insurance, HOA, mortgage insurance, and 1% upkeep. Housing is 30–35% of income, and all debts stay under 36%.
+  - You also see the cash needed at closing, a savings slider, and a status: on track, over budget, not saving yet, or more than 10 years away.
+- **Program what-ifs:** the VA loan (funding fee 2.15%, 3.3%, or exempt) and CalHFA MyHome (3%, repayable) are modeled one at a time. Each shows the price change and how many months sooner you'd be ready. Status labels: *Potential match*, *More details needed*, *Not matched*. The checks expire 2027-02-05 and then fall back to "More details needed".
+- **Loan Estimate comparer** (Compare tab): up to 12 quotes on the same amount and term. It shows cash up front, the monthly payment, and the cost over the first 5 years.
+- **Plan calendar** (Timeline tab): 12 tasks in 4 stages, plus a task for each matched program. Dates count back from your target month, and you can tick tasks off or change their dates. There's a month view, and the `.ics` export includes unfinished tasks only.
+- **Rates lenders post today** (Where to borrow tab): `GET /api/rates` reads the published rate pages of Orange County's Credit Union, SchoolsFirst FCU, and Sammamish Mortgage.
+  - Safety limits: a fixed URL allowlist, no redirects, a 12-second timeout, a 1.5 MB cap, rates older than 7 days dropped, and a 5-minute CDN cache. No borrower data is sent.
+  - You can filter by points and loan type and sort by closeness to your situation. "Use this rate in my plan" updates your plan's rate.
+- **Data correction:** the County Mortgage Assistance Program now offers up to **$120,000 (low income) / $80,000 (moderate income)** and is administered by BKF Engineers (package revised 9-22-2026). See `docs/research/down-payment-subsidies.md`.
+- **README banner:** `docs/banner/banner.html` → `npm run banner`.
+- **Official document library (RAG):** `npm run rag:build` turns a folder of official PDFs (default `~/Downloads/rag`, with `INDEX.csv`) into `public/rag/library.json`: 60 documents and 688 page-cited passages.
+  - Doorie and `#/learn/documents` search the library **in the browser** (BM25, $0, private) and show passages with page numbers and links to the official source.
+  - An optional **Summarize with AI** button sends only the question and passage numbers to `POST /api/ask`. The server looks up the text, and Claude Haiku 5.5 answers from those passages only, with [n] citations, in the question's language. It costs about $0.0003 an answer and is limited to 20 per hour per IP.
+  - Needs `ANTHROPIC_API_KEY` as a Vercel environment variable.
+- **How we solved this problem** (`#/learn/solved`): the problem, six steps of our approach, the result, and the team.
+- **Actual costs per service** on *How this was built* (`npm run cost-report`).
 
 ## Path to Home: getting funded on a modest income
 

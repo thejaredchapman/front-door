@@ -1,5 +1,6 @@
 import { useMemo, useState } from 'react';
 import Explain from '../funding/Explain';
+import PlanCalendar from './PlanCalendar';
 import { buildSteps, schedule, addWeeks, buildIcs, buildEmails } from '../../data/timeline';
 
 const fmt = (d) => d.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
@@ -67,8 +68,12 @@ export default function TimelinePlanner({ answers, results, categoryLabel }) {
   };
 
   return (
-    <section className="mt-10" aria-labelledby="timeline-title">
-      <p className="kicker mb-2">Your calendar</p>
+    <section aria-labelledby="timeline-title">
+      <PlanCalendar answers={answers} results={results} />
+      <details className="mt-10 card">
+      <summary className="cursor-pointer font-semibold">How long does each step usually take? (standard vs. fast track)</summary>
+      <div className="mt-4">
+      <p className="kicker mb-2">Typical timeline</p>
       <h3 id="timeline-title" className="display text-3xl font-extrabold mb-2">My timeline</h3>
       <Explain
         className="text-sm max-w-3xl mb-4"
@@ -127,6 +132,9 @@ export default function TimelinePlanner({ answers, results, categoryLabel }) {
           eli5="You can finish sooner if you do several steps at once, like brushing your teeth while the bath fills up. Some things just take time, like waiting your turn in a line, so get in line first."
         />
       </div>
+
+      </div>
+      </details>
 
       <div className="mt-8">
         <h4 className="display text-2xl font-semibold mb-1">Emails to send</h4>

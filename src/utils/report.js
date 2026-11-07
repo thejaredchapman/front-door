@@ -8,11 +8,13 @@ import { getPercentOfAmi } from '../data/incomeLimits';
 import { buildSteps, schedule } from '../data/timeline';
 import { priceFromMonthlyBudget } from './affordableCost';
 import RATE_INFO from '../data/rate.json';
+import { GOAL } from '../data/goalRules';
+import { buildGoal } from './homeGoal';
 
 const RATE = RATE_INFO.value;
 
 function affordable(monthlyIncome, debts, rate = RATE, ratio = 30) {
-  const budget = Math.max(0, Math.min(monthlyIncome * (ratio / 100), monthlyIncome * 0.43 - debts));
+  const budget = Math.max(0, Math.min(monthlyIncome * (ratio / 100), monthlyIncome * (GOAL.backEnd / 100) - debts));
   const { price } = priceFromMonthlyBudget({
     monthlyBudget: budget, annualRate: rate, downPaymentPercent: 3.5, propertyTaxRate: 1.1, annualInsurance: 1800, annualMiRate: 0.55,
   });
@@ -84,8 +86,8 @@ export function buildReport(a, ratio = 30) {
   else gaps.push(`${Math.round(dti * 100)}% of your income goes to debt. Under 15% gives you more buying power.`);
   if (a.savings >= savingsTarget) strengths.push('Your savings cover a typical down payment share, closing costs, and a cushion.');
   else gaps.push(`You have ${Math.round((a.savings / Math.max(1, savingsTarget)) * 100)}% of a suggested $${savingsTarget.toLocaleString()} savings goal.`);
-  if (!a.ownedRecently) strengths.push('You count as a first-time buyer, which unlocks most assistance.');
-  if (!a.parentsOwned && !a.ownedRecently) strengths.push('As a first-generation buyer, you may qualify for Dream For All when it reopens.');
+  if (a.ownedRecently === false) strengths.push('You count as a first-time buyer, which unlocks most assistance.');
+  if (!a.parentsOwned && a.ownedRecently === false) strengths.push('As a first-generation buyer, you may qualify for Dream For All when it reopens.');
   if (good.length) strengths.push(`${good.length} plan${good.length === 1 ? '' : 's'} already fit${good.length === 1 ? 's' : ''} you.`);
   if (a.groups.some((g) => ['schoolsfirst', 'ffcu', 'ocscu', 'otherCU', 'veteran', 'tribe', 'uci'].includes(g))) strengths.push('You belong to a group with its own home-buying help.');
   if (!a.groups.includes('class')) gaps.push('You haven\'t taken a homebuyer class yet. Most programs require it.');
@@ -139,6 +141,7 @@ export function buildReport(a, ratio = 30) {
   const fast = schedule(steps, 'fast');
 
   return {
+    goal: buildGoal(a, ratio),
     ctx,
     results,
     pctAmi: getPercentOfAmi(a.income, a.householdSize, a.county),

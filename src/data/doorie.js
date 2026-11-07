@@ -22,13 +22,13 @@ const money = (n) => `$${Math.round(n).toLocaleString('en-US')}`;
 // ── Curated answers to the most common questions ────────────────────
 const FAQ = [
   { id: 'afford', title: 'How much home can I afford?', keywords: 'afford how much budget price max qualify income salary payment',
-    plain: 'A safe house payment (loan, taxes, insurance) is about 30–35% of your income before taxes, and all debts together should stay under about 43%. Your friendly check-in does the math for your family and shows a price range.',
+    plain: 'A safe house payment (loan, taxes, insurance) is about 30–35% of your income before taxes, and all debts together should stay under about 36% (lenders often allow up to 43%, but that can be tight). Your friendly check-in does the math for your family and shows a price range.',
     eli5: 'Spend about $30–$35 of every $100 you earn on your home. The check-in figures out your number.', link: '#/plan', linkLabel: 'Take the check-in: see where you are' },
   { id: 'affordable', title: 'How can I make a home more affordable?', keywords: 'affordable affordability cheaper lower cost cheap save money reduce make',
     plain: 'Lower the price (below-market homes, Habitat, condos and townhomes), lower the cash you need (down payment help, ZIP, family gifts), lower the monthly payment (shop 3 lenders, better credit, no-PMI loans, MCC tax credit, renting out a unit), and lower the total cost (extra payments).',
     eli5: 'Lots of little tricks make a home cost less: special prices, helpers for the first chunk, and cheaper loans.', link: '#/learn/afford', linkLabel: 'Affordability toolkit' },
   { id: 'down-help', title: 'Is there help with the down payment in Orange County?', keywords: 'down payment help assistance grant dpa money save saving',
-    plain: 'Yes. Options include CalHFA MyHome (up to 3.5%), city loans (Garden Grove up to $110,000, Santa Ana up to $120,000, Anaheim $50,000), the County Mortgage Assistance Program (up to $80,000 in unincorporated OC and 14 smaller cities), FHLBank WISH grants (4-to-1 match up to $32,837), bank grants, and Habitat for Humanity OC.',
+    plain: 'Yes. Options include CalHFA MyHome (up to 3.5%), city loans (Garden Grove up to $110,000, Santa Ana up to $120,000, Anaheim $50,000), the County Mortgage Assistance Program (up to $120,000 in unincorporated OC and 14 smaller cities), FHLBank WISH grants (4-to-1 match up to $32,837), bank grants, and Habitat for Humanity OC.',
     eli5: 'Yes! Many helpers pay part of the first big chunk. Your check-in shows which ones fit you.', link: '#/learn/programs', linkLabel: 'See all programs' },
   { id: 'rate', title: 'What are mortgage rates right now?', keywords: 'rate rates interest current today mortgage rate apr',
     plain: `The average 30-year fixed rate was ${RATE_INFO.value}% for the week of ${RATE_INFO.asOf} (Freddie Mac), compared with ${RATE_INFO.yearAgo}% a year earlier. Your rate depends on your credit, down payment, and lender, so get 3 quotes in the same week.`,
@@ -46,7 +46,7 @@ const FAQ = [
     plain: 'Start with a free online orientation at habitatoc.org. Habitat OC serves households from about $55,850 to $166,300 (family of 4), asks for 200–500 sweat-equity hours and 1–5% down plus closing costs, and keeps the payment around 30–35% of income.',
     eli5: 'Go to a free online meeting first. You help build, and then you can buy a home at a fair price.', link: '#/learn/habitat', linkLabel: 'How Habitat works' },
   { id: 'map', title: 'Which cities does the County Mortgage Assistance Program cover?', keywords: 'county mortgage assistance program map 80000 which cities eligible',
-    plain: 'The County of Orange MAP (up to $80,000, 3% simple interest, deferred 30 years) covers unincorporated OC plus Brea, Cypress, Dana Point, La Palma, Laguna Beach, Laguna Hills, Laguna Woods, Los Alamitos, Placentia, San Juan Capistrano, Seal Beach, Stanton, Villa Park, and Yorba Linda. Call the Affordable Housing Clearinghouse (949-859-9255) to confirm it is open.',
+    plain: 'The County of Orange MAP (up to $120,000 for low income or $80,000 for moderate income, no more than 20% of the price, 3% simple interest, deferred 30 years) covers unincorporated OC plus Brea, Cypress, Dana Point, La Palma, Laguna Beach, Laguna Hills, Laguna Woods, Los Alamitos, Placentia, San Juan Capistrano, Seal Beach, Stanton, Villa Park, and Yorba Linda. Call the Affordable Housing Clearinghouse (949-859-9255) to confirm it is open.',
     eli5: 'The county helper only works in some towns. Big cities like Santa Ana have their own helpers.', link: '#/calculator', linkLabel: 'Check your city in the calculator' },
   { id: 'teachers', title: 'Is there help for teachers and school staff?', keywords: 'teacher teachers school staff aide educator schoolsfirst district',
     plain: 'Yes: SchoolsFirst FCU offers a $7,500 grant and a no-PMI loan with 3% down for school employees; GSFA Platinum Select adds a gift for educators; Teacher Loan Forgiveness and PSLF can lower student loan payments so you qualify for more.',
@@ -61,7 +61,7 @@ const FAQ = [
     plain: 'Yes. A family member can give you money for the down payment with a signed gift letter; FHA, conventional, and many programs accept it. A relative can also co-sign or be a co-borrower, but their income, debts, and credit count, and they are fully responsible if payments are missed. A written promissory note is needed if it\'s a loan, not a gift.',
     eli5: 'Family can give you money for your house with a signed letter, or sign the loan with you. If they sign, they must pay if you can\'t.', link: '#/learn/private', linkLabel: 'Family gifts and loans' },
   { id: 'dti', title: 'What is DTI?', keywords: 'dti debt to income ratio 30 35 43',
-    plain: 'Debt-to-income (DTI) is your monthly debts, including the new house payment, divided by your gross monthly income. Aim for a house payment of 30–35% of income; lenders usually want all debts under about 43%.',
+    plain: 'Debt-to-income (DTI) is your monthly debts, including the new house payment, divided by your gross monthly income. Aim for a house payment of 30–35% of income and all debts under about 36%; lenders usually allow up to about 43%.',
     eli5: 'It\'s how much of your paycheck goes to bills. Less is better.', link: '#/calculator', linkLabel: 'Try the DTI slider' },
   { id: 'pmi', title: 'What is PMI and how do I get rid of it?', keywords: 'pmi mip mortgage insurance remove cancel',
     plain: 'Mortgage insurance protects the lender when you put less than 20% down. On conventional loans it can be removed at 80% loan-to-value and drops off at 78%; FHA insurance usually lasts the life of the loan unless you refinance.',
@@ -112,7 +112,7 @@ function entries() {
   for (const c of OC_CITIES) {
     const help = c.programIds.map((id) => PROGRAMS.find((p) => p.id === id)?.name).filter(Boolean);
     kb.push({ id: `city-${c.id}`, title: `Home buying help in ${c.name}`, keywords: `${c.name} city`,
-      plain: `${help.length ? `Local programs: ${help.join(', ')}. ` : 'No city down payment loan found. '}${c.mapEligible ? 'The County Mortgage Assistance Program (up to $80,000) covers it.' : 'The County Mortgage Assistance Program does not cover it.'} Statewide help like CalHFA MyHome and WISH grants still applies.`,
+      plain: `${help.length ? `Local programs: ${help.join(', ')}. ` : 'No city down payment loan found. '}${c.mapEligible ? 'The County Mortgage Assistance Program (up to $120,000) covers it.' : 'The County Mortgage Assistance Program does not cover it.'} Statewide help like CalHFA MyHome and WISH grants still applies.`,
       link: '#/calculator', linkLabel: `See ${c.name} in the calculator` });
   }
   return kb.map((e) => ({ ...e, _title: tokens(e.title), _keys: tokens(`${e.keywords || ''}`), _body: tokens(e.plain) }));
@@ -140,7 +140,7 @@ const SYNONYMS = [
   ['买房', 'buy home'], ['房', 'home'], ['贷款', 'loan'], ['首付', 'down payment'], ['利率', 'interest rate'], ['信用', 'credit'], ['补助', 'help assistance'], ['多少', 'how much afford'],
   ['منزل', 'home'], ['بيت', 'home'], ['قرض', 'loan'], ['رهن', 'mortgage'], ['فائدة', 'interest rate'], ['دفعة أولى', 'down payment'], ['مساعدة', 'help assistance'], ['ائتمان', 'credit'],
 ];
-function translateKeywords(question) {
+export function translateKeywords(question) {
   let q = ` ${question.toLowerCase()} `;
   for (const [from, to] of SYNONYMS) if (q.includes(from)) q += ` ${to}`;
   return q;

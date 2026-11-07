@@ -137,3 +137,22 @@ Shared reference, 2026 HCD Orange County limits (seen on the MAP package, Garden
 | nhfloan.org | HTML, no MCC page (mcc.html returns 404) | n/a |
 
 Note: search results for "Orange County down payment" are flooded with **Orange County, Florida** programs (ocfl.net, eHousingPlus guides). Exclude these from any scraper.
+
+## Correction, 2026-11-07: County MAP
+
+Re-checked against the MAP Application Package (revised 9-22-2026, https://housing.oc.gov/sites/hcd/files/2026-10/map-application-package-Revised%209-22-2026%20clean_0.pdf) and https://housing.oc.gov/housing-development/homeowner-programs:
+
+- **Amount:** up to **$120,000 for low income (80% AMI)** and **$80,000 for moderate income (120% AMI)**. Both tiers are capped at 20% of the price. The older housing-development page still shows "$80,000" and is outdated.
+- **Moderate limits:** $116,400 (1 person), $133,050, $149,650, $166,300 (4), $179,600, $192,900, $206,200, $219,500 (8).
+- **Price cap:** 85% of the OC median sales price. No dollar figure is published.
+- **Administrator:** **BKF Engineers**, as a third-party administrator for the County. The Affordable Housing Clearinghouse is no longer named.
+- **Status:** the pages do not say whether applications are open or closed.
+
+The same check confirmed the following:
+- **CalHFA income limit:** $274,000 for OC (effective 06.30.2026).
+- **MyHome:** 3% conventional and 3.5% FHA.
+- **CalHFA conventional minimum credit:** 680, or 660 when income is at or below HomeReady 80% AMI.
+- **2026 loan limits:** $832,750 baseline and $1,249,125 for OC.
+- **VA funding fee:** 2.15% first use and 3.3% subsequent use.
+- **Dream For All:** closed since March 16, 2026.
+- **Section 184:** all of California is approved.

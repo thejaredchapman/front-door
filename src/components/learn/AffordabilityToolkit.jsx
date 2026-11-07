@@ -23,7 +23,7 @@ const GROUPS = [
   {
     icon: '💵', title: 'Lower the cash you need',
     items: [
-      { title: 'Down payment help', plain: 'CalHFA MyHome (up to 3.5%), city loans (Garden Grove up to $110,000, Santa Ana up to $120,000), the County MAP (up to $80,000 in eligible cities), WISH matching grants (up to $32,837), and bank grants.', eli5: 'Helpers pay part of the first big chunk.', href: '#/learn/programs' },
+      { title: 'Down payment help', plain: 'CalHFA MyHome (up to 3.5%), city loans (Garden Grove up to $110,000, Santa Ana up to $120,000), the County MAP (up to $120,000 in eligible cities), WISH matching grants (up to $32,837), and bank grants.', eli5: 'Helpers pay part of the first big chunk.', href: '#/learn/programs' },
       { title: 'Closing-cost help and gifts', plain: 'CalHFA ZIP (0% for closing costs), seller credits, and family gifts with a gift letter can cover most of the cash at closing.', eli5: 'Family and helpers can pay the fees at the end.', href: '#/learn/private' },
       { title: 'Save your tax refund', plain: 'Send part of your EITC or CalEITC refund straight to savings with IRS Form 8888.', eli5: 'Put some tax-time money in your house jar.', href: '#/give/taxes' },
     ],

@@ -4,10 +4,12 @@ import { useStore } from '../store/useStore';
 import { askDoorie, SUGGESTIONS } from '../data/doorie';
 import { servicesMentioned } from '../data/externalServices';
 import Mascot from './Mascot';
+import DocSources from './DocSources';
 
 /**
  * Doorie chat: tap the floating Doorie to ask about home loans in Orange County.
- * Answers come only from Front Door's own content (no AI, nothing sent anywhere).
+ * Answers come from Front Door's own content, plus matching passages from the official-document library
+ * (searched in the browser). An optional "Summarize with AI" button is the only thing that sends a question out.
  * Anything off-topic gets a friendly "try Google".
  */
 export default function DoorieChat() {
@@ -34,7 +36,7 @@ export default function DoorieChat() {
   const ask = (q) => {
     const question = q.trim();
     if (!question) return;
-    setMessages((m) => [...m, { from: 'you', text: question }, { from: 'doorie', ...askDoorie(question) }]);
+    setMessages((m) => [...m, { from: 'you', text: question }, { from: 'doorie', question, ...askDoorie(question) }]);
     setInput('');
   };
 
@@ -67,7 +69,7 @@ export default function DoorieChat() {
           <div ref={listRef} className="doorie-list" aria-live="polite">
             <div className="doorie-msg is-doorie">
               <p>{t('Hi! I\'m Doorie. Ask me how to make a home affordable in Orange County: what you can afford, down payment help, loans, and more.')}</p>
-              <p className="text-xs text-muted mt-1">{t('I share general information from Front Door\'s sources, not financial advice. Your questions stay on this device.')}</p>
+              <p className="text-xs text-muted mt-1">{t('I share general information from Front Door\'s sources and official documents, not financial advice. Your questions stay on this device unless you tap "Summarize with AI".')}</p>
             </div>
             {messages.map((m, i) => (
               m.from === 'you'
@@ -140,6 +142,7 @@ function DoorieAnswer({ a, simple, t, onAsk }) {
           {t(a.linkLabel || 'Learn more')} {external ? '↗' : '→'}
         </a>
       )}
+      {a.question && <DocSources question={a.question} compact />}
       {a.related?.length > 0 && (
         <div className="mt-2 flex flex-wrap gap-1.5">
           {a.related.map((r) => <button key={r} type="button" className="chip !min-h-0 !py-1 text-xs" onClick={() => onAsk(r)}>{t(r)}</button>)}
