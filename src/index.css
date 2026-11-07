@@ -704,3 +704,9 @@
   .stage-num { display: inline-grid; place-items: center; width: 1.8rem; height: 1.8rem; border-radius: 999px; background: var(--stage); color: #fff; font-size: 1rem; }
   .stage-block .task-row { border-inline-start: 5px solid var(--stage); }
 }
+@layer components {
+  .fund-meter { height: 18px; border-radius: 999px; background: #d6eaf4; overflow: hidden; }
+  .fund-meter > span { display: block; height: 100%; background: #007399; border-radius: 999px; transition: width .25s ease; }
+  .cost-bar { height: 8px; border-radius: 4px; background: #eef5f9; margin: 3px 0 2px; overflow: hidden; }
+  .cost-bar > span { display: block; height: 100%; background: #007399; border-radius: 0 4px 4px 0; }
+}

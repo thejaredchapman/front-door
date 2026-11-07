@@ -20,6 +20,7 @@ import LoanTypes from './LoanTypes';
 import LawsPage from './LawsPage';
 import HowWeSolved from './HowWeSolved';
 import DocumentLibrary from './DocumentLibrary';
+import FundingCalculator from './FundingCalculator';
 import AffordabilityToolkit from './AffordabilityToolkit';
 
 /**
@@ -70,6 +71,9 @@ export const TOPICS = [
   { id: 'solved', group: 'Go deeper', title: 'How we solved this problem', summary: 'The problem, our approach, and who built it.', Component: HowWeSolved, ownHeader: false,
     plain: 'Orange County homes cost about 10 times what working families earn, and the help is scattered and confusing. Here is how Front Door tackles that, step by step.',
     eli5: 'Why buying a home here is hard, and what we built to help.' },
+  { id: 'fund-front-door', group: 'Go deeper', title: 'Fund Front Door: funding calculator', summary: 'Plan a year\'s budget and match it to grants.', Component: FundingCalculator, ownHeader: false,
+    plain: 'Front Door costs almost nothing per visitor, so most of the budget is people: keeping programs and rates current, checking translations, and outreach. Change any number to plan a year, then pick the grants a nonprofit host could apply for. "Expected funding" multiplies each grant by your chance of winning it.',
+    eli5: 'How much Front Door costs to run, and who could help pay for it.' },
   { id: 'sources', group: 'Go deeper', title: 'Sources', summary: 'Where every fact comes from.', Component: SourcesSection },
   { id: 'about', group: 'Go deeper', title: 'How this was built', summary: 'Tools used and what each service actually cost.', Component: BuildCostPanel },
 ];

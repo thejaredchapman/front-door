@@ -1,0 +1,34 @@
+/**
+ * Funding that could pay to run and grow Front Door (researched 2026-11-07; see docs/funding/funding-options.md).
+ * `confirmed` = checked on the funder's own page. Amounts are planning defaults the calculator lets you change.
+ * `needs`: what the applicant must be. nonprofit = a 501(c)(3) host; hud = HUD-approved housing counseling agency;
+ * network = NeighborWorks member; bank = sponsored by an FHLBank SF member bank or credit union.
+ */
+export const CHECKED_ON = '2026-11-07';
+
+export const NEEDS = [
+  { id: 'nonprofit', label: 'A 501(c)(3) nonprofit hosts Front Door', help: 'Most funders only give to nonprofits or governments. Habitat OC or NeighborWorks OC could host it.' },
+  { id: 'hud', label: 'The host is a HUD-approved housing counseling agency', help: 'NeighborWorks Orange County is HUD-approved.' },
+  { id: 'network', label: 'The host is a NeighborWorks America member', help: 'NeighborWorks Orange County is a member.' },
+  { id: 'bank', label: 'A member bank or credit union will sponsor an application', help: 'Needed for FHLBank San Francisco AHEAD grants.' },
+];
+
+export const SOURCES = [
+  { id: 'hud-chc', name: 'HUD Comprehensive Housing Counseling grant', funder: 'U.S. Dept. of Housing and Urban Development', type: 'Federal grant', min: 1000000, max: 3000000, amount: 40000, chance: 15, start: true, needs: ['nonprofit', 'hud'], window: '2026-11-30', windowLabel: 'Forecast due about Nov 30, 2026', confirmed: true, note: 'Front Door would be part of the counseling agency\'s application, as its digital intake and education tool. Planning amount is Front Door\'s share, not the full award.', url: 'https://simpler.grants.gov/opportunity/362014' },
+  { id: 'wells', name: 'Wells Fargo Foundation: Housing Affordability', funder: 'Wells Fargo Foundation', type: 'Grant', min: null, max: null, amount: 25000, chance: 10, start: true, needs: ['nonprofit'], window: 'rolling', windowLabel: 'Rolling (invitation only; send a Grant Interest Form)', confirmed: true, note: 'Housing affordability is a stated priority.', url: 'https://www.wellsfargo.com/about/corporate-responsibility/community-giving/grant-process' },
+  { id: 'usbank', name: 'U.S. Bank Foundation Community Possible ("Home")', funder: 'U.S. Bank Foundation', type: 'Grant', min: null, max: null, amount: 15000, chance: 10, start: true, needs: ['nonprofit'], window: 'rolling', windowLabel: 'Rolling letter of inquiry (unconfirmed)', confirmed: false, note: 'Safe and affordable housing is one of its pillars.', url: 'https://www.usbank.com/content/dam/usbank/en/documents/pdfs/about-us-bank/community-possible-grant-guidelines-2026.pdf' },
+  { id: 'citi', name: 'Citi Foundation Community Finance Initiative', funder: 'Citi Foundation', type: 'Grant', min: 500000, max: 500000, amount: 500000, chance: 5, needs: ['nonprofit'], window: '2027-02-15', windowLabel: 'Expected Jan–Feb 2027 (2026 round closed Feb 18)', confirmed: true, note: 'First-time homebuyer education and safe digital financial tools are named focus areas. Very competitive: 70 grants nationwide.', url: 'https://www.citigroup.com/global/foundation/news/press-release/2026/citi-foundation-announces-35-million-2026-community-finance-initiative-nonprofits-across-united-states-working-advance-household-financial-resilience' },
+  { id: 'samueli', name: 'Samueli Foundation Breakaway Fund', funder: 'Samueli Foundation (Orange County)', type: 'Unrestricted grant', min: 50000, max: 100000, amount: 50000, chance: 20, start: true, needs: ['nonprofit'], window: '2027-03-15', windowLabel: 'Expected about March 2027', confirmed: false, note: 'Local, unrestricted operating support for OC nonprofits.', url: 'https://www.samueli.org/for-grantseekers/breakaway/' },
+  { id: 'oc-cdbg', name: 'County of Orange CDBG public services', funder: 'County of Orange (federal CDBG)', type: 'Federal pass-through grant', min: null, max: null, amount: 30000, chance: 25, start: true, needs: ['nonprofit'], window: '2027-03-31', windowLabel: 'Expected about March 2027', confirmed: false, note: 'Homebuyer education counts as a public service. Federal CDBG cuts have been proposed.', url: 'https://www.ocgov.com' },
+  { id: 'city-cdbg', name: 'City CDBG public services (e.g. Newport Beach, Santa Ana)', funder: 'Orange County cities', type: 'Federal pass-through grant', min: null, max: null, amount: 15000, chance: 25, needs: ['nonprofit'], window: '2027-02-28', windowLabel: 'Newport Beach early 2027; Santa Ana late 2027', confirmed: false, note: 'Small awards on multi-year cycles.', url: 'https://www.newportbeachca.gov/CDBGapplication' },
+  { id: 'bofa', name: 'Bank of America Neighborhood Builders', funder: 'Bank of America', type: 'Unrestricted grant', min: 200000, max: 400000, amount: 200000, chance: 5, needs: ['nonprofit'], window: '2027-06-01', windowLabel: 'Expected spring 2027', confirmed: false, note: 'Homeownership pathways is a focus area. Not open to past awardees since Oct 2019.', url: 'https://about.bankofamerica.com/en/making-an-impact/neighborhood-builders' },
+  { id: 'ahead', name: 'FHLBank San Francisco AHEAD grant', funder: 'Federal Home Loan Bank of San Francisco', type: 'Grant', min: null, max: 200000, amount: 50000, chance: 15, needs: ['nonprofit', 'bank'], window: '2027-05-27', windowLabel: 'Expected Apr–May 2027', confirmed: true, note: 'Ask ahead@fhlbsf.com whether homebuyer education qualifies; listed uses are jobs and small business.', url: 'https://www.fhlbsf.com/community-programs/grant-programs/ahead' },
+  { id: 'nw', name: 'NeighborWorks America Flexible Impact Grant (share)', funder: 'NeighborWorks America', type: 'Grant to members', min: null, max: null, amount: 25000, chance: 30, needs: ['nonprofit', 'network'], window: 'member', windowLabel: 'Allocated to members (FY2027 cuts proposed)', confirmed: true, note: 'Through NeighborWorks Orange County.', url: 'https://www.neighborworks.org/Media-Center/Press-Releases' },
+  { id: 'ffwd', name: 'Fast Forward tech-nonprofit accelerator', funder: 'Fast Forward', type: 'Grant + accelerator', min: 25000, max: null, amount: 25000, chance: 10, needs: ['nonprofit'], window: '2027-08-31', windowLabel: 'Expected about Aug 2027', confirmed: false, note: 'For tech nonprofits; strongest if Front Door becomes its own program.', url: 'https://www.ffwd.org' },
+];
+
+/** Free or discounted tools that lower the budget instead of adding income. */
+export const CREDITS = [
+  { id: 'vercel-oss', name: 'Vercel Open Source Program', value: 3600, covers: 'hosting', needs: [], windowLabel: 'Reopens January', confirmed: true, url: 'https://vercel.com/open-source-program' },
+  { id: 'github-np', name: 'GitHub for Nonprofits (free Team plan)', value: 0, covers: 'code', needs: ['nonprofit'], windowLabel: 'Rolling', confirmed: true, url: 'https://docs.github.com/en/nonprofit' },
+];

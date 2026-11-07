@@ -21,6 +21,7 @@ export default function Footer() {
           <a href="#/learn/about" className="hover:underline">{t('How this was built')}</a>
           <a href="#/learn/solved" className="hover:underline">{t('How we solved it')}</a>
           <a href="#/learn/documents" className="hover:underline">{t('Official documents')}</a>
+          <a href="#/learn/fund-front-door" className="hover:underline">{t('Fund Front Door')}</a>
           <a href="presentation/handout.html" target="_blank" rel="noreferrer" className="hover:underline">{t('Handout')} ↗</a>
           <a href="presentation/slides.html" target="_blank" rel="noreferrer" className="hover:underline">{t('Slides')} ↗</a>
           <a href="https://github.com/thejaredchapman/front-door" target="_blank" rel="noreferrer" className="hover:underline">GitHub ↗</a>
